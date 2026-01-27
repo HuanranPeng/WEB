@@ -3,8 +3,6 @@ import { CaseStudies } from '../components/CaseStudies';
 import { Footer } from '../components/Footer';
 import { Container } from '@/components/ui/container';
 import { CTA } from '@/components/CTA';
-import { Playground } from '../components/Playground';
-import { Writing } from '../components/Writing';
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { AnimatedHeroText } from '@/components/AnimatedHeroText';
@@ -23,13 +21,12 @@ export function HomePage() {
       <Container>
         <section id="about" className='flex flex-col justify-center h-screen gap-8 md:gap-12'>
           <AnimatedHeroText
-            greeting="👋 Hello, I'm Matt Trice."
-            title="I am a Lead Product Designer blending creative momentum with thoughtful UX, clean UI, and scalable design systems."
+            greeting="👋 Hello, I'm Huanran Peng."
+            title="Product Designer blending design systems and AI interaction design to deliver measurable product value."
+            highlightPhrases={["design systems", "AI interaction design", "product value"]}
           />
           <a 
-            href="https://calendly.com/matt-trice/30min" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="mailto:huanranpeng@gmail.com"
             className="w-fit"
           >
             <Button 
@@ -51,12 +48,6 @@ export function HomePage() {
             <div className="flex flex-col gap-8 md:gap-16 lg:gap-24">
               <section id="case-studies">
                 <CaseStudies />
-              </section>
-              <section id="demos">
-                <Playground />
-              </section>
-              <section id="writing">
-                <Writing />
               </section>
             </div>
           </div>

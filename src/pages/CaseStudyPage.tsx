@@ -14,6 +14,7 @@ import { HeroSection } from '@/components/case-study/HeroSection';
 import { ProjectNavigation } from '@/components/ProjectNavigation';
 import { getAdjacentProjects } from '@/data/navigation';
 import { FlexColumnSection } from '@/components/case-study/FlexColumnSection';
+import { InPageNavigation } from '@/components/InPageNavigation';
 import MetaTags from '@/components/MetaTags';
 
 export function CaseStudyPage() {
@@ -28,9 +29,9 @@ export function CaseStudyPage() {
   return (
     <div id="top">
       <MetaTags 
-        title={project.meta?.title || `${project.title} | Matt Trice Design`}
+        title={project.meta?.title || `${project.title} | Huanran Peng Design`}
         description={project.meta?.description || project.description}
-        canonical={`https://www.trice.design/case-study/${project.id}`}
+        canonical={`https://www.huanranpeng.com/case-study/${project.id}`}
         ogImage={project.meta?.ogImage || project.heroImage}
       />
       <section className="mt-20">
@@ -51,11 +52,22 @@ export function CaseStudyPage() {
             {project.title}
           </h1>
           <div className="max-w-full md:max-w-[80%]">
-            <h2 className="text-display-sm md:text-display-lg mb-10 md:mb-12 text-foreground !font-normal">
+            <h2 className="text-display-sm md:text-display-lg mb-6 md:mb-8 text-foreground !font-normal">
               {project.heroSubTitle}
             </h2>
           </div>
           
+          {/* Role and Team under description */}
+          <div className="flex flex-col md:flex-row gap-6 md:gap-12 mb-10 md:mb-16">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-display-xs text-foreground">Role</h3>
+              <p className="text-body-md text-muted-foreground">{project.role}</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-display-xs text-foreground">Team</h3>
+              <p className="text-body-md text-muted-foreground">{project.team}</p>
+            </div>
+          </div>
           
           {/* Hero Section */}
           <div className="py-4 md:py-20">
@@ -71,35 +83,27 @@ export function CaseStudyPage() {
       </section>
 
       {/* Project Details */}
-      <Container className="relative max-w-4xl">
+      <Container className="relative max-w-screen-2xl">
         <div className="flex justify-center mb-10 md:mb-20">
           <Tags tags={project.technologies} justify="center" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Left column - 25% */}
-          <div className="col-span-1">
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
-                <h3 className="text-display-xs text-foreground">Role</h3>
-                <p className="text-body-md text-muted-foreground">{project.role}</p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-display-xs text-foreground">Team</h3>
-                <p className="text-body-md text-muted-foreground">{project.team}</p>
-              </div>
-            </div>
+        
+        <div className="lg:grid lg:grid-cols-12 lg:gap-8" id="content-with-nav">
+          {/* Left sidebar - Navigation (sticky) */}
+          <div className="lg:col-span-3">
+            <InPageNavigation caseStudyProject={project} />
           </div>
           
-          {/* Right column - 75% */}
-          <div className="col-span-3">
+          {/* Main content */}
+          <div className="lg:col-span-9">
             <div className="flex flex-col gap-16 md:gap-24">
-              {project.sections.map((section: Section, index: number) => {
+                  {project.sections.map((section: Section, index: number) => {
                 switch (section.type) {
                   case 'content':
                   case 'process':
                   case 'narrative':
                     return (
-                      <div key={index} className="flex flex-col gap-4 md:gap-5">
+                      <div key={index} id={`section-${index}`} className="flex flex-col gap-4 md:gap-5">
                         <h3 className="text-foreground">
                           {'smallTitle' in section && section.smallTitle && (
                             <span className="block text-display-xs mb-4">{section.smallTitle}</span>
@@ -130,14 +134,15 @@ export function CaseStudyPage() {
                     );
                   case 'instruction':
                     return (
-                      <GridLayoutSection
-                        key={index}
-                        {...section}
-                      />
+                      <div key={index} id={`section-${index}`}>
+                        <GridLayoutSection
+                          {...section}
+                        />
+                      </div>
                     );
                   case 'gallery':
                     return (
-                      <div className={cn(
+                      <div key={index} id={`section-${index}`} className={cn(
                         "flex flex-col gap-8",
                         section.layout === '3-col' && "col-span-3",
                         section.layout === '2-col' && "col-span-2",
@@ -172,12 +177,13 @@ export function CaseStudyPage() {
                     );
                   case 'resources':
                     return (
-                      <FlexColumnSection
-                        key={index}
-                        title={section.title || ''}
-                        content={section.content || ''}
-                        items={[{ resources: section.resources }]}
-                      />
+                      <div key={index} id={`section-${index}`}>
+                        <FlexColumnSection
+                          title={section.title || ''}
+                          content={section.content || ''}
+                          items={[{ resources: section.resources }]}
+                        />
+                      </div>
                     );
                   default:
                     return null;

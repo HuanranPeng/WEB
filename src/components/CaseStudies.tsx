@@ -47,26 +47,35 @@ export function CaseStudies() {
   // Determine hero layout and images based on project
   const getHeroConfig = (projectId: string) => {
     switch (projectId) {
-      case 'decent-app':
-        return {
-          layout: 'double' as const,
-          leftImage: '/images/decent-app-hero-single-left.png',
-          rightImage: '/images/decent-app-hero-single-right.png'
-        };
-      case 'blockset-docs':
+      case 'energysage-design-system':
         return {
           layout: 'single' as const,
-          singleImage: '/images/blockset-docs-hero-single.png'
+          singleImage: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image'
         };
-      case 'decent-design-system':
+      case 'energysage-redesign':
         return {
           layout: 'single' as const,
-          singleImage: '/images/decent-design-system-hero-single.png'
+          singleImage: '/images/energysage-redesign/hero-image.png'
+        };
+      case 'ai-chatbot-design':
+        return {
+          layout: 'single' as const,
+          singleImage: '/images/ai-chatbot-design/hero-image.png'
+        };
+      case 'heat-pump-marketplace':
+        return {
+          layout: 'single' as const,
+          singleImage: '/images/heat-pump-marketplace/hero-image.png'
+        };
+      case 'locatify-ar-navigation':
+        return {
+          layout: 'single' as const,
+          singleImage: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image'
         };
       default:
         return {
           layout: 'single' as const,
-          singleImage: '/images/decent-design-system-hero-single.png' // fallback
+          singleImage: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image'
         };
     }
   };

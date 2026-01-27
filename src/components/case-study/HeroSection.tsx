@@ -186,14 +186,19 @@ export function HeroSection({
           <div 
             ref={singleImageRef}
             className={cn(
-              "relative w-full max-w-[350px] sm:max-w-[400px] md:max-w-[700px] group hover:cursor-pointer",
+              "relative w-full h-full flex items-center justify-center group hover:cursor-pointer",
+              id === 'ai-chatbot-design' && "max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px]",
+              id !== 'ai-chatbot-design' && "max-w-[350px] sm:max-w-[400px] md:max-w-[700px]",
               !loadedImages['single'] && "image-loading"
             )}
           >
             <img
               src={singleImage}
               alt={`${id} Interface`}
-              className="w-full h-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105"
+              className={cn(
+                "h-full w-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105",
+                id === 'ai-chatbot-design' && "max-h-full"
+              )}
               onLoad={() => setLoadedImages(prev => ({ ...prev, 'single': true }))}
             />
           </div>

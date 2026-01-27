@@ -1,9 +1,13 @@
-import { decentApp } from './decent-app';
-import { blocksetDocs } from './blockset-docs';
-import { decentDesignSystem } from './decent-design-system';
+import { energysageDesignSystem } from './energysage-design-system';
+import { energysageRedesign } from './energysage-redesign';
+import { aiChatbotDesign } from './ai-chatbot-design';
+import { heatPumpMarketplace } from './heat-pump-marketplace';
+import { locatifyArNavigation } from './locatify-ar-navigation';
 
 export const projects = [
-  decentApp,
-  blocksetDocs,
-  decentDesignSystem
+  energysageDesignSystem,
+  energysageRedesign,
+  aiChatbotDesign,
+  heatPumpMarketplace,
+  locatifyArNavigation
 ]; 

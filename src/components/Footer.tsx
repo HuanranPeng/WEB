@@ -6,7 +6,7 @@ import { Lightbox } from "@/components/Lightbox"
 
 const menuSections = [
   {
-    title: "Trice Design",
+    title: "Huanran Peng",
     items: [
       { label: "Home", href: "/" },
     ]
@@ -14,16 +14,11 @@ const menuSections = [
   {
     title: "Case Studies",
     items: [
-      { label: "Decent App", href: "/case-study/decent-app" },
-      { label: "Blockset by BRD - Docs Site", href: "/case-study/blockset-docs" },
-      { label: "Decent Design System", href: "/case-study/decent-design-system" },
-    ]
-  },
-  {
-    title: "Demos",
-    items: [
-      { label: "Design System Demo", href: "/demo/design-system" },
-      { label: "3D Experiments", href: "/demo/threejs" },
+      { label: "EnergySage Design System", href: "/case-study/energysage-design-system" },
+      { label: "EnergySage Site Redesign", href: "/case-study/energysage-redesign" },
+      { label: "AI Chatbot Design", href: "/case-study/ai-chatbot-design" },
+      { label: "Heat Pump Marketplace", href: "/case-study/heat-pump-marketplace" },
+      { label: "Locatify AR Navigation", href: "/case-study/locatify-ar-navigation" },
     ]
   }
 ];
@@ -37,7 +32,7 @@ export function Footer() {
         <div className="mb-16">
           <div className="flex flex-col gap-2 mb-4">
             <LottieLogo />
-            <p className="text-body-md md:text-body-xl">Matt Trice Design.<span className="text-muted-foreground"> Always iterating, always experimenting.</span></p>
+            <p className="text-body-md md:text-body-xl">Huanran Peng Design.<span className="text-muted-foreground"> Transforming complex data into intuitive experiences.</span></p>
           </div>
         </div>
 
@@ -67,7 +62,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="flex flex-col space-y-2">
           <p className="max-w-[85%] caption text-foreground">
-            ©2025 Trice Design, LLC. Built for learning and tinkering—fork it, remix it, build cool shit.&nbsp;
+            ©2025 Huanran Peng. Built for learning and tinkering—fork it, remix it, build cool stuff.&nbsp;
             <Lightbox
               images={[{
                 url: "/fuzzy-404.mp4",

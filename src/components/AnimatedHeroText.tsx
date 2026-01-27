@@ -4,9 +4,10 @@ import gsap from 'gsap';
 interface AnimatedHeroTextProps {
   greeting: string;
   title: string;
+  highlightPhrases?: string[];
 }
 
-export function AnimatedHeroText({ greeting, title }: AnimatedHeroTextProps) {
+export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: AnimatedHeroTextProps) {
   const greetingRef = useRef<HTMLSpanElement>(null);
   const titleWordsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const emojiRef = useRef<HTMLSpanElement>(null);
@@ -67,6 +68,25 @@ export function AnimatedHeroText({ greeting, title }: AnimatedHeroTextProps) {
   // Split title into words while preserving spaces
   const titleWords = title.split(' ');
 
+  // Function to check if a word should be highlighted
+  const isWordHighlighted = (wordIndex: number) => {
+    for (const phrase of highlightPhrases) {
+      const phraseWords = phrase.toLowerCase().split(' ');
+      const titleLower = title.toLowerCase();
+      const phraseStartIndex = titleLower.indexOf(phrase.toLowerCase());
+      
+      if (phraseStartIndex !== -1) {
+        const wordsBeforePhrase = titleLower.substring(0, phraseStartIndex).split(' ').length - 1;
+        const phraseEndIndex = wordsBeforePhrase + phraseWords.length - 1;
+        
+        if (wordIndex >= wordsBeforePhrase && wordIndex <= phraseEndIndex) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
   return (
     <div className="flex flex-col items-start">
       {/* Hidden SEO-friendly version */}
@@ -108,7 +128,7 @@ export function AnimatedHeroText({ greeting, title }: AnimatedHeroTextProps) {
             <span
               key={i}
               ref={el => titleWordsRef.current[i] = el}
-              className="inline-block"
+              className={`inline-block ${isWordHighlighted(i) ? 'text-accent font-semibold' : ''}`}
               style={{ marginRight: '0.25em', opacity: 0, willChange: 'opacity' }}
             >
               {word}

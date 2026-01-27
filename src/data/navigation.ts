@@ -1,4 +1,3 @@
-import { demoProjects } from './demo-projects';
 import { projects as caseStudies } from './case-studies';
 import { Project } from './types';
 
@@ -7,18 +6,11 @@ interface NavigationItem {
   title: string;
   subtitle: string;
   link: string;
-  projectType: 'demo' | 'case-study';
+  projectType: 'case-study';
 }
 
-// Combine all projects into a single navigation array
+// Only include case studies in navigation
 const allProjects: NavigationItem[] = [
-  ...demoProjects.map(project => ({
-    id: project.id,
-    title: project.title,
-    subtitle: project.subtitle,
-    link: project.link,
-    projectType: 'demo' as const
-  })),
   ...caseStudies.map((study: Project) => ({
     id: study.id,
     title: study.title,

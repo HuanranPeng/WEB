@@ -11,22 +11,20 @@ export function CTA() {
           <Mail className="text-muted-foreground h-6 w-6 md:h-10 md:w-10 lg:h-14 lg:w-14" />
           <h5 className="mb-0 text-display-sm sm:text-display-lg md:text-display-2xl lg:text-display-4xl font-normal">
             <a 
-              href="mailto:hello@trice.design" 
+              href="mailto:huanranpeng@gmail.com" 
               className="text-muted-foreground hover:text-accent hover:underline-offset-4 hover:underline transition-opacity"
-              aria-label="Send me an email at hello@trice.design"
-              title="Send an email to Matt Trice"
+              aria-label="Send me an email at huanranpeng@gmail.com"
+              title="Send an email to Huanran Peng"
             >
-              <span className="text-foreground">hello</span>@trice.design
+              <span className="text-foreground">huanranpeng</span>@gmail.com
             </a>
           </h5>
         </div>
         
         <div className="pt-2 md:pt-8">
           <a 
-            href="https://calendly.com/matt-trice/30min" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            title="Schedule a 30-minute consultation call with Matt Trice"
+            href="mailto:huanranpeng@gmail.com"
+            title="Send an email to Huanran Peng"
           >
             <Button 
               size="md"
@@ -34,7 +32,7 @@ export function CTA() {
               icon={ArrowRight}
               iconPlacement="right"
             >
-              Book a Call
+              Get in Touch
             </Button>
           </a>
         </div>

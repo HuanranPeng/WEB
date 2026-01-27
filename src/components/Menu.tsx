@@ -8,7 +8,7 @@ import { manageScrollbarWidth } from "@/lib/utils";
 
 const menuSections = [
   {
-    title: "Trice Design",
+    title: "Huanran Peng",
     items: [
       { label: "Home", href: "/" },
     ]
@@ -16,16 +16,11 @@ const menuSections = [
   {
     title: "Case Studies",
     items: [
-      { label: "Decent App", href: "/case-study/decent-app" },
-      { label: "Blockset by BRD - Docs Site", href: "/case-study/blockset-docs" },
-      { label: "Decent Design System", href: "/case-study/decent-design-system" },
-    ]
-  },
-  {
-    title: "Demos",
-    items: [
-      { label: "Design System Demo", href: "/demo/design-system" },
-      { label: "3D Experiments", href: "/demo/threejs" },
+      { label: "EnergySage Design System", href: "/case-study/energysage-design-system" },
+      { label: "EnergySage Site Redesign", href: "/case-study/energysage-redesign" },
+      { label: "AI Chatbot Design", href: "/case-study/ai-chatbot-design" },
+      { label: "Heat Pump Marketplace", href: "/case-study/heat-pump-marketplace" },
+      { label: "Locatify AR Navigation", href: "/case-study/locatify-ar-navigation" },
     ]
   }
 ];
@@ -76,18 +71,18 @@ export function Menu() {
 
                   {/* Contact */}
                   <a 
-                    href="mailto:hello@trice.design"
+                    href="mailto:huanranpeng@gmail.com"
                     className="text-body-md lg:text-body-xl pb-2 text-foreground hover:text-accent transition-colors"
-                    aria-label="Send me an email at hello@trice.design"
-                    title="Send an email to Matt Trice"
+                    aria-label="Send me an email at huanranpeng@gmail.com"
+                    title="Send an email to Huanran Peng"
                   >
-                    hello@trice.design
+                    huanranpeng@gmail.com
                   </a>
                   <a 
-                    href="https://calendly.com/matt-trice/30min" 
-                    target="_blank" 
+                    href="https://www.linkedin.com/in/huanran-peng-00a602aa/" 
+                    target="_blank"
                     rel="noopener noreferrer"
-                    title="Schedule a 30-minute consultation call with Matt Trice"
+                    className="w-fit"
                   >
                     <Button 
                       size="sm"
@@ -95,7 +90,7 @@ export function Menu() {
                       icon={ArrowRight}
                       iconPlacement="right"
                     >
-                      Book a Call
+                      LinkedIn
                     </Button>
                   </a>
                 </div>
