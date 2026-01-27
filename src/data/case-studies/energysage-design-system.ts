@@ -5,92 +5,166 @@ export const energysageDesignSystem: Project = {
   id: 'energysage-design-system',
   title: 'EnergySage Design System',
   category: 'Design Systems',
-  year: '2022-Present',
+  year: 'Dec. 2022 - Present',
   link: '/case-study/energysage-design-system',
-  description: 'Placeholder description for case study content.',
+  description: 'A sustainable design standard and cohesive design language across three EnergySage product platforms.',
   
   // Images for homepage hero
-  imageUrl: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image',
-  heroImage: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image',
+  imageUrl: '/images/energysage-design-system/hero-image.png',
+  heroImage: '/images/energysage-design-system/hero-image.png',
   
   // Case Study Page Details
-  heroSubTitle: 'Placeholder subtitle for case study',
-  role: 'Placeholder Role',
-  team: 'Placeholder Team',
+  heroSubTitle: 'A sustainable design standard and cohesion across teams and platforms',
+  role: 'Lead Design Systems Designer',
+  team: '4 UX Designers, front-end engineering teams, marketing teams',
   
   // SEO Meta Tags
   meta: {
     title: 'EnergySage Design System | Huanran Peng Design',
-    description: 'Placeholder meta description',
-    ogImage: 'https://via.placeholder.com/1200x630/cccccc/666666?text=OG+Image',
-    ogUrl: 'https://yoursite.com/case-study/energysage-design-system',
+    description: 'Leading the creation of a sustainable design system for EnergySage to unify three product platforms and improve cross-team efficiency.',
+    ogImage: '/images/energysage-design-system/hero-image.png',
+    ogUrl: 'https://www.huanranpeng.com/case-study/energysage-design-system',
   },
 
   sections: [
     {
       type: 'content',
-      smallTitle: 'Placeholder Section',
-      title: 'Placeholder Title',
-      content: 'Placeholder content text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      subsections: [
-        {
-          title: 'Placeholder Subsection',
-          content: 'Placeholder subsection content. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
-        },
-        {
-          title: 'Another Subsection',
-          content: 'More placeholder content. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.'
-        }
-      ]
+      smallTitle: 'Overview',
+      title: 'Overview',
+      content: 'As the key designer responsible for the Design System project, I worked with 4 designers to create the components and guidance from 0-1. With limited resources and weekly design requirements, we made reasonable plans and effective task allocation to ensure that every designer involved could complete a part of the design system within a given period. It is a project driven by the design team. I actively reached out and collected voices from other teams, development teams, marketing teams, and end users.',
+    },
+    {
+      type: 'content',
+      smallTitle: 'Problem',
+      title: 'Fragmented Design Across Growing Teams',
+      content: 'EnergySage has three products: Roof Solar Marketplace, Community Solar Marketplace, and Heat Pump Marketplace. Although there are product connections between each platform, their design connections were fragmented. As teams grow, without a systematic way to guide different teams to work in one direction, more people joining only makes this gap grow deeper, like the Mariana Trench.',
     },
     {
       type: 'gallery',
-      smallTitle: 'Placeholder Gallery',
-      title: 'Placeholder Gallery Title',
-      content: 'Placeholder gallery description text.',
-      layout: '2-col',
+      smallTitle: 'Problem Context',
+      title: 'The Challenge in Context',
+      content: 'The lack of a unified visual and interaction language led to inconsistent experiences, duplicated work, and communication challenges across teams.',
+      layout: '1-col',
       images: [
         {
-          url: 'https://via.placeholder.com/800x600/cccccc/666666?text=Image+1',
-          alt: 'Placeholder image 1',
-          caption: 'Placeholder caption 1'
-        },
-        {
-          url: 'https://via.placeholder.com/800x600/cccccc/666666?text=Image+2',
-          alt: 'Placeholder image 2',
-          caption: 'Placeholder caption 2'
-        },
-        {
-          url: 'https://via.placeholder.com/800x600/cccccc/666666?text=Image+3',
-          alt: 'Placeholder image 3',
-          caption: 'Placeholder caption 3'
-        },
-        {
-          url: 'https://via.placeholder.com/800x600/cccccc/666666?text=Image+4',
-          alt: 'Placeholder image 4',
-          caption: 'Placeholder caption 4'
+          url: '/images/energysage-design-system/problem-context.jpg',
+          alt: 'Context for fragmented design and collaboration challenges',
+          caption: 'Context for the design system initiative'
         }
       ]
     },
     {
       type: 'content',
-      smallTitle: 'Another Section',
-      title: 'Placeholder Content Section',
-      content: 'More placeholder content. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+      smallTitle: 'What',
+      title: 'A Systemic Approach and Guardrails',
+      content: 'This system aims to create a systemic approach and guardrails to help design and development teams utilize components to improve efficiency and maintain continuity and consistency, so that developers can focus on logic and designers can focus on flows and user experience. The system is structured around four pillars: Guideline, Tool, Usage, and Component, each supporting both designers and engineers with systemic guardrails, appropriate tips and scenarios, and open, scalable components and patterns.',
+    },
+    {
+      type: 'content',
+      smallTitle: 'Challenges',
+      title: 'Design and Engineering Challenges',
+      content: '',
       subsections: [
         {
-          title: 'Subsection Title',
-          content: 'Subsection placeholder content.'
+          title: 'Designers',
+          content: 'When I joined the team, there were only 3 designers. Later the team grew. Due to a lack of reasonable constraints, the output of each designer was different. Designers had been struggling with standardized UX and UI designs.'
+        },
+        {
+          title: 'Engineers',
+          content: 'There was no effective communication among different front-end engineering teams. In reality, component code could be reused and maintained to save time, but this was not happening without a shared system.'
         }
       ]
+    },
+    {
+      type: 'gallery',
+      smallTitle: 'Design System Foundations',
+      title: 'Color, Typography, and Spacing',
+      content: 'Establishing core visual foundations for the design system, including color styles, typography scales for desktop and mobile, and spacing rules.',
+      layout: '2-col',
+      images: [
+        {
+          url: '/images/energysage-design-system/color-system.png',
+          alt: 'Design system color styles',
+          caption: 'Color Style'
+        },
+        {
+          url: '/images/energysage-design-system/typography-desktop.png',
+          alt: 'Desktop typography scale',
+          caption: 'Typography – Desktop'
+        },
+        {
+          url: '/images/energysage-design-system/typography-mobile.png',
+          alt: 'Mobile typography scale',
+          caption: 'Typography – Mobile'
+        },
+        {
+          url: '/images/energysage-design-system/spacing-1.png',
+          alt: 'Spacing rules overview',
+          caption: 'Spacing Rules'
+        },
+        {
+          url: '/images/energysage-design-system/spacing-2.png',
+          alt: 'More detailed spacing rules',
+          caption: 'Spacing Details'
+        }
+      ]
+    },
+    {
+      type: 'gallery',
+      smallTitle: 'System Components',
+      title: 'Icons, Grid, and Components',
+      content: 'Building out icons, grid systems, and components as reusable building blocks for the three product platforms.',
+      layout: '2-col',
+      images: [
+        {
+          url: '/images/energysage-design-system/icons.png',
+          alt: 'Design system icons',
+          caption: 'Icons'
+        },
+        {
+          url: '/images/energysage-design-system/grid.png',
+          alt: 'Grid system',
+          caption: 'Grid System'
+        },
+        {
+          url: '/images/energysage-design-system/components.png',
+          alt: 'Design system components',
+          caption: 'Component Library'
+        }
+      ]
+    },
+    {
+      type: 'gallery',
+      smallTitle: 'Before & After',
+      title: 'Before & After',
+      content: 'Comparing the interfaces before and after applying the design system to show visual consistency and UX improvements.',
+      layout: '1-col',
+      images: [
+        {
+          url: '/images/energysage-design-system/before-after-1.png',
+          alt: 'Before and after comparison 1',
+          caption: 'Before & After – Example 1'
+        },
+        {
+          url: '/images/energysage-design-system/before-after-2.png',
+          alt: 'Before and after comparison 2',
+          caption: 'Before & After – Example 2'
+        }
+      ]
+    },
+    {
+      type: 'content',
+      smallTitle: 'Conclusion',
+      title: 'Laying a Sustainable Design Language',
+      content: "Great things in business are never done by one person, they're done by a team of people. This is a monumental and challenging task, and we only have 4 UX designers. This is the first version of an entirely new system, but it has laid a sustainable design language. Design and code are shared. The development team, especially the front-end engineer team, said they can't wait to use it. Designers can also focus more on product and user experience rather than adjusting colors and sizes on visual elements.",
     }
   ],
 
-  technologies: ['Figma', 'Design Tokens', 'Component Libraries'],
+  technologies: ['Figma', 'Design Tokens', 'Component Libraries', 'Design Systems'],
   
   testimonial: {
-    quote: 'Placeholder testimonial quote text.',
-    author: 'Placeholder Author',
-    role: 'Placeholder Role'
+    quote: 'The design system laid a sustainable design language where design and code are shared, and teams are excited to adopt it.',
+    author: 'EnergySage Front-end Team',
+    role: 'Front-end Engineers'
   }
 };

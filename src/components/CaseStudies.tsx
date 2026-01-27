@@ -50,12 +50,17 @@ export function CaseStudies() {
       case 'energysage-design-system':
         return {
           layout: 'single' as const,
-          singleImage: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image'
+          singleImage: '/images/energysage-design-system/hero-image.png'
         };
       case 'energysage-redesign':
         return {
           layout: 'single' as const,
           singleImage: '/images/energysage-redesign/hero-image.png'
+        };
+      case 'space-project':
+        return {
+          layout: 'single' as const,
+          singleImage: '/images/space-project/hero-image.png'
         };
       case 'ai-chatbot-design':
         return {
