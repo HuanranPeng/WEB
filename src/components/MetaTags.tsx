@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const BASE_URL = 'https://www.trice.design';
+const BASE_URL = 'https://www.huanranpeng.com';
 
 interface MetaTagsProps {
   title?: string;
@@ -16,14 +16,14 @@ interface MetaTagsProps {
 }
 
 const MetaTags = ({
-  title = "Matt Trice Design | Senior Product Designer",
-  description = "👋 Hello, I'm Matt Trice. I am a Senior Product Designer blending creative momentum with thoughtful UX, clean UI, and scalable design systems.",
+  title = "Huanran Peng | Product Designer",
+  description = "Product Designer blending design systems and AI interaction design to deliver measurable product value.",
   ogImage = `${BASE_URL}/meta/OG-image.png`,
   ogUrl = BASE_URL,
   ogType = 'website',
   twitterCard = 'summary_large_image',
-  twitterSite = '@tricedesign',
-  twitterCreator = '@tricedesign',
+  twitterSite,
+  twitterCreator,
   canonical,
   noindex = false,
 }: MetaTagsProps) => {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const CANONICAL_HOST = 'www.trice.design';
+const CANONICAL_HOST = 'www.huanranpeng.com';
 const HTTPS_BASE_URL = `https://${CANONICAL_HOST}`;
 
 export const useCanonicalRedirect = () => {
@@ -29,7 +29,12 @@ export const useCanonicalRedirect = () => {
       shouldRedirect = true;
     }
     
-    if (shouldRedirect) {
+    // Do not force canonical redirect on Vercel preview domains.
+    // (Keeps preview deployments usable before custom domain is attached.)
+    const isVercelDomain =
+      currentHost.endsWith('.vercel.app') || currentHost.endsWith('.vercel.app.');
+
+    if (shouldRedirect && !isVercelDomain) {
       // Build canonical URL
       const cleanPath = currentPath !== '/' && currentPath.endsWith('/') 
         ? currentPath.slice(0, -1) 
@@ -49,7 +54,7 @@ export const useCanonicalRedirect = () => {
       const newPath = currentPath.replace('/case-studies/', '/case-study/');
       redirectUrl = `${HTTPS_BASE_URL}${newPath}${currentSearch}${currentHash}`;
       
-      if (!currentHost.includes('localhost') && !currentHost.includes('127.0.0.1')) {
+      if (!currentHost.includes('localhost') && !currentHost.includes('127.0.0.1') && !isVercelDomain) {
         window.location.replace(redirectUrl);
       }
     }
