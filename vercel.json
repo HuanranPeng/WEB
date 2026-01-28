@@ -32,7 +32,7 @@
   ],
   "rewrites": [
     {
-      "source": "/2026/((?!api/).*)",
+      "source": "/2026/((?!api/|assets/|images/|favicon|robots|sitemap).*)",
       "destination": "/index.html"
     },
     {
