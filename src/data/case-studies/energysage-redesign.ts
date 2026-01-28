@@ -42,6 +42,7 @@ export const energysageRedesign: Project = {
       smallTitle: 'The Process',
       title: 'What are the process?',
       content: 'Our redesign process focused on <span class="text-emphasis">four key areas</span>: Design System, Information Architecture, Above The Fold, and Product Landing Page.',
+      layout: '4-col',
       subsections: [
         {
           title: 'Design System',
@@ -66,35 +67,36 @@ export const energysageRedesign: Project = {
       smallTitle: 'Design System',
       title: 'Design System',
       content: 'Establishing core design system components including responsive grid system, color palette, typography, and button components.',
-      layout: 'two-column',
+      layout: '1-col',
       images: [
         {
-          url: '/images/energysage-redesign/design-system-1.png',
-          alt: 'Design system overview',
+          url: '/images/energysage-redesign/design-system-grid.png',
+          alt: 'Responsive Grid System',
           caption: 'Responsive Grid System'
         },
         {
-          url: '/images/energysage-redesign/design-system-2.png',
-          alt: 'Color system',
+          url: '/images/energysage-redesign/design-system-color.png',
+          alt: 'Color',
           caption: 'Color'
         },
         {
-          url: '/images/energysage-redesign/design-system-3.png',
-          alt: 'Typography system',
+          url: '/images/energysage-redesign/design-system-typography.png',
+          alt: 'Typography',
           caption: 'Typography'
         },
         {
-          url: '/images/energysage-redesign/design-system-4.png',
-          alt: 'Button components',
-          caption: 'Button Components'
+          url: '/images/energysage-redesign/design-system-buttons.png',
+          alt: 'Button',
+          caption: 'Button'
         }
       ]
     },
     {
       type: 'content',
+      noDivider: true,
       smallTitle: 'Information Architecture',
       title: 'Information Architecture',
-      content: 'Our website is experiencing a <span class="text-emphasis">decline in search traffic</span>.',
+      content: 'Our website is experiencing a <span class="text-emphasis">decline in search traffic</span>.<img src="/images/energysage-redesign/ia-traffic.png" alt="Share of high-volume keyword traffic over time" />',
       subsections: [
         {
           title: 'Current IA Audit',
@@ -108,6 +110,40 @@ export const energysageRedesign: Project = {
           title: 'Design Exploration',
           content: 'We explored three navigation approaches: compact design that looks clean and frees up space but may hide content behind collapsible menus; double navigation bar that gives opportunity to highlight more content and quickly access content; and expanded menu design that shows the breadth of our content.'
         },
+      ]
+    },
+    {
+      type: 'gallery',
+      noDivider: true,
+      layout: 'left-image',
+      images: [
+        {
+          url: '/images/energysage-redesign/ia-compact.png',
+          alt: 'Compact navigation design exploration',
+          caption: 'Compact design'
+        }
+      ],
+      content: 'Compact design <span class="text-emphasis">looks clean and frees up space</span> on the screen for other important content. Hidden content behind a collapsible navigation menu may be <span class="text-emphasis">difficult for search engines</span> to crawl.'
+    },
+    {
+      type: 'gallery',
+      noDivider: true,
+      layout: 'left-image',
+      images: [
+        {
+          url: '/images/energysage-redesign/ia-double.png',
+          alt: 'Double navigation bar design exploration',
+          caption: 'Double navigation bar'
+        }
+      ],
+      content: '<span class="text-emphasis">Double navigation bar</span> gives opportunity to highlight more content. <span class="text-emphasis">Quickly access</span> content without having to drill down. Expanded menu design shows you the breadth of our content.'
+    },
+    {
+      type: 'content',
+      smallTitle: '',
+      title: '',
+      content: '',
+      subsections: [
         {
           title: 'Design Solution',
           content: 'Collapsible navigation menu can provide more room for links and categories, while still allowing users to see all of their options at once. Expanded navigation keeps products and services in a more prominent position, provides users with quick access to important links while still keeping the experience streamlined.'

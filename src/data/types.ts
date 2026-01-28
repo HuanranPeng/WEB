@@ -3,7 +3,9 @@ export type HtmlString = string;
 
 export interface BaseSection {
   type: 'gallery' | 'resources' | 'flex-column' | 'grid-layout' | 'content' | 'process' | 'narrative' | 'instruction' | 'design-tokens' | 'component-library' | 'videos';
-  layout?: '1-col' | '2-col' | '3-col' | 'left-image' | 'right-image' | 'two-column';
+  layout?: '1-col' | '2-col' | '3-col' | '4-col' | 'left-image' | 'right-image' | 'two-column';
+  // Optional: suppress default top/bottom divider for closely related blocks
+  noDivider?: boolean;
 }
 
 // Shared types

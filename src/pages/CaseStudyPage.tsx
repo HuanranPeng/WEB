@@ -107,8 +107,8 @@ export function CaseStudyPage() {
                     return (
                       <div key={index} id={`section-${index}`} className={cn(
                         "flex flex-col",
-                        !isFirstSection && "pt-16",
-                        !isLastSection && "pb-16 border-b border-border"
+                        !isFirstSection && !section.noDivider && "pt-16",
+                        !isLastSection && !section.noDivider && "pb-16 border-b border-border"
                       )}>
                         <h3 className="text-foreground mb-6 md:mb-8">
                           {'smallTitle' in section && section.smallTitle && (
@@ -149,8 +149,8 @@ export function CaseStudyPage() {
                   case 'instruction':
                     return (
                       <div key={index} id={`section-${index}`} className={cn(
-                        !isFirstSection && "pt-16",
-                        !isLastSection && "pb-16 border-b border-border"
+                        !isFirstSection && !section.noDivider && "pt-16",
+                        !isLastSection && !section.noDivider && "pb-16 border-b border-border"
                       )}>
                         <GridLayoutSection
                           {...section}
@@ -169,8 +169,8 @@ export function CaseStudyPage() {
                       return (
                         <div key={index} id={`section-${index}`} className={cn(
                           "flex flex-col",
-                          !isFirstSection && "pt-16",
-                          !isLastSection && "pb-16 border-b border-border"
+                          !isFirstSection && !section.noDivider && "pt-16",
+                          !isLastSection && !section.noDivider && "pb-16 border-b border-border"
                         )}>
                           {(section.title || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
@@ -231,8 +231,8 @@ export function CaseStudyPage() {
                       return (
                         <div key={index} id={`section-${index}`} className={cn(
                           "flex flex-col",
-                          !isFirstSection && "pt-16",
-                          !isLastSection && "pb-16 border-b border-border"
+                          !isFirstSection && !section.noDivider && "pt-16",
+                          !isLastSection && !section.noDivider && "pb-16 border-b border-border"
                         )}>
                           {(section.title || section.content || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
@@ -289,11 +289,11 @@ export function CaseStudyPage() {
                       return (
                         <div key={index} id={`section-${index}`} className={cn(
                           "flex flex-col",
-                          !isFirstSection && "pt-16",
+                          !isFirstSection && !section.noDivider && "pt-16",
                           section.layout === '3-col' && "col-span-3",
                           section.layout === '2-col' && "col-span-2",
                           section.layout === '1-col' && "col-span-1",
-                          !isLastSection && "pb-16 border-b border-border"
+                          !isLastSection && !section.noDivider && "pb-16 border-b border-border"
                         )}>
                           {(section.title || section.content || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
@@ -328,8 +328,8 @@ export function CaseStudyPage() {
                   case 'resources':
                     return (
                       <div key={index} id={`section-${index}`} className={cn(
-                        !isFirstSection && "pt-16",
-                        !isLastSection && "pb-16 border-b border-border"
+                        !isFirstSection && !section.noDivider && "pt-16",
+                        !isLastSection && !section.noDivider && "pb-16 border-b border-border"
                       )}>
                         <FlexColumnSection
                           title={section.title || ''}

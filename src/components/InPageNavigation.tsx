@@ -32,13 +32,15 @@ const getSectionTitle = (section: Section): string | undefined => {
 
 // Helper function to generate navigation items for a case study
 const generateCaseStudyNavigation = (project: Project): NavItem[] => {
-  const items = project.sections.map((section: Section, index: number) => {
-    const title = getSectionTitle(section);
-    return {
+  const items: NavItem['items'] = [];
+  project.sections.forEach((section: Section, index: number) => {
+    const title = getSectionTitle(section)?.trim();
+    if (!title) return; // Only include real section titles in navigation
+    items.push({
       id: `section-${index}`,
-      label: title || `Section ${index + 1}`,
+      label: title,
       href: `#section-${index}`
-    };
+    });
   });
 
   return [{
