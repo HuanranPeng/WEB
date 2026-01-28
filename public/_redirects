@@ -1,5 +1,8 @@
 # Handle legacy case-studies routes
-/case-studies/* /case-study/:splat 301
+/case-studies/* /2026/case-study/:splat 301
 
-# SPA fallback for all routes
-/* /index.html 200 
+# Redirect root to /2026
+/ /2026 302
+
+# SPA fallback only for /2026/*
+/2026/* /index.html 200

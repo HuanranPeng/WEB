@@ -23,11 +23,17 @@ interface InPageNavigationProps {
   caseStudyProject?: Project;
 }
 
+// Safely extract a title from a Section union (VideoSection has no title)
+const getSectionTitle = (section: Section): string | undefined => {
+  if (!('title' in section)) return undefined;
+  const maybeTitle = (section as { title?: unknown }).title;
+  return typeof maybeTitle === 'string' ? maybeTitle : undefined;
+};
+
 // Helper function to generate navigation items for a case study
 const generateCaseStudyNavigation = (project: Project): NavItem[] => {
   const items = project.sections.map((section: Section, index: number) => {
-    // VideoSection doesn't have title, so we need to handle it
-    const title = 'title' in section ? section.title : undefined;
+    const title = getSectionTitle(section);
     return {
       id: `section-${index}`,
       label: title || `Section ${index + 1}`,
