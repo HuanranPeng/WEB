@@ -33,19 +33,35 @@ export const useCanonicalRedirect = () => {
       window.location.replace(redirectUrl);
       return;
     }
-    
-    // Build target path - ensure it starts with /2026
+
+    /**
+     * IMPORTANT:
+     * This app is deployed under /2026. We should NOT hijack other site paths
+     * like /2023, /about, etc. Only normalize/redirect paths that are part of
+     * this app:
+     * - "/" -> "/2026"
+     * - "/2026/*" stays within "/2026"
+     * - legacy case-study routes -> "/2026/case-study/*"
+     */
+    const isAppRoot = currentPath === '/' || currentPath === '';
+    const isAppPath = currentPath === BASE_PATH || currentPath.startsWith(`${BASE_PATH}/`);
+    const isLegacyCaseStudyPath =
+      currentPath.startsWith('/case-studies/') || currentPath.startsWith('/case-study/');
+
+    // If this URL is not part of the /2026 app, do nothing (prevents /2023 -> /2026 redirects).
+    if (!isAppRoot && !isAppPath && !isLegacyCaseStudyPath) {
+      return;
+    }
+
+    // Build target path within the app
     let targetPath = currentPath;
-    
+
     // If path is root (/), redirect to /2026
-    if (targetPath === '/' || targetPath === '') {
+    if (isAppRoot) {
       targetPath = BASE_PATH;
-    } 
-    // If path doesn't start with /2026, prepend it
-    else if (!targetPath.startsWith(BASE_PATH)) {
-      // Remove leading slash if present to avoid double slashes
-      const cleanPath = targetPath.startsWith('/') ? targetPath.slice(1) : targetPath;
-      targetPath = `${BASE_PATH}/${cleanPath}`;
+    } else if (isLegacyCaseStudyPath) {
+      // Ensure legacy case-study routes live under /2026
+      targetPath = `${BASE_PATH}${currentPath}`;
     }
     
     // Remove trailing slash (except for /2026 itself)

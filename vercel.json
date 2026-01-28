@@ -25,41 +25,17 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/2026",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/2026/assets/(.*)",
-      "destination": "/assets/$1"
-    },
-    {
-      "source": "/2026/images/(.*)",
-      "destination": "/images/$1"
-    },
-    {
-      "source": "/2026/meta/(.*)",
-      "destination": "/meta/$1"
-    },
-    {
-      "source": "/2026/favicon/(.*)",
-      "destination": "/favicon/$1"
-    },
-    {
-      "source": "/2026/favicon.svg",
-      "destination": "/favicon.svg"
-    },
-    {
-      "source": "/2026/((?!api/|assets/|images/|favicon|robots|sitemap).*)",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/2026",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "handle": "filesystem" },
+
+    { "src": "/2026/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/2026/images/(.*)", "dest": "/images/$1" },
+    { "src": "/2026/meta/(.*)", "dest": "/meta/$1" },
+    { "src": "/2026/favicon/(.*)", "dest": "/favicon/$1" },
+    { "src": "/2026/favicon.svg", "dest": "/favicon.svg" },
+
+    { "src": "/2026(?:/.*)?", "dest": "/index.html" },
+
+    { "src": "/(?!2026(?:/|$)).*", "status": 404, "dest": "/404.html" }
   ]
 } 
