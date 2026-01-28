@@ -27,7 +27,7 @@ export const heatPumpMarketplace: Project = {
       type: 'content',
       smallTitle: 'Overview',
       title: 'Overview',
-      content: 'We have launched the <a href="https://heatpumps.energysage.com/" target="_blank" rel="noopener noreferrer">heat pump marketplace</a> in October. As a stepping stone to this, we achieved the result of recruiting 30 consumers to the pilot and running a heat pump marketplace pilot in July. After the pilot, we iterated the design based on the feedback we got from the consumers and met the goal of launching it in October.',
+      content: 'We have launched the <a href="https://heatpumps.energysage.com/" target="_blank" rel="noopener noreferrer">heat pump marketplace</a> in October. As a stepping stone to this, we achieved the result of <span class="text-emphasis">recruiting 30 consumers to the pilot</span> and running a heat pump marketplace pilot in July. After the pilot, we <span class="text-emphasis">iterated the design based on feedback</span> we got from the consumers and met the goal of launching it in October.',
     },
     {
       type: 'gallery',
@@ -51,7 +51,7 @@ export const heatPumpMarketplace: Project = {
       subsections: [
         {
           title: '01 - Understand and engage consumers',
-          content: 'Use existing customer relationships and market research surveys to learn about heat pump consumers\' problems, motivations and journey and enroll them in a pilot.'
+          content: 'Use existing customer relationships and <span class="text-emphasis">market research surveys</span> to learn about heat pump consumers\' problems, motivations and journey and enroll them in a pilot.'
         },
         {
           title: '02 - Develop and refine our consumer value proposition',
@@ -68,7 +68,7 @@ export const heatPumpMarketplace: Project = {
       smallTitle: 'Research',
       title: 'Research',
       content: 'Understanding heat pump consumers through research and workflow modeling.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/heat-pump-marketplace/research-hero.jpg',
@@ -117,7 +117,7 @@ export const heatPumpMarketplace: Project = {
       smallTitle: 'Process',
       title: 'Onboarding Flow Evolution',
       content: 'Evolution of the onboarding flow from pilot to high-fidelity stages.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/heat-pump-marketplace/onboarding-pilot.png',
@@ -141,7 +141,7 @@ export const heatPumpMarketplace: Project = {
       smallTitle: 'Process',
       title: 'Dashboard Design Evolution',
       content: 'Dashboard design iterations from pilot to mid-fidelity stages.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/heat-pump-marketplace/dashboard-pilot.png',

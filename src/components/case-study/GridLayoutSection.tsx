@@ -35,11 +35,11 @@ export function GridLayoutSection({
   }
 
   return (
-    <section className={cn("flex flex-col gap-8", className)}>
+    <section className={cn("flex flex-col", className)}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Text content */}
-        <div className="flex flex-col gap-4">
-          {title && <h2 className="text-display-md text-foreground">{title}</h2>}
+        <div className="flex flex-col gap-4 md:gap-6">
+          {title && <h2 className="text-display-md text-foreground mb-4 md:mb-6">{title}</h2>}
           {variant !== 'default' ? (
             <Banner variant={variant}>{content}</Banner>
           ) : (
@@ -99,7 +99,7 @@ export function GridLayoutSection({
               }`}
             >
               {item.title && (
-                <h4 className="text-display-sm text-foreground">{item.title}</h4>
+                <h4 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground">{item.title}</h4>
               )}
               {item.content && (
                 <p className="text-body-lg text-foreground">{item.content}</p>

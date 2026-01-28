@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { SocialLinks } from "./SocialLinks";
 import { useState } from "react";
 import { manageScrollbarWidth } from "@/lib/utils";
+import { projects } from "@/data/case-studies";
 
 const menuSections = [
   {
@@ -15,13 +16,10 @@ const menuSections = [
   },
   {
     title: "Case Studies",
-    items: [
-      { label: "EnergySage Design System", href: "/case-study/energysage-design-system" },
-      { label: "EnergySage Site Redesign", href: "/case-study/energysage-redesign" },
-      { label: "AI Chatbot Design", href: "/case-study/ai-chatbot-design" },
-      { label: "Heat Pump Marketplace", href: "/case-study/heat-pump-marketplace" },
-      { label: "Locatify AR Navigation", href: "/case-study/locatify-ar-navigation" },
-    ]
+    items: projects.map(project => ({
+      label: project.title,
+      href: project.link
+    }))
   }
 ];
 

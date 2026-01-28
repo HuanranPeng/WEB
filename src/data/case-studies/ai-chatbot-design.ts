@@ -43,7 +43,7 @@ export const aiChatbotDesign: Project = {
       type: 'content',
       smallTitle: 'The Challenge',
       title: 'The Challenge',
-      content: 'How might we develop a safe and trustworthy chatbot that provides meaningful support to parents with postpartum?',
+          content: 'How might we develop a <span class="text-emphasis">safe and trustworthy chatbot</span> that provides meaningful support to parents with postpartum?',
     },
     {
       type: 'gallery',
@@ -63,7 +63,7 @@ export const aiChatbotDesign: Project = {
       type: 'content',
       smallTitle: 'Process',
       title: 'Process',
-      content: 'A collaborative, user-centered, iterative design process was used to guide this project, from research, through design and testing. An interdisciplinary team helped to shape the collaborative design thinking, which generated useful insights. We are at the Design stage and the next step is to recruit users to test and iterate our solution.',
+      content: 'A <span class="text-emphasis">collaborative, user-centered, iterative design process</span> was used to guide this project, from research, through design and testing. An <span class="text-emphasis">interdisciplinary team</span> helped to shape the collaborative design thinking, which generated useful insights. We are at the Design stage and the next step is to recruit users to test and iterate our solution.',
     },
     {
       type: 'gallery',
@@ -96,7 +96,7 @@ export const aiChatbotDesign: Project = {
       smallTitle: 'Comparative Analysis',
       title: 'Market Analysis & Design Principles',
       content: 'Understanding the market and establishing design principles.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/ai-chatbot-design/comparative-analysis.png',
@@ -118,7 +118,7 @@ export const aiChatbotDesign: Project = {
       subsections: [
         {
           title: 'Understanding the User',
-          content: 'From the conversational records, we focused on three main concerns among parents: emotional validation, support, and finding resources. The interview data with the parents provided common situations, problems, and feelings. Using these data, we produced 3 typical users as personas to guide the chatbot design.'
+          content: 'From the conversational records, we focused on <span class="text-emphasis">three main concerns among parents: emotional validation, support, and finding resources</span>. The interview data with the parents provided common situations, problems, and feelings. Using these data, we produced 3 typical users as personas to guide the chatbot design.'
         },
         {
           title: 'PSI Volunteer Persona',
@@ -131,7 +131,7 @@ export const aiChatbotDesign: Project = {
       smallTitle: 'User Research',
       title: 'User Personas',
       content: 'Three personas created from user research data.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/ai-chatbot-design/persona-1.png',
@@ -175,7 +175,7 @@ export const aiChatbotDesign: Project = {
       smallTitle: 'Design Process',
       title: 'Design Process Details',
       content: 'Product roadmap, workflow design, and conversation flow.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/ai-chatbot-design/roadmap.png',

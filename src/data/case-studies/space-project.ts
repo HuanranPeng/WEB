@@ -55,7 +55,7 @@ export const spaceProject: Project = {
       title: 'Context',
       content:
         'A snapshot of research context and early framing that informed the product direction.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/space-project/problem-1.png',
@@ -91,7 +91,7 @@ export const spaceProject: Project = {
       smallTitle: 'User Research',
       title: 'User Research',
       content:
-        'We conducted extensive research to fully understand the mental health crisis. In addition to surveying the literature, we examined demographic trends, telehealth, culturally relevant care, and clinical/non-clinical services. We also conducted depth interviews with therapists, peer specialists, mental health professionals, and young users of health-based mobile apps. The prototype was informed by co-design sessions with caregivers and care-seekers.',
+        'We conducted <span class="text-emphasis">extensive research</span> to fully understand the mental health crisis. In addition to surveying the literature, we examined demographic trends, telehealth, culturally relevant care, and clinical/non-clinical services. We also conducted <span class="text-emphasis">depth interviews with therapists, peer specialists, mental health professionals</span>, and young users of health-based mobile apps. The prototype was informed by <span class="text-emphasis">co-design sessions</span> with caregivers and care-seekers.',
     },
     {
       type: 'content',
@@ -116,7 +116,7 @@ export const spaceProject: Project = {
       smallTitle: 'Research & Insights',
       title: 'Evidence and Synthesis',
       content: 'Artifacts and synthesis outputs that guided the design direction.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/space-project/research-1.png',
@@ -168,7 +168,7 @@ export const spaceProject: Project = {
       smallTitle: 'Final Solution',
       title: 'Final Solution',
       content: 'Key screens and flows from the final design solution.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         { url: '/images/space-project/ui-6.png', alt: 'Final solution screen 6', caption: 'Final UI' },
         { url: '/images/space-project/ui-7.png', alt: 'Final solution screen 7', caption: 'Final UI' },

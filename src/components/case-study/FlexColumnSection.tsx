@@ -13,9 +13,9 @@ interface FlexColumnSectionProps {
 
 export function FlexColumnSection({ title, content, items = [], className }: FlexColumnSectionProps) {
   return (
-    <section className={cn("flex flex-col gap-8", className)}>
-      <div className="flex flex-col gap-2">
-        <h3 className="text-display-md text-foreground">{title}</h3>
+    <section className={cn("flex flex-col", className)}>
+      <div className="flex flex-col gap-4 md:gap-6 mb-6 md:mb-8">
+        <h3 className="text-display-md text-foreground mb-4 md:mb-6">{title}</h3>
         <div 
           className="text-body-lg text-foreground [&>a]:text-foreground [&>a]:underline [&>a]:decoration-[0.5px] [&>a]:underline-offset-4 [&>a]:transition-colors hover:[&>a]:text-accent"
           dangerouslySetInnerHTML={{ __html: content }}
@@ -23,11 +23,14 @@ export function FlexColumnSection({ title, content, items = [], className }: Fle
       </div>
 
       {items.map((item, index) => (
-        <div key={index} className="flex flex-col gap-2">
+        <div key={index} className={cn(
+          "flex flex-col gap-2",
+          index > 0 && "mt-6 md:mt-8"
+        )}>
           {/* Only render title here if not in a grid layout */}
           {item.title && !item.variant && (
             <h4 
-              className="text-display-sm text-foreground"
+              className="text-display-xs text-foreground"
               dangerouslySetInnerHTML={{ __html: item.title }}
             />
           )}
@@ -39,7 +42,7 @@ export function FlexColumnSection({ title, content, items = [], className }: Fle
             )}>
               <div className="flex flex-col gap-4">
                 {item.title && (
-                  <h4 className="text-display-sm text-foreground">{item.title}</h4>
+                  <h4 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground">{item.title}</h4>
                 )}
                 {item.variant !== 'default' ? (
                   <Banner variant={item.variant}>{item.content}</Banner>

@@ -66,7 +66,7 @@ export const locatifyArNavigation: Project = {
         {
           title: 'Key Insights',
           content:
-            'Results showed that people found it most difficult to find specific rooms on campus. They preferred visual, non-verbal instructions displayed through an application on their mobile phones.',
+            'Results showed that people found it <span class="text-emphasis">most difficult to find specific rooms on campus</span>. They preferred <span class="text-emphasis">visual, non-verbal instructions</span> displayed through an application on their mobile phones.',
         },
       ],
     },
@@ -113,7 +113,7 @@ export const locatifyArNavigation: Project = {
       title: 'Usability Testing – Lo-fi',
       content:
         'For the lo-fi prototype, we conducted in-person moderated usability tests with five users and identified several usability issues around clarity of directions and interaction with AR cues.',
-      layout: '2-col',
+      layout: '1-col',
       images: [
         {
           url: '/images/locatify-ar-navigation/usability-testing-1.png',

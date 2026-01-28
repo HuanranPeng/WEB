@@ -75,7 +75,7 @@ export function CaseStudies() {
       case 'locatify-ar-navigation':
         return {
           layout: 'single' as const,
-          singleImage: 'https://via.placeholder.com/1200x600/cccccc/666666?text=Hero+Image'
+          singleImage: '/images/locatify-ar-navigation/hero-image.png'
         };
       default:
         return {

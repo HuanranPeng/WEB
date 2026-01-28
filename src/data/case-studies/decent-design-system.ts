@@ -74,7 +74,7 @@ export const decentDesignSystem: Project = {
 
     {
       type: 'gallery',
-      layout: '2-col',
+      layout: '1-col',
       title: 'Design System Gallery',
       content: 'Key screens from the Decent Design System showcasing the unified design language.',
       images: [

@@ -31,13 +31,13 @@ export const energysageDesignSystem: Project = {
       type: 'content',
       smallTitle: 'Overview',
       title: 'Overview',
-      content: 'As the key designer responsible for the Design System project, I worked with 4 designers to create the components and guidance from 0-1. With limited resources and weekly design requirements, we made reasonable plans and effective task allocation to ensure that every designer involved could complete a part of the design system within a given period. It is a project driven by the design team. I actively reached out and collected voices from other teams, development teams, marketing teams, and end users.',
+      content: 'As the <span class="text-emphasis">key designer responsible</span> for the Design System project, I worked with 4 designers to create the components and guidance from 0-1. With <span class="text-emphasis">limited resources</span> and weekly design requirements, we made reasonable plans and effective task allocation. The <span class="text-emphasis">design system</span> was created from scratch. I actively reached out and collected voices from <span class="text-emphasis">other teams, development teams, marketing teams</span>, and end users.',
     },
     {
       type: 'content',
       smallTitle: 'Problem',
       title: 'Fragmented Design Across Growing Teams',
-      content: 'EnergySage has three products: Roof Solar Marketplace, Community Solar Marketplace, and Heat Pump Marketplace. Although there are product connections between each platform, their design connections were fragmented. As teams grow, without a systematic way to guide different teams to work in one direction, more people joining only makes this gap grow deeper, like the Mariana Trench.',
+      content: 'EnergySage has <span class="text-emphasis">three products</span>: Roof Solar Marketplace, Community Solar Marketplace, and Heat Pump Marketplace. Although there are product connections between each platform, their <span class="text-emphasis">design connections were fragmented</span>. As teams grow, without a <span class="text-emphasis">systematic way to guide different teams</span> to work in one direction, more people joining only makes this gap grow deeper, like the Mariana Trench.',
     },
     {
       type: 'gallery',
@@ -57,7 +57,7 @@ export const energysageDesignSystem: Project = {
       type: 'content',
       smallTitle: 'What',
       title: 'A Systemic Approach and Guardrails',
-      content: 'This system aims to create a systemic approach and guardrails to help design and development teams utilize components to improve efficiency and maintain continuity and consistency, so that developers can focus on logic and designers can focus on flows and user experience. The system is structured around four pillars: Guideline, Tool, Usage, and Component, each supporting both designers and engineers with systemic guardrails, appropriate tips and scenarios, and open, scalable components and patterns.',
+      content: 'This system aims to create a <span class="text-emphasis">systemic approach and guardrails</span> to help design and development teams utilize components to improve efficiency and maintain continuity and consistency, so that developers can focus on logic and designers can focus on flows and user experience. The system is structured around <span class="text-emphasis">four pillars: Guideline, Tool, Usage, and Component</span>, each supporting both designers and engineers with systemic guardrails, appropriate tips and scenarios, and open, scalable components and patterns.',
     },
     {
       type: 'content',
@@ -67,11 +67,11 @@ export const energysageDesignSystem: Project = {
       subsections: [
         {
           title: 'Designers',
-          content: 'When I joined the team, there were only 3 designers. Later the team grew. Due to a lack of reasonable constraints, the output of each designer was different. Designers had been struggling with standardized UX and UI designs.'
+          content: 'When I joined the team, there were only 3 designers. Later the team grew. Due to a <span class="text-emphasis">lack of reasonable constraints</span>, the output of each designer was different. Designers had been struggling with <span class="text-emphasis">standardized UX and UI designs</span>.'
         },
         {
           title: 'Engineers',
-          content: 'There was no effective communication among different front-end engineering teams. In reality, component code could be reused and maintained to save time, but this was not happening without a shared system.'
+          content: 'There was no <span class="text-emphasis">effective communication</span> among different front-end engineering teams. In reality, component code could be reused and maintained to save time, but this was not happening without a <span class="text-emphasis">shared system</span>.'
         }
       ]
     },
@@ -80,7 +80,7 @@ export const energysageDesignSystem: Project = {
       smallTitle: 'Design System Foundations',
       title: 'Color, Typography, and Spacing',
       content: 'Establishing core visual foundations for the design system, including color styles, typography scales for desktop and mobile, and spacing rules.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/energysage-design-system/color-system.png',
@@ -114,7 +114,7 @@ export const energysageDesignSystem: Project = {
       smallTitle: 'System Components',
       title: 'Icons, Grid, and Components',
       content: 'Building out icons, grid systems, and components as reusable building blocks for the three product platforms.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/energysage-design-system/icons.png',
@@ -138,7 +138,7 @@ export const energysageDesignSystem: Project = {
       smallTitle: 'Before & After',
       title: 'Before & After',
       content: 'Comparing the interfaces before and after applying the design system to show visual consistency and UX improvements.',
-      layout: '1-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/energysage-design-system/before-after-1.png',

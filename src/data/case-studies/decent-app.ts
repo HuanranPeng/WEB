@@ -77,7 +77,7 @@ export const decentApp: Project = {
 
     {
       type: 'gallery',
-      layout: '2-col',
+      layout: '1-col',
       images: [
         {
           url: '/images/decent-app/mobile-variants.png',

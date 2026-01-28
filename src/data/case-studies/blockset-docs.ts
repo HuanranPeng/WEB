@@ -68,7 +68,7 @@ export const blocksetDocs: Project = {
 
     {
       type: 'gallery',
-      layout: '2-col',
+      layout: '1-col',
       images: [
         {
           url: '/images/blockset-docs/bset-page-products.png',
@@ -109,7 +109,7 @@ export const blocksetDocs: Project = {
 
     {
       type: 'gallery',
-      layout: '2-col',
+      layout: '1-col',
       images: [
         {
           url: '/images/blockset-docs/bset-sandbox.png',

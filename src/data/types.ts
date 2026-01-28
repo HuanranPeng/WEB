@@ -3,7 +3,7 @@ export type HtmlString = string;
 
 export interface BaseSection {
   type: 'gallery' | 'resources' | 'flex-column' | 'grid-layout' | 'content' | 'process' | 'narrative' | 'instruction' | 'design-tokens' | 'component-library' | 'videos';
-  layout?: '1-col' | '2-col' | '3-col';
+  layout?: '1-col' | '2-col' | '3-col' | 'left-image' | 'right-image' | 'two-column';
 }
 
 // Shared types

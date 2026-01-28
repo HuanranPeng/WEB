@@ -13,7 +13,7 @@ export const energysageRedesign: Project = {
   
   heroSubTitle: 'The project is aiming to launch a modernized core educational experience that positions EnergySage to be the premier destination for home electrification on search and beyond!',
   role: 'UX Researcher UX Designer',
-  team: 'Design Team',
+  team: 'Oct. 2022 - Present',
   
   meta: {
     title: 'EnergySage Redesign | Huanran Peng Design',
@@ -24,20 +24,28 @@ export const energysageRedesign: Project = {
 
   sections: [
     {
-      type: 'content',
+      type: 'gallery',
       smallTitle: 'The Problems',
       title: 'What are the problems?',
-      content: 'The website has complex and abundant information, making it difficult for users to find the information they need. The outdated design of the website undermines user confidence and discourages users from placing large solar energy orders through our website.',
+      content: 'The website has <span class="text-emphasis">complex and abundant information</span>, making it difficult for users to find the information they need. The <span class="text-emphasis">outdated design</span> of the website undermines user confidence and discourages users from placing large solar energy orders through our website.',
+      layout: 'right-image',
+      images: [
+        {
+          url: '/images/energysage-redesign/problem-image.png',
+          alt: 'EnergySage website showing complex information',
+          caption: 'Current website interface'
+        }
+      ]
     },
     {
       type: 'content',
       smallTitle: 'The Process',
       title: 'What are the process?',
-      content: 'Our redesign process focused on four key areas: Design System, Information Architecture, Above The Fold, and Product Landing Page.',
+      content: 'Our redesign process focused on <span class="text-emphasis">four key areas</span>: Design System, Information Architecture, Above The Fold, and Product Landing Page.',
       subsections: [
         {
           title: 'Design System',
-          content: 'Establishing a comprehensive design system with responsive grid, color, typography, and button components.'
+          content: 'Establishing a <span class="text-emphasis">comprehensive design system</span> with responsive grid, color, typography, and button components.'
         },
         {
           title: 'Information Architecture',
@@ -58,7 +66,7 @@ export const energysageRedesign: Project = {
       smallTitle: 'Design System',
       title: 'Design System',
       content: 'Establishing core design system components including responsive grid system, color palette, typography, and button components.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/energysage-redesign/design-system-1.png',
@@ -86,7 +94,7 @@ export const energysageRedesign: Project = {
       type: 'content',
       smallTitle: 'Information Architecture',
       title: 'Information Architecture',
-      content: 'Our website is experiencing a decline in search traffic.',
+      content: 'Our website is experiencing a <span class="text-emphasis">decline in search traffic</span>.',
       subsections: [
         {
           title: 'Current IA Audit',
@@ -115,7 +123,7 @@ export const energysageRedesign: Project = {
       smallTitle: 'Information Architecture',
       title: 'IA Design Process',
       content: 'Exploring different navigation approaches and site structure solutions.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/energysage-redesign/ia-1.png',
@@ -187,7 +195,7 @@ export const energysageRedesign: Project = {
       smallTitle: 'Above The Fold',
       title: 'Above The Fold Design Exploration',
       content: 'Testing different messages and images to optimize the hero section.',
-      layout: '2-col',
+      layout: 'two-column',
       images: [
         {
           url: '/images/energysage-redesign/above-fold-1.png',

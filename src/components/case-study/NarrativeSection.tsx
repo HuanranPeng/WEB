@@ -26,14 +26,18 @@ interface SubsectionProps {
 function Subsection({ title, content, keyPoints }: SubsectionProps) {
   return (
     <div className="flex flex-col gap-2">
-      <div 
-        className="text-display-sm text-foreground"
-        dangerouslySetInnerHTML={{ __html: title }}
-      />
-      <div 
-        className="text-body-lg text-foreground [&>a]:text-foreground [&>a]:underline [&>a]:decoration-[0.5px] [&>a]:underline-offset-4 [&>a]:transition-colors hover:[&>a]:text-accent"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      {title && (
+        <div 
+          className="text-display-sm md:text-display-md lg:text-display-lg text-foreground mb-4"
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
+      )}
+      {content && (
+        <div 
+          className="text-body-lg text-foreground [&>a]:text-foreground [&>a]:underline [&>a]:decoration-[0.5px] [&>a]:underline-offset-4 [&>a]:transition-colors hover:[&>a]:text-accent"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      )}
       {keyPoints && <KeyPointsList points={keyPoints} />}
     </div>
   );
@@ -45,9 +49,11 @@ interface SubsectionsListProps {
 
 function SubsectionsList({ subsections }: SubsectionsListProps) {
   return (
-    <div className="flex flex-col gap-10">
-      {subsections.map(subsection => (
-        <Subsection key={subsection.title} {...subsection} />
+    <div className="flex flex-col">
+      {subsections.map((subsection, index) => (
+        <div key={subsection.title} className={index > 0 ? "mt-6 md:mt-8" : ""}>
+          <Subsection {...subsection} />
+        </div>
       ))}
     </div>
   );
@@ -60,9 +66,9 @@ interface SectionHeaderProps {
 
 function SectionHeader({ title, content }: SectionHeaderProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4 md:gap-6 mb-6 md:mb-8">
       <div 
-        className="text-display-md md:text-display-lg text-foreground"
+        className="text-display-md md:text-display-lg text-foreground mb-4 md:mb-6"
         dangerouslySetInnerHTML={{ __html: title }}
       />
       <div 
@@ -82,7 +88,7 @@ export interface NarrativeSectionProps {
 
 export function NarrativeSection({ title, content, subsections, className }: NarrativeSectionProps) {
   return (
-    <div className={cn("flex flex-col gap-10", className)}>
+    <div className={cn("flex flex-col", className)}>
       <SectionHeader title={title} content={content} />
       {subsections && <SubsectionsList subsections={subsections} />}
     </div>

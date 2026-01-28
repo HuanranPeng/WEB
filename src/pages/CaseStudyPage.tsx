@@ -64,7 +64,7 @@ export function CaseStudyPage() {
               <p className="text-body-md text-muted-foreground">{project.role}</p>
             </div>
             <div className="flex flex-col gap-2">
-              <h3 className="text-display-xs text-foreground">Team</h3>
+              <h3 className="text-display-xs text-foreground">Timeline</h3>
               <p className="text-body-md text-muted-foreground">{project.team}</p>
             </div>
           </div>
@@ -96,32 +96,46 @@ export function CaseStudyPage() {
           
           {/* Main content */}
           <div className="lg:col-span-9">
-            <div className="flex flex-col gap-16 md:gap-24">
+            <div className="flex flex-col">
                   {project.sections.map((section: Section, index: number) => {
+                const isLastSection = index === project.sections.length - 1;
+                const isFirstSection = index === 0;
                 switch (section.type) {
                   case 'content':
                   case 'process':
                   case 'narrative':
                     return (
-                      <div key={index} id={`section-${index}`} className="flex flex-col gap-4 md:gap-5">
-                        <h3 className="text-foreground">
+                      <div key={index} id={`section-${index}`} className={cn(
+                        "flex flex-col",
+                        !isFirstSection && "pt-16",
+                        !isLastSection && "pb-16 border-b border-border"
+                      )}>
+                        <h3 className="text-foreground mb-6 md:mb-8">
                           {'smallTitle' in section && section.smallTitle && (
                             <span className="block text-display-xs mb-4">{section.smallTitle}</span>
                           )}
                           {section.title}
                         </h3>
-                        <div 
-                          className="text-body-lg text-foreground"
-                          dangerouslySetInnerHTML={{ __html: section.content }}
-                        />
+                        {section.content && (
+                          <div 
+                            className="text-body-lg text-foreground mb-6 md:mb-8"
+                            dangerouslySetInnerHTML={{ __html: section.content }}
+                          />
+                        )}
                         {'subsections' in section && section.subsections && section.subsections.map((subsection, idx) => (
-                          <div key={idx} className="mt-4">
-                            <h4 className={cn(
-                              "mb-4",
-                              subsection.titleVariant === 'large' ? "text-display-md" : "text-display-sm"
-                            )}>
-                              {subsection.title}
-                            </h4>
+                          <div key={idx} className={cn(
+                            "mb-6 md:mb-8",
+                            idx === 0 && section.content && "mt-0",
+                            idx > 0 && "mt-8"
+                          )}>
+                            {subsection.title && (
+                              <h4 className={cn(
+                                "mb-4 md:mb-6",
+                                subsection.titleVariant === 'large' ? "text-display-md md:text-display-lg lg:text-display-xl" : "text-display-sm md:text-display-md lg:text-display-lg"
+                              )}>
+                                {subsection.title}
+                              </h4>
+                            )}
                             {subsection.content && (
                               <div 
                                 className="text-body-lg"
@@ -134,50 +148,189 @@ export function CaseStudyPage() {
                     );
                   case 'instruction':
                     return (
-                      <div key={index} id={`section-${index}`}>
+                      <div key={index} id={`section-${index}`} className={cn(
+                        !isFirstSection && "pt-16",
+                        !isLastSection && "pb-16 border-b border-border"
+                      )}>
                         <GridLayoutSection
                           {...section}
                         />
                       </div>
                     );
                   case 'gallery':
-                    return (
-                      <div key={index} id={`section-${index}`} className={cn(
-                        "flex flex-col gap-8",
-                        section.layout === '3-col' && "col-span-3",
-                        section.layout === '2-col' && "col-span-2",
-                        section.layout === '1-col' && "col-span-1"
-                      )}>
-                        {(section.title || section.content || section.smallTitle) && (
-                          <div className="flex flex-col gap-4">
-                            <h2 className="text-foreground">
+                    // Handle different gallery layouts
+                    if (section.layout === 'left-image' || section.layout === 'right-image') {
+                      // Left image + right content or Right image + left content
+                      const isLeftImage = section.layout === 'left-image';
+                      const firstImage = section.images?.[0];
+                      const remainingImages = section.images?.slice(1) || [];
+                      const hasContent = section.content && section.content.trim().length > 0;
+                      
+                      return (
+                        <div key={index} id={`section-${index}`} className={cn(
+                          "flex flex-col",
+                          !isFirstSection && "pt-16",
+                          !isLastSection && "pb-16 border-b border-border"
+                        )}>
+                          {(section.title || section.smallTitle) && (
+                            <div className="flex flex-col mb-6 md:mb-8">
                               {section.smallTitle && (
                                 <span className="block text-display-xs mb-4">{section.smallTitle}</span>
                               )}
-                              {section.title}
-                            </h2>
-                            {section.content && (
-                              <div 
-                                className="text-body-lg text-foreground"
-                                dangerouslySetInnerHTML={{ __html: section.content }}
-                              />
-                            )}
+                              {section.title && (
+                                <h2 className="text-foreground mb-4 md:mb-6">
+                                  {section.title}
+                                </h2>
+                              )}
+                            </div>
+                          )}
+                          {firstImage && (
+                            <div className={cn(
+                              "grid grid-cols-1 md:grid-cols-2 gap-8 items-start",
+                              !isLeftImage && "md:grid-flow-dense"
+                            )}>
+                              {/* Image */}
+                              <div className={cn(
+                                "flex flex-col gap-4",
+                                !isLeftImage && "md:col-start-2"
+                              )}>
+                                <Lightbox 
+                                  images={[firstImage]} 
+                                  className="w-full"
+                                  containerHidden={section.containerHidden}
+                                />
+                              </div>
+                              {/* Content or remaining images */}
+                              <div className={cn(
+                                "flex flex-col gap-4",
+                                !isLeftImage && "md:col-start-1 md:row-start-1"
+                              )}>
+                                {hasContent && (
+                                  <div 
+                                    className="text-body-lg text-foreground"
+                                    dangerouslySetInnerHTML={{ __html: section.content || '' }}
+                                  />
+                                )}
+                                {remainingImages.length > 0 && (
+                                  <Lightbox 
+                                    images={remainingImages} 
+                                    className="w-full"
+                                    containerHidden={section.containerHidden}
+                                  />
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    } else if (section.layout === 'two-column') {
+                      // Two images side by side
+                      const leftImages = section.images?.filter((_, idx) => idx % 2 === 0) || [];
+                      const rightImages = section.images?.filter((_, idx) => idx % 2 === 1) || [];
+                      
+                      return (
+                        <div key={index} id={`section-${index}`} className={cn(
+                          "flex flex-col",
+                          !isFirstSection && "pt-16",
+                          !isLastSection && "pb-16 border-b border-border"
+                        )}>
+                          {(section.title || section.content || section.smallTitle) && (
+                            <div className="flex flex-col mb-6 md:mb-8">
+                              {section.smallTitle && (
+                                <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                              )}
+                              {section.title && (
+                                <h2 className="text-foreground mb-4 md:mb-6">
+                                  {section.title}
+                                </h2>
+                              )}
+                              {section.content && (
+                                <div 
+                                  className="text-body-lg text-foreground"
+                                  dangerouslySetInnerHTML={{ __html: section.content }}
+                                />
+                              )}
+                            </div>
+                          )}
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="flex flex-col gap-4">
+                              {leftImages.map((image, idx) => (
+                                <div key={idx}>
+                                  <Lightbox 
+                                    images={[image]} 
+                                    className="w-full"
+                                    containerHidden={section.containerHidden}
+                                  />
+                                  {image.caption && (
+                                    <p className="caption mt-2 text-center">{image.caption}</p>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                            <div className="flex flex-col gap-4">
+                              {rightImages.map((image, idx) => (
+                                <div key={idx}>
+                                  <Lightbox 
+                                    images={[image]} 
+                                    className="w-full"
+                                    containerHidden={section.containerHidden}
+                                  />
+                                  {image.caption && (
+                                    <p className="caption mt-2 text-center">{image.caption}</p>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                        )}
-                        <Lightbox 
-                          images={section.images} 
-                          className={cn(
-                            section.layout === '2-col' && "col-span-2",
-                            section.layout === '1-col' && "col-span-1",
-                            section.className
-                          )} 
-                          containerHidden={section.containerHidden}
-                        />
-                      </div>
-                    );
+                        </div>
+                      );
+                    } else {
+                      // Default: 1-col, 2-col, 3-col layouts
+                      return (
+                        <div key={index} id={`section-${index}`} className={cn(
+                          "flex flex-col",
+                          !isFirstSection && "pt-16",
+                          section.layout === '3-col' && "col-span-3",
+                          section.layout === '2-col' && "col-span-2",
+                          section.layout === '1-col' && "col-span-1",
+                          !isLastSection && "pb-16 border-b border-border"
+                        )}>
+                          {(section.title || section.content || section.smallTitle) && (
+                            <div className="flex flex-col mb-6 md:mb-8">
+                              {section.smallTitle && (
+                                <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                              )}
+                              {section.title && (
+                                <h2 className="text-foreground mb-4 md:mb-6">
+                                  {section.title}
+                                </h2>
+                              )}
+                              {section.content && (
+                                <div 
+                                  className="text-body-lg text-foreground"
+                                  dangerouslySetInnerHTML={{ __html: section.content }}
+                                />
+                              )}
+                            </div>
+                          )}
+                          <Lightbox 
+                            images={section.images} 
+                            className={cn(
+                              section.layout === '2-col' && "col-span-2",
+                              section.layout === '1-col' && "col-span-1",
+                              section.className
+                            )} 
+                            containerHidden={section.containerHidden}
+                          />
+                        </div>
+                      );
+                    }
                   case 'resources':
                     return (
-                      <div key={index} id={`section-${index}`}>
+                      <div key={index} id={`section-${index}`} className={cn(
+                        !isFirstSection && "pt-16",
+                        !isLastSection && "pb-16 border-b border-border"
+                      )}>
                         <FlexColumnSection
                           title={section.title || ''}
                           content={section.content || ''}

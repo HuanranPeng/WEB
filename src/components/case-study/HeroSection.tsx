@@ -66,19 +66,19 @@ export function HeroSection({
       case 'blockset-docs':
         return {
           layout: 'single' as const,
-          singleImage: project.singleImage,
+          singleImage: project.heroImage || project.singleImage,
           videoUrl: project.videoUrl
         };
       case 'decent-design-system':
         return {
           layout: 'single' as const,
-          singleImage: project.singleImage,
+          singleImage: project.heroImage || project.singleImage,
           videoUrl: project.videoUrl
         };
       default:
         return {
           layout: 'single' as const,
-          singleImage: project.singleImage,
+          singleImage: project.heroImage || project.singleImage,
           videoUrl: project.videoUrl
         };
     }
