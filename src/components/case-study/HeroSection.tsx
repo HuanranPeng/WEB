@@ -210,7 +210,7 @@ export function HeroSection({
               className="relative w-[36%] -mr-[8%] sm:w-[28%] sm:-mr-[6%] md:w-[34%] md:-mr-[2%]"
             >
               <img
-                src={getImagePath(leftImage)}
+                src={getImagePath(leftImage || '')}
                 alt={`${id} Interface Left`}
                 className="w-full h-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105"
               />
