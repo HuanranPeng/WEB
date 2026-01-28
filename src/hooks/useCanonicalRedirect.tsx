@@ -18,7 +18,13 @@ export const useCanonicalRedirect = () => {
       currentHost.endsWith('.vercel.app') || currentHost.endsWith('.vercel.app.');
     const isLocalhost = currentHost.includes('localhost') || currentHost.includes('127.0.0.1');
     
+    // For Vercel domains and localhost, still handle root path redirect to /2026
     if (isLocalhost || isVercelDomain) {
+      // If on root path, redirect to /2026
+      if (currentPath === '/' || currentPath === '') {
+        const redirectUrl = `${window.location.protocol}//${currentHost}${BASE_PATH}${currentSearch}${currentHash}`;
+        window.location.replace(redirectUrl);
+      }
       return;
     }
     

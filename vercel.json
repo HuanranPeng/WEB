@@ -23,6 +23,13 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/2026",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/2026/((?!api/).*)",
