@@ -1,4 +1,4 @@
-import { DribbbleIcon, GitHubIcon, LinkedInIcon } from "@/components/icons/social"
+import { LinkedInIcon } from "@/components/icons/social"
 
 export const socialLinks = [
   { icon: LinkedInIcon, href: "https://www.linkedin.com/in/huanran-peng-00a602aa/", label: "LinkedIn" },

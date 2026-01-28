@@ -25,11 +25,15 @@ interface InPageNavigationProps {
 
 // Helper function to generate navigation items for a case study
 const generateCaseStudyNavigation = (project: Project): NavItem[] => {
-  const items = project.sections.map((section: Section, index: number) => ({
-    id: `section-${index}`,
-    label: section.title || `Section ${index + 1}`,
-    href: `#section-${index}`
-  }));
+  const items = project.sections.map((section: Section, index: number) => {
+    // VideoSection doesn't have title, so we need to handle it
+    const title = 'title' in section ? section.title : undefined;
+    return {
+      id: `section-${index}`,
+      label: title || `Section ${index + 1}`,
+      href: `#section-${index}`
+    };
+  });
 
   return [{
     title: project.title,

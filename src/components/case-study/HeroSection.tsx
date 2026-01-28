@@ -193,7 +193,7 @@ export function HeroSection({
             )}
           >
             <img
-              src={getImagePath(singleImage)}
+              src={getImagePath(singleImage || '')}
               alt={`${id} Interface`}
               className={cn(
                 "h-full w-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105",
@@ -222,7 +222,7 @@ export function HeroSection({
               className="relative w-[36%] -ml-[8%] sm:w-[28%] sm:-ml-[6%] md:w-[34%] md:-ml-[2%]"
             >
               <img
-                src={getImagePath(rightImage)}
+                src={getImagePath(rightImage || '')}
                 alt={`${id} Interface Right`}
                 className="w-full h-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105"
               />

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 
 const CANONICAL_HOST = 'www.huanranpeng.com';
 const BASE_PATH = '/2026';
-const HTTPS_BASE_URL = `https://${CANONICAL_HOST}${BASE_PATH}`;
 
 export const useCanonicalRedirect = () => {
   useEffect(() => {
