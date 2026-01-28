@@ -19,7 +19,7 @@ export const aiChatbotDesign: Project = {
     title: 'AI Chatbot Design for Mental Health | Huanran Peng Design',
     description: 'Designing conversational AI interfaces for mental health support with focus on trust, safety, and meaningful user interactions.',
     ogImage: '/images/ai-chatbot-design/hero-image.png',
-    ogUrl: 'https://www.huanranpeng.com/case-study/ai-chatbot-design',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/ai-chatbot-design',
   },
 
   sections: [

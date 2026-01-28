@@ -14,10 +14,10 @@ export const blocksetDocs: Project = {
   role: 'Lead Designer',
   team: '1 Designer (me), 1 Technical Writer, 2 Engineers',
   meta: {
-    title: 'Blockset Documentation | Matt Trice Design',
+    title: 'Blockset Documentation | Huanran Peng',
     description: 'Designing and building a comprehensive documentation site for Blockset\'s blockchain infrastructure platform.',
-    ogImage: 'https://www.trice.design/meta/OG-blockset.png',
-    ogUrl: 'https://www.trice.design/case-study/blockset-docs'
+    ogImage: 'https://www.huanranpeng.com/2026/meta/OG-blockset.png',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/blockset-docs'
   },
 
 

@@ -16,10 +16,10 @@ export const decentDesignSystem: Project = {
   role: 'Design System Lead',
   team: 'Lead Product Designer (me), Front End Engineer',
   meta: {
-    title: 'Decent Design System | Matt Trice Design',
+    title: 'Decent Design System | Huanran Peng',
     description: 'Building a scalable design system to support rapid product development and maintain consistency across multiple platforms.',
-    ogImage: 'https://www.trice.design/meta/OG-dds.png',
-    ogUrl: 'https://www.trice.design/case-study/decent-design-system'
+    ogImage: 'https://www.huanranpeng.com/2026/meta/OG-dds.png',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/decent-design-system'
   },
   
   

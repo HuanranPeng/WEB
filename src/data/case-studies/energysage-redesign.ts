@@ -19,7 +19,7 @@ export const energysageRedesign: Project = {
     title: 'EnergySage Redesign | Huanran Peng Design',
     description: 'Modernizing EnergySage core educational experience to position it as the premier destination for home electrification.',
     ogImage: '/images/energysage-redesign/hero-image.png',
-    ogUrl: 'https://www.huanranpeng.com/case-study/energysage-redesign',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/energysage-redesign',
   },
 
   sections: [

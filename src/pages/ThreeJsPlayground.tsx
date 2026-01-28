@@ -19,9 +19,9 @@ export function ThreeJsPlayground() {
   return (
     <div id="top">
       <MetaTags 
-        title={`${threeJsDemo.title} | Matt Trice Design`}
+        title={`${threeJsDemo.title} | Huanran Peng`}
         description={threeJsDemo.subtitle}
-        canonical="https://www.trice.design/demo/threejs"
+        canonical="https://www.huanranpeng.com/2026/demo/threejs"
         ogImage="/images/playground-3dtoken.png"
       />
       <section className="mt-20">

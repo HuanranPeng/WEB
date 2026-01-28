@@ -21,7 +21,7 @@ export const locatifyArNavigation: Project = {
     description:
       'Designing Locatify, an augmented reality navigation experience that helps students quickly locate rooms, events, and classrooms on campus.',
     ogImage: '/images/locatify-ar-navigation/hero-image.png',
-    ogUrl: 'https://www.huanranpeng.com/case-study/locatify-ar-navigation',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/locatify-ar-navigation',
   },
 
   sections: [

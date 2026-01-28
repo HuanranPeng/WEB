@@ -23,7 +23,7 @@ export const energysageDesignSystem: Project = {
     title: 'EnergySage Design System | Huanran Peng Design',
     description: 'Leading the creation of a sustainable design system for EnergySage to unify three product platforms and improve cross-team efficiency.',
     ogImage: '/images/energysage-design-system/hero-image.png',
-    ogUrl: 'https://www.huanranpeng.com/case-study/energysage-design-system',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/energysage-design-system',
   },
 
   sections: [

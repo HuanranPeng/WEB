@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
 const CANONICAL_HOST = 'www.huanranpeng.com';
-const HTTPS_BASE_URL = `https://${CANONICAL_HOST}`;
+const BASE_PATH = '/2026';
+const HTTPS_BASE_URL = `https://${CANONICAL_HOST}${BASE_PATH}`;
 
 export const useCanonicalRedirect = () => {
   useEffect(() => {
@@ -11,52 +12,55 @@ export const useCanonicalRedirect = () => {
     const currentSearch = window.location.search;
     const currentHash = window.location.hash;
     
-    let shouldRedirect = false;
-    let redirectUrl = '';
-    
-    // Check if we need to redirect to canonical host
-    if (currentHost !== CANONICAL_HOST) {
-      shouldRedirect = true;
-    }
-    
-    // Check if we need to redirect to HTTPS
-    if (currentProtocol !== 'https:') {
-      shouldRedirect = true;
-    }
-    
-    // Check if we need to remove trailing slash (but keep the root / as is)
-    if (currentPath !== '/' && currentPath.endsWith('/')) {
-      shouldRedirect = true;
-    }
-    
-    // Do not force canonical redirect on Vercel preview domains.
+    // Do not force canonical redirect on Vercel preview domains or localhost.
     // (Keeps preview deployments usable before custom domain is attached.)
     const isVercelDomain =
       currentHost.endsWith('.vercel.app') || currentHost.endsWith('.vercel.app.');
-
-    if (shouldRedirect && !isVercelDomain) {
-      // Build canonical URL
-      const cleanPath = currentPath !== '/' && currentPath.endsWith('/') 
-        ? currentPath.slice(0, -1) 
-        : currentPath;
-      
-      redirectUrl = `${HTTPS_BASE_URL}${cleanPath}${currentSearch}${currentHash}`;
-      
-      // Only redirect if we're not already on localhost (for development)
-      if (!currentHost.includes('localhost') && !currentHost.includes('127.0.0.1')) {
-        window.location.replace(redirectUrl);
-        return;
-      }
+    const isLocalhost = currentHost.includes('localhost') || currentHost.includes('127.0.0.1');
+    
+    if (isLocalhost || isVercelDomain) {
+      return;
+    }
+    
+    // Immediately redirect from trice.design to huanranpeng.com/2026
+    if (currentHost === 'trice.design' || currentHost === 'www.trice.design') {
+      const redirectUrl = `https://${CANONICAL_HOST}${BASE_PATH}${currentPath === '/' ? '' : currentPath}${currentSearch}${currentHash}`;
+      window.location.replace(redirectUrl);
+      return;
+    }
+    
+    // Build target path - ensure it starts with /2026
+    let targetPath = currentPath;
+    
+    // If path is root (/), redirect to /2026
+    if (targetPath === '/' || targetPath === '') {
+      targetPath = BASE_PATH;
+    } 
+    // If path doesn't start with /2026, prepend it
+    else if (!targetPath.startsWith(BASE_PATH)) {
+      // Remove leading slash if present to avoid double slashes
+      const cleanPath = targetPath.startsWith('/') ? targetPath.slice(1) : targetPath;
+      targetPath = `${BASE_PATH}/${cleanPath}`;
+    }
+    
+    // Remove trailing slash (except for /2026 itself)
+    if (targetPath !== BASE_PATH && targetPath.endsWith('/')) {
+      targetPath = targetPath.slice(0, -1);
     }
     
     // Handle legacy /case-studies/* redirects to /case-study/*
-    if (currentPath.startsWith('/case-studies/')) {
-      const newPath = currentPath.replace('/case-studies/', '/case-study/');
-      redirectUrl = `${HTTPS_BASE_URL}${newPath}${currentSearch}${currentHash}`;
-      
-      if (!currentHost.includes('localhost') && !currentHost.includes('127.0.0.1') && !isVercelDomain) {
-        window.location.replace(redirectUrl);
-      }
+    if (targetPath.includes('/case-studies/')) {
+      targetPath = targetPath.replace('/case-studies/', '/case-study/');
+    }
+    
+    // Build final URL
+    const needsHostRedirect = currentHost !== CANONICAL_HOST;
+    const needsProtocolRedirect = currentProtocol !== 'https:';
+    const needsPathRedirect = targetPath !== currentPath;
+    
+    if (needsHostRedirect || needsProtocolRedirect || needsPathRedirect) {
+      const redirectUrl = `https://${CANONICAL_HOST}${targetPath}${currentSearch}${currentHash}`;
+      window.location.replace(redirectUrl);
     }
   }, []);
 };

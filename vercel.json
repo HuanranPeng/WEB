@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/sitemap-trice-2025.xml",
+      "source": "/2026/sitemap-trice-2025.xml",
       "headers": [
         {
           "key": "Content-Type", 
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "source": "/robots.txt",
+      "source": "/2026/robots.txt",
       "headers": [
         {
           "key": "Content-Type",
@@ -25,15 +25,11 @@
   ],
   "rewrites": [
     {
-      "source": "/sitemap-trice-2025.xml",
-      "destination": "/sitemap-trice-2025.xml"
+      "source": "/2026/((?!api/).*)",
+      "destination": "/index.html"
     },
     {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
-    {
-      "source": "/((?!api/).*)",
+      "source": "/2026",
       "destination": "/index.html"
     }
   ]

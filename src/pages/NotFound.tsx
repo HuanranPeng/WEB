@@ -8,12 +8,12 @@ export default function NotFound() {
   // Set proper 404 status for production (this works for SPA when served with proper server config)
   useEffect(() => {
     // This sets the document title to indicate 404 to crawlers
-    document.title = "404 - Page Not Found | Matt Trice Design";
+    document.title = "404 - Page Not Found | Huanran Peng";
   }, []);
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <MetaTags 
-        title="404 - Page Not Found | Matt Trice Design"
+        title="404 - Page Not Found | Huanran Peng"
         description="The page you're looking for doesn't exist."
         noindex={true}
       />

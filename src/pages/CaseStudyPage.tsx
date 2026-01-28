@@ -31,7 +31,7 @@ export function CaseStudyPage() {
       <MetaTags 
         title={project.meta?.title || `${project.title} | Huanran Peng Design`}
         description={project.meta?.description || project.description}
-        canonical={`https://www.huanranpeng.com/case-study/${project.id}`}
+        canonical={`https://www.huanranpeng.com/2026/case-study/${project.id}`}
         ogImage={project.meta?.ogImage || project.heroImage}
       />
       <section className="mt-20">

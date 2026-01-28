@@ -1,4 +1,5 @@
 import { Subsection as SubsectionType } from '@/data/types'
+import { getImagePath } from '@/lib/utils'
 
 export function Subsection({ title, content, image }: SubsectionType) {
   return (
@@ -10,7 +11,7 @@ export function Subsection({ title, content, image }: SubsectionType) {
       {image && (
         <div className="mt-4">
           <img
-            src={image.url}
+            src={getImagePath(image.url)}
             alt={image.alt}
             className="w-full h-auto rounded-lg"
           />

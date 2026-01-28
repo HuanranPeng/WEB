@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // Removed StrictMode to fix video loading issues with react-player
 // See: https://github.com/cookpete/react-player/issues/1520
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+  <BrowserRouter 
+    basename="/2026"
+    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+  >
     <App />
   </BrowserRouter>
 );

@@ -12,10 +12,10 @@ export const designSystemDemo = {
   rightImage: '/images/design-system/tokens-demo.png',
   layout: 'double',
   meta: {
-    title: 'Design System Demo | Matt Trice Design',
+    title: 'Design System Demo | Huanran Peng',
     description: 'This project showcases an efficient integration using Style Dictionary, highlighting a streamlined approach to managing design tokens across design and development.',
-    ogImage: 'https://www.trice.design/meta/OG-ds-demo.png',
-    ogUrl: 'https://www.trice.design/demo/design-system'
+    ogImage: 'https://www.huanranpeng.com/2026/meta/OG-ds-demo.png',
+    ogUrl: 'https://www.huanranpeng.com/2026/demo/design-system'
   },
   sections: [
 

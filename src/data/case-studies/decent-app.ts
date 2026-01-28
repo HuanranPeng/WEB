@@ -15,14 +15,12 @@ export const decentApp: Project = {
   role: 'Lead Product Designer',
   team: '1 Product Designer (me), 1 Brand Designer, 1 Creative Director, 4 Engineers, 1 Product Manager',
   meta: {
-    title: 'Decent App Redesign | Matt Trice Design',
+    title: 'Decent App Redesign | Huanran Peng',
     description: 'Leading product design and execution to redesign a failing legacy app – driving growth, aligning with brand, and reclaiming market share',
-    ogImage: 'https://www.trice.design/meta/OG-decent-app.png',
-    ogUrl: 'https://www.trice.design/case-study/decent-app',
+    ogImage: 'https://www.huanranpeng.com/2026/meta/OG-decent-app.png',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/decent-app',
     ogType: 'article',
     twitterCard: 'summary_large_image',
-    twitterSite: '@tricedesign',
-    twitterCreator: '@tricedesign'
   },
 
 

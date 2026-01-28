@@ -9,10 +9,10 @@ export const threeJsDemo: Demo = {
   team: 'Solo Project',
   technologies: ['Three.js', 'WebGL', 'GLSL', 'JavaScript', 'React'],
   meta: {
-    title: 'Three.js Experiments | Matt Trice Design',
+    title: 'Three.js Experiments | Huanran Peng',
     description: 'Exploring creative coding and 3D web experiences with Three.js and React Three Fiber.',
-    ogImage: 'https://www.trice.design/meta/OG-scrolling-token.png',
-    ogUrl: 'https://www.trice.design/demo/threejs'
+    ogImage: 'https://www.huanranpeng.com/2026/meta/OG-scrolling-token.png',
+    ogUrl: 'https://www.huanranpeng.com/2026/demo/threejs'
   },
   projects: [
     {

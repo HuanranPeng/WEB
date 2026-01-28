@@ -13,7 +13,7 @@ export function HomePage() {
   return (
     <div id="top">
       <MetaTags 
-        canonical="https://www.trice.design"
+        canonical="https://www.huanranpeng.com/2026"
       />
       <ThreeHero />
       

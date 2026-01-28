@@ -1,6 +1,6 @@
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 import { useEffect, useState, useRef } from 'react';
-import { cn } from "@/lib/utils";
+import { cn, getImagePath } from "@/lib/utils";
 import { useTheme } from './ThemeProvider';
 
 interface AnimationData {
@@ -49,9 +49,9 @@ export function BlinkAnimation({ className }: BlinkAnimationProps) {
 
   // Load animation based on theme
   useEffect(() => {
-    const animationPath = theme === 'light' 
+    const animationPath = getImagePath(theme === 'light' 
       ? '/animations/logo-inverted.json'
-      : '/animations/logo.json';
+      : '/animations/logo.json');
 
     fetch(animationPath)
       .then(response => response.json())

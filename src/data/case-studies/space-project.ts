@@ -22,7 +22,7 @@ export const spaceProject: Project = {
     description:
       'Designing Space, a social support platform that removes barriers to mental health services and leverages data, peers, and community.',
     ogImage: '/images/space-project/hero-image.png',
-    ogUrl: 'https://www.huanranpeng.com/case-study/space-project',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/space-project',
   },
 
   sections: [

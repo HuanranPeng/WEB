@@ -1,5 +1,5 @@
 import { useTheme } from './ThemeProvider';
-import { cn } from "@/lib/utils";
+import { cn, getImagePath } from "@/lib/utils";
 
 interface LottieLogoProps {
   className?: string;
@@ -14,7 +14,7 @@ export function LottieLogo({ className }: LottieLogoProps) {
   return (
     <div className={cn("cursor-pointer flex items-center", className)}>
       <img 
-        src={logoSrc} 
+        src={getImagePath(logoSrc)} 
         alt="Huanran Peng" 
         className="h-8 w-auto transition-opacity duration-200 hover:opacity-80"
       />

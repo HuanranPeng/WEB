@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '@/lib/utils';
+import { cn, getImagePath } from '@/lib/utils';
 import ReactPlayer from 'react-player';
 
 interface Image {
@@ -27,7 +27,10 @@ export function Lightbox({ src, alt, className, images, containerHidden, childre
   const [selectedImage, setSelectedImage] = useState<number>(0);
 
   // If we have a single image via src/alt, convert it to our images format
-  const normalizedImages = images || (src && alt ? [{ url: src, alt }] : []);
+  // Apply base path to image URLs
+  const normalizedImages = images 
+    ? images.map(img => ({ ...img, url: getImagePath(img.url) }))
+    : (src && alt ? [{ url: getImagePath(src), alt }] : []);
 
   if (normalizedImages.length === 0) return null;
 

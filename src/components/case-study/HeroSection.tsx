@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, getImagePath } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -193,7 +193,7 @@ export function HeroSection({
             )}
           >
             <img
-              src={singleImage}
+              src={getImagePath(singleImage)}
               alt={`${id} Interface`}
               className={cn(
                 "h-full w-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105",
@@ -210,7 +210,7 @@ export function HeroSection({
               className="relative w-[36%] -mr-[8%] sm:w-[28%] sm:-mr-[6%] md:w-[34%] md:-mr-[2%]"
             >
               <img
-                src={leftImage}
+                src={getImagePath(leftImage)}
                 alt={`${id} Interface Left`}
                 className="w-full h-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105"
               />
@@ -222,7 +222,7 @@ export function HeroSection({
               className="relative w-[36%] -ml-[8%] sm:w-[28%] sm:-ml-[6%] md:w-[34%] md:-ml-[2%]"
             >
               <img
-                src={rightImage}
+                src={getImagePath(rightImage)}
                 alt={`${id} Interface Right`}
                 className="w-full h-auto object-contain [transition:transform_800ms_ease] group-hover:scale-105"
               />

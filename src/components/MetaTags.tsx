@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const BASE_URL = 'https://www.huanranpeng.com';
+const BASE_URL = 'https://www.huanranpeng.com/2026';
 
 interface MetaTagsProps {
   title?: string;
@@ -28,7 +28,9 @@ const MetaTags = ({
   noindex = false,
 }: MetaTagsProps) => {
   // Build canonical URL - use passed canonical or construct from current path
-  const canonicalUrl = canonical || `${BASE_URL}${window.location.pathname === '/' ? '' : window.location.pathname}`;
+  // Remove /2026 prefix from pathname if present to avoid duplication
+  const pathname = window.location.pathname.replace(/^\/2026/, '') || '/';
+  const canonicalUrl = canonical || `${BASE_URL}${pathname === '/' ? '' : pathname}`;
   
   // Ensure ogUrl uses canonical URL if not explicitly provided
   const finalOgUrl = ogUrl === BASE_URL && canonical ? canonicalUrl : ogUrl;

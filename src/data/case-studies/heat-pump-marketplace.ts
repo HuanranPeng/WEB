@@ -19,7 +19,7 @@ export const heatPumpMarketplace: Project = {
     title: 'Heat Pump Marketplace | Huanran Peng Design',
     description: 'A new marketplace to help consumers schedule site visits and compare quotes for heat pump installations.',
     ogImage: '/images/heat-pump-marketplace/hero-image.png',
-    ogUrl: 'https://www.huanranpeng.com/case-study/heat-pump-marketplace',
+    ogUrl: 'https://www.huanranpeng.com/2026/case-study/heat-pump-marketplace',
   },
 
   sections: [
