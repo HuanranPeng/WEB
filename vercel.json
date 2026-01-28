@@ -28,6 +28,9 @@
   "routes": [
     { "handle": "filesystem" },
 
+    { "src": "/2023/?$", "status": 302, "headers": { "Location": "https://huanran-portfolio.webflow.io/2026" } },
+    { "src": "/2023/(.*)", "status": 302, "headers": { "Location": "https://huanran-portfolio.webflow.io/2026/$1" } },
+
     { "src": "/2026/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/2026/images/(.*)", "dest": "/images/$1" },
     { "src": "/2026/meta/(.*)", "dest": "/meta/$1" },
