@@ -60,7 +60,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="flex flex-col space-y-2">
           <p className="max-w-[85%] caption text-foreground">
-            ©2025 Huanran Peng. Built for learning and tinkering—fork it, remix it, build cool stuff.&nbsp;
+            ©2026 Huanran Peng. Built for learning and tinkering—fork it, remix it, build cool stuff.&nbsp;
             <Lightbox
               images={[{
                 url: "/fuzzy-404.mp4",
