@@ -11,6 +11,7 @@ interface Image {
   caption?: string;
   videoUrl?: string;
   aspectRatio?: string;
+  variant?: 'default' | 'icon';
 }
 
 interface LightboxProps {
@@ -104,14 +105,17 @@ export function Lightbox({ src, alt, className, images, containerHidden, childre
 
   // If only one image and className includes w-full, render as single image
   if (normalizedImages.length === 1 && className?.includes("w-full")) {
+    const isIcon = normalizedImages[0].variant === 'icon';
     return (
       <>
         <img 
           src={normalizedImages[0].url} 
           alt={normalizedImages[0].alt} 
           className={cn(
-            "cursor-pointer w-full h-auto hover:scale-105 transition-transform duration-300 rounded-lg",
-            !containerHidden && "shadow-lg"
+            isIcon
+              ? "cursor-pointer h-[120px] md:h-[152px] w-auto max-w-full rounded-lg mr-auto hover:opacity-80 transition-opacity duration-200"
+              : "cursor-pointer w-full h-auto hover:scale-105 transition-transform duration-300 rounded-lg",
+            !containerHidden && !isIcon && "shadow-lg"
           )}
           onClick={() => {
             setSelectedImage(0);

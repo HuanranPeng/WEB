@@ -108,14 +108,23 @@ export function CaseStudyPage() {
                       <div key={index} id={`section-${index}`} className={cn(
                         "flex flex-col",
                         !isFirstSection && !section.noDivider && "pt-16",
-                        !isLastSection && !section.noDivider && "pb-16 border-b border-border"
+                        !isLastSection && !section.noDivider && "pb-16"
                       )}>
-                        <h3 className="text-foreground mb-6 md:mb-8">
+                        {section.headingLevel === 'subsection' ? (
+                          <h4 className="text-foreground mb-6 md:mb-8">
+                            {'smallTitle' in section && section.smallTitle && (
+                              <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                            )}
+                            {section.title}
+                          </h4>
+                        ) : (
+                          <h3 className="text-foreground mb-6 md:mb-8">
                           {'smallTitle' in section && section.smallTitle && (
                             <span className="block text-display-xs mb-4">{section.smallTitle}</span>
                           )}
                           {section.title}
-                        </h3>
+                          </h3>
+                        )}
                         {section.content && (
                           <div 
                             className="text-body-lg text-foreground mb-6 md:mb-8"
@@ -150,7 +159,7 @@ export function CaseStudyPage() {
                     return (
                       <div key={index} id={`section-${index}`} className={cn(
                         !isFirstSection && !section.noDivider && "pt-16",
-                        !isLastSection && !section.noDivider && "pb-16 border-b border-border"
+                        !isLastSection && !section.noDivider && "pb-16"
                       )}>
                         <GridLayoutSection
                           {...section}
@@ -165,12 +174,13 @@ export function CaseStudyPage() {
                       const firstImage = section.images?.[0];
                       const remainingImages = section.images?.slice(1) || [];
                       const hasContent = section.content && section.content.trim().length > 0;
+                      const isIconImage = firstImage?.variant === 'icon';
                       
                       return (
                         <div key={index} id={`section-${index}`} className={cn(
                           "flex flex-col",
                           !isFirstSection && !section.noDivider && "pt-16",
-                          !isLastSection && !section.noDivider && "pb-16 border-b border-border"
+                          !isLastSection && !section.noDivider && "pb-16"
                         )}>
                           {(section.title || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
@@ -178,20 +188,25 @@ export function CaseStudyPage() {
                                 <span className="block text-display-xs mb-4">{section.smallTitle}</span>
                               )}
                               {section.title && (
-                                <h2 className="text-foreground mb-4 md:mb-6">
-                                  {section.title}
-                                </h2>
+                                section.headingLevel === 'subsection' ? (
+                                  <h4 className="text-foreground mb-4 md:mb-6">{section.title}</h4>
+                                ) : (
+                                  <h3 className="text-foreground mb-4 md:mb-6">{section.title}</h3>
+                                )
                               )}
                             </div>
                           )}
                           {firstImage && (
                             <div className={cn(
-                              "grid grid-cols-1 md:grid-cols-2 gap-8 items-start",
+                              "grid grid-cols-1",
+                              isIconImage ? "md:grid-cols-[auto_1fr] md:gap-6" : "md:grid-cols-2 gap-8",
+                              section.alignContent === 'center' ? "items-center" : "items-start",
                               !isLeftImage && "md:grid-flow-dense"
                             )}>
                               {/* Image */}
                               <div className={cn(
-                                "flex flex-col gap-4",
+                                "flex flex-col",
+                                isIconImage ? "w-fit" : "gap-4",
                                 !isLeftImage && "md:col-start-2"
                               )}>
                                 <Lightbox 
@@ -232,7 +247,7 @@ export function CaseStudyPage() {
                         <div key={index} id={`section-${index}`} className={cn(
                           "flex flex-col",
                           !isFirstSection && !section.noDivider && "pt-16",
-                          !isLastSection && !section.noDivider && "pb-16 border-b border-border"
+                          !isLastSection && !section.noDivider && "pb-16"
                         )}>
                           {(section.title || section.content || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
@@ -240,9 +255,11 @@ export function CaseStudyPage() {
                                 <span className="block text-display-xs mb-4">{section.smallTitle}</span>
                               )}
                               {section.title && (
-                                <h2 className="text-foreground mb-4 md:mb-6">
-                                  {section.title}
-                                </h2>
+                                section.headingLevel === 'subsection' ? (
+                                  <h4 className="text-foreground mb-4 md:mb-6">{section.title}</h4>
+                                ) : (
+                                  <h3 className="text-foreground mb-4 md:mb-6">{section.title}</h3>
+                                )
                               )}
                               {section.content && (
                                 <div 
@@ -293,7 +310,7 @@ export function CaseStudyPage() {
                           section.layout === '3-col' && "col-span-3",
                           section.layout === '2-col' && "col-span-2",
                           section.layout === '1-col' && "col-span-1",
-                          !isLastSection && !section.noDivider && "pb-16 border-b border-border"
+                          !isLastSection && !section.noDivider && "pb-16"
                         )}>
                           {(section.title || section.content || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
@@ -301,9 +318,11 @@ export function CaseStudyPage() {
                                 <span className="block text-display-xs mb-4">{section.smallTitle}</span>
                               )}
                               {section.title && (
-                                <h2 className="text-foreground mb-4 md:mb-6">
-                                  {section.title}
-                                </h2>
+                                section.headingLevel === 'subsection' ? (
+                                  <h4 className="text-foreground mb-4 md:mb-6">{section.title}</h4>
+                                ) : (
+                                  <h3 className="text-foreground mb-4 md:mb-6">{section.title}</h3>
+                                )
                               )}
                               {section.content && (
                                 <div 
@@ -329,7 +348,7 @@ export function CaseStudyPage() {
                     return (
                       <div key={index} id={`section-${index}`} className={cn(
                         !isFirstSection && !section.noDivider && "pt-16",
-                        !isLastSection && !section.noDivider && "pb-16 border-b border-border"
+                        !isLastSection && !section.noDivider && "pb-16"
                       )}>
                         <FlexColumnSection
                           title={section.title || ''}

@@ -9,6 +9,7 @@ export interface GridLayoutSectionProps extends Omit<GridLayoutSectionType | Ins
   items?: Subsection[];
   subsections?: Subsection[];
   className?: string;
+  itemsLayout?: 'grid' | 'nowrap';
 }
 
 export function GridLayoutSection({ 
@@ -16,13 +17,26 @@ export function GridLayoutSection({
   content, 
   image, 
   link,
+  layout,
+  headingLevel,
   variant = 'default',
+  itemsLayout = 'grid',
   className,
   items = [],
   subsections = []
 }: GridLayoutSectionProps) {
   // Use subsections if available (for instruction type), otherwise use items
   const sectionItems = subsections.length > 0 ? subsections : items;
+  const itemsGridClass =
+    layout === '1-col'
+      ? 'grid-cols-1'
+      : layout === '2-col'
+        ? 'grid-cols-1 md:grid-cols-2'
+        : layout === '3-col'
+          ? 'grid-cols-1 md:grid-cols-3'
+          : 'grid-cols-1 md:grid-cols-2';
+  const hasMedia = Boolean(image || sectionItems?.[0]?.videoUrl);
+  const TitleTag = headingLevel === 'subsection' ? 'h4' : 'h3';
 
   if (variant !== 'default' && !image && !sectionItems?.length) {
     return (
@@ -36,10 +50,17 @@ export function GridLayoutSection({
 
   return (
     <section className={cn("flex flex-col", className)}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div className={cn(
+        "grid grid-cols-1 gap-8 items-start",
+        hasMedia && "md:grid-cols-2"
+      )}>
         {/* Text content */}
         <div className="flex flex-col gap-4 md:gap-6">
-          {title && <h2 className="text-display-md text-foreground mb-4 md:mb-6">{title}</h2>}
+          {title && (
+            <TitleTag className="text-foreground mb-4 md:mb-6">
+              {title}
+            </TitleTag>
+          )}
           {variant !== 'default' ? (
             <Banner variant={variant}>{content}</Banner>
           ) : (
@@ -90,19 +111,41 @@ export function GridLayoutSection({
       </div>
 
       {sectionItems && sectionItems.length > 0 && !sectionItems[0].videoUrl && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className={cn(
+          itemsLayout === 'nowrap'
+            ? "flex flex-nowrap gap-8 overflow-x-auto pb-2"
+            : "grid gap-8",
+          itemsLayout === 'grid' && itemsGridClass
+        )}>
           {sectionItems.map((item, index) => (
             <div 
               key={index} 
-              className={`flex flex-col gap-2 p-6 rounded-2xl border ${
+              className={cn(
+                `flex flex-col gap-2 p-6 rounded-2xl border ${
                 variant === 'warning' ? 'bg-warning/10 border-warning' : 'bg-muted/10 border-border'
-              }`}
+              }`,
+                itemsLayout === 'nowrap' && "shrink-0 w-[280px] md:w-[360px]"
+              )}
             >
               {item.title && (
-                <h4 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground">{item.title}</h4>
+                <h4 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground">
+                  {item.title}
+                </h4>
               )}
               {item.content && (
-                <p className="text-body-lg text-foreground">{item.content}</p>
+                typeof item.content === 'string' ? (
+                  <div
+                    className="text-body-lg text-foreground"
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  />
+                ) : (
+                  <div className="text-body-lg text-foreground">{item.content}</div>
+                )
+              )}
+              {item.caption && (
+                <p className="text-body-md text-muted-foreground !mb-0">
+                  {item.caption}
+                </p>
               )}
               {item.image?.url && (
                 <img 

@@ -34,6 +34,8 @@ const getSectionTitle = (section: Section): string | undefined => {
 const generateCaseStudyNavigation = (project: Project): NavItem[] => {
   const items: NavItem['items'] = [];
   project.sections.forEach((section: Section, index: number) => {
+    // Only show major section headers in the in-page nav
+    if ((section as { headingLevel?: string }).headingLevel === 'subsection') return;
     const title = getSectionTitle(section)?.trim();
     if (!title) return; // Only include real section titles in navigation
     items.push({

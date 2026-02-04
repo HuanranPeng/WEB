@@ -23,258 +23,379 @@ export const energysageRedesign: Project = {
   },
 
   sections: [
+    // --- Problems ---
     {
       type: 'gallery',
       smallTitle: 'The Problems',
       title: 'What are the problems?',
-      content: 'The website has <span class="text-emphasis">complex and abundant information</span>, making it difficult for users to find the information they need. The <span class="text-emphasis">outdated design</span> of the website undermines user confidence and discourages users from placing large solar energy orders through our website.',
+      content:
+        'The website has <span class="text-emphasis">complex and abundant information</span>, making it difficult for users to find the information they need. The <span class="text-emphasis">outdated design of the website</span> undermines user confidence and discourages users from placing large solar energy orders through our website.',
       layout: 'right-image',
       images: [
         {
           url: '/images/energysage-redesign/problem-image.png',
-          alt: 'EnergySage website showing complex information',
-          caption: 'Current website interface'
-        }
-      ]
+          alt: 'Current EnergySage website interface',
+          caption: 'Current website interface',
+        },
+      ],
     },
+
+    // --- Process ---
     {
-      type: 'content',
-      smallTitle: 'The Process',
+      type: 'instruction',
       title: 'What are the process?',
-      content: 'Our redesign process focused on <span class="text-emphasis">four key areas</span>: Design System, Information Architecture, Above The Fold, and Product Landing Page.',
-      layout: '4-col',
-      subsections: [
+      content:
+        'Our redesign process focused on <span class="text-emphasis">four key areas</span>: Design System, Information Architecture, Above The Fold, and Product Landing Page.',
+      items: [
         {
           title: 'Design System',
-          content: 'Establishing a <span class="text-emphasis">comprehensive design system</span> with responsive grid, color, typography, and button components.'
+          content:
+            'Establishing a <span class="text-emphasis">comprehensive design system</span> with responsive grid, color, typography, and button components.',
         },
         {
           title: 'Information Architecture',
-          content: 'Redesigning the information architecture to improve search traffic and user navigation.'
+          content: 'Redesigning the information architecture to improve search traffic and user navigation.',
         },
         {
           title: 'Above The Fold',
-          content: 'Analyzing and optimizing the most important content displayed above the fold.'
+          content: 'Analyzing and optimizing the most important content displayed above the fold.',
         },
         {
           title: 'Product Landing Page',
-          content: 'Creating effective product landing pages that guide users to the main marketplace.'
-        }
-      ]
+          content: 'Creating effective product landing pages that guide users to the main marketplace.',
+        },
+      ],
     },
+
+    // --- Design system ---
     {
       type: 'gallery',
       smallTitle: 'Design System',
       title: 'Design System',
-      content: 'Establishing core design system components including responsive grid system, color palette, typography, and button components.',
+      content:
+        'Establishing core design system components including responsive grid system, color palette, typography, and button components.',
       layout: '1-col',
       images: [
         {
           url: '/images/energysage-redesign/design-system-grid.png',
-          alt: 'Responsive Grid System',
-          caption: 'Responsive Grid System'
+          alt: 'Responsive grid system',
+          caption: 'Responsive Grid System',
         },
         {
           url: '/images/energysage-redesign/design-system-color.png',
-          alt: 'Color',
-          caption: 'Color'
+          alt: 'Color palette tokens',
+          caption: 'Color',
         },
         {
           url: '/images/energysage-redesign/design-system-typography.png',
-          alt: 'Typography',
-          caption: 'Typography'
+          alt: 'Typography scale and styles',
+          caption: 'Typography',
         },
         {
           url: '/images/energysage-redesign/design-system-buttons.png',
-          alt: 'Button',
-          caption: 'Button'
-        }
-      ]
+          alt: 'Button component states and variants',
+          caption: 'Button Components',
+        },
+      ],
     },
+
+    // --- Information Architecture ---
     {
-      type: 'content',
-      noDivider: true,
+      type: 'gallery',
       smallTitle: 'Information Architecture',
       title: 'Information Architecture',
-      content: 'Our website is experiencing a <span class="text-emphasis">decline in search traffic</span>.<img src="/images/energysage-redesign/ia-traffic.png" alt="Share of high-volume keyword traffic over time" />',
-      subsections: [
+      content: 'Our website is experiencing a <span class="text-emphasis">decline in search traffic</span>.',
+      layout: '1-col',
+      images: [
         {
-          title: 'Current IA Audit',
-          content: 'We conducted a comprehensive audit of the current information architecture to identify pain points and opportunities.'
+          url: '/images/energysage-redesign/ia-traffic.png',
+          alt: 'Share of high-volume keyword traffic over time',
+          caption: 'Share of high-volume keyword traffic over time',
         },
-        {
-          title: 'Opportunity',
-          content: 'A well-designed IA can help search engines understand the content and structure of the website, making it easier for them to crawl and index the website\'s pages. By organizing and labeling content in a clear and consistent manner, IA can also improve the user experience by making it easier for users to find the information they need.'
-        },
-        {
-          title: 'Design Exploration',
-          content: 'We explored three navigation approaches: compact design that looks clean and frees up space but may hide content behind collapsible menus; double navigation bar that gives opportunity to highlight more content and quickly access content; and expanded menu design that shows the breadth of our content.'
-        },
-      ]
+      ],
     },
     {
       type: 'gallery',
+      headingLevel: 'subsection',
+      title: 'Current IA Audit',
+      content: '',
+      layout: '1-col',
+      images: [
+        {
+          url: '/images/energysage-redesign/ia-3.png',
+          alt: 'EnergySage site map (March 2023)',
+          caption: 'EnergySage site map (March 2023)',
+        },
+      ],
+    },
+    {
+      type: 'instruction',
+      headingLevel: 'subsection',
+      title: 'Opportunity',
+      content: 'A well-designed IA improves both search discoverability and the user experience.',
+      items: [
+        {
+          title: 'Search engines',
+          content:
+            "A well-designed IA can help search engines understand the content and structure of the website, making it easier for them to crawl and index the website's pages.",
+        },
+        {
+          title: 'Users',
+          content:
+            'By organizing and labeling content in a clear and consistent manner, IA can also improve the user experience by making it easier for users to find the information they need.',
+        },
+      ],
+    },
+    {
+      type: 'gallery',
+      headingLevel: 'subsection',
+      title: 'Design Exploration',
+      content:
+        'Compact design <span class="text-emphasis">looks clean and frees up space</span> on the screen for other important content. Hidden content behind a collapsible navigation menu may be <span class="text-emphasis">difficult for search engines</span> to crawl.',
       noDivider: true,
       layout: 'left-image',
       images: [
         {
           url: '/images/energysage-redesign/ia-compact.png',
-          alt: 'Compact navigation design exploration',
-          caption: 'Compact design'
-        }
+          alt: 'Compact navigation exploration',
+          caption: 'Compact design',
+        },
       ],
-      content: 'Compact design <span class="text-emphasis">looks clean and frees up space</span> on the screen for other important content. Hidden content behind a collapsible navigation menu may be <span class="text-emphasis">difficult for search engines</span> to crawl.'
     },
     {
       type: 'gallery',
+      content:
+        '<span class="text-emphasis">Double navigation bar</span> gives opportunity to highlight more content. <span class="text-emphasis">Quickly access</span> content without having to drill down. Expanded menu design shows you the breadth of our content.',
       noDivider: true,
       layout: 'left-image',
       images: [
         {
           url: '/images/energysage-redesign/ia-double.png',
-          alt: 'Double navigation bar design exploration',
-          caption: 'Double navigation bar'
-        }
+          alt: 'Double navigation bar exploration',
+          caption: 'Double navigation bar',
+        },
       ],
-      content: '<span class="text-emphasis">Double navigation bar</span> gives opportunity to highlight more content. <span class="text-emphasis">Quickly access</span> content without having to drill down. Expanded menu design shows you the breadth of our content.'
     },
     {
-      type: 'content',
-      smallTitle: '',
-      title: '',
-      content: '',
-      subsections: [
-        {
-          title: 'Design Solution',
-          content: 'Collapsible navigation menu can provide more room for links and categories, while still allowing users to see all of their options at once. Expanded navigation keeps products and services in a more prominent position, provides users with quick access to important links while still keeping the experience streamlined.'
-        },
-        {
-          title: 'Success Metrics',
-          content: 'Our goals include improving organic traffic, decreasing time spent on task, achieving click-depth analysis ≤3, and decreasing bounce rate.'
-        }
-      ]
+      type: 'instruction',
+      headingLevel: 'subsection',
+      title: 'Design Solution',
+      content:
+        'Collapsible navigation menu can provide more room for links and categories, while still allowing users to see all of their options at once. Expanded navigation keeps products and services in a more prominent position, provides users with quick access to important links while still keeping the experience streamlined.',
     },
     {
       type: 'gallery',
-      smallTitle: 'Information Architecture',
-      title: 'IA Design Process',
-      content: 'Exploring different navigation approaches and site structure solutions.',
-      layout: 'two-column',
+      title: '',
+      content: '',
+      noDivider: true,
+      layout: '1-col',
       images: [
         {
-          url: '/images/energysage-redesign/ia-1.png',
-          alt: 'Current IA audit',
-          caption: 'Current IA Audit'
-        },
-        {
-          url: '/images/energysage-redesign/ia-2.png',
-          alt: 'Design exploration',
-          caption: 'Design Exploration'
-        },
-        {
-          url: '/images/energysage-redesign/ia-3.png',
-          alt: 'Site map',
-          caption: 'Global Site Map'
-        },
-        {
-          url: '/images/energysage-redesign/ia-4.png',
-          alt: 'Navigation design',
-          caption: 'Navigation Design'
-        },
-        {
-          url: '/images/energysage-redesign/ia-5.png',
-          alt: 'Navigation exploration',
-          caption: 'Navigation Exploration'
-        },
-        {
           url: '/images/energysage-redesign/ia-6.png',
-          alt: 'Navigation solution',
-          caption: 'Navigation Solution'
+          alt: 'Top navigation solution (header)',
+          caption: 'Navigation structure',
         },
         {
           url: '/images/energysage-redesign/ia-7.png',
-          alt: 'Success metrics',
-          caption: 'Success Metrics'
-        }
-      ]
+          alt: 'Expanded navigation solution',
+          caption: 'Expanded navigation menu',
+        },
+      ],
     },
+    {
+      type: 'instruction',
+      headingLevel: 'subsection',
+      title: 'Success Metrics',
+      content:
+        'Our goals include improving organic traffic, decreasing time spent on task, achieving click-depth analysis ≤3, and decreasing bounce rate.',
+      items: [
+        { title: 'Organic Traffic', content: 'Improve' },
+        { title: 'Time spent on task', content: 'Decrease' },
+        { title: 'Click-depth analysis', content: '≤3' },
+        { title: 'Bounce rate', content: 'Decrease' },
+      ],
+    },
+
+    // --- Above the fold ---
     {
       type: 'content',
       smallTitle: 'Above The Fold',
       title: 'Above The Fold',
-      content: 'Analyze and determine the most important content to display above the fold. Design a clear and compelling headline that communicates the website\'s value. Keep the layout simple and easy to navigate, with clear call-to-actions.',
-      subsections: [
-        {
-          title: 'Challenges',
-          content: 'Requires a significant amount of time to implement. Highlighting the core marketplace before the other products ready. Simplifying the call-to-action (CTA) on the website to better direct users to the main market.'
-        },
-        {
-          title: '5-Second Test',
-          content: '5 seconds represents the amount of time a visitor will make a judgment and decide to engage with or abandon a site upon landing there. We tested: What do you remember? What can you do on this site? Who\'s this site for? What was the name of the company?'
-        },
-        {
-          title: 'Messages Tested',
-          content: 'We tested three message variations: "Save thousands by switching to clean energy for your home - 5 minutes can get you the best prices from top installers" (44% trusted); "EnergySage shoppers save ~20% versus going it alone - Easily shop for solar and more with vetted, local installers" (60% trusted); "Compare and save on clean home energy solutions - Research and shop through our network of pre-screened, local installers" (68% trusted).'
-        },
-        {
-          title: 'Images Tested',
-          content: 'We tested different hero images: Version 1 (40% trusted), Version 2 (60% trusted), Version 3 (67% trusted).'
-        },
-        {
-          title: 'Result',
-          content: 'Overall scores: Version 1 (50%), Version 2 (47%), Version 3 (43%).'
-        }
-      ]
+      content:
+        '<ul><li>Analyze and determine the most important content to display above the fold.</li><li>Design a clear and compelling headline that communicates the website&#39;s value.</li><li>Keep the layout simple and easy to navigate, with clear call-to-actions.</li></ul>',
     },
     {
       type: 'gallery',
-      smallTitle: 'Above The Fold',
-      title: 'Above The Fold Design Exploration',
-      content: 'Testing different messages and images to optimize the hero section.',
-      layout: 'two-column',
+      headingLevel: 'subsection',
+      title: 'Challenges',
+      content: 'Requires a significant amount of time to implement.',
+      noDivider: true,
+      layout: 'right-image',
       images: [
         {
           url: '/images/energysage-redesign/above-fold-1.png',
-          alt: 'Message testing',
-          caption: 'Messages Tested'
+          alt: 'Above-the-fold exploration (challenge 1)',
+          caption: 'Challenge',
         },
+      ],
+    },
+    {
+      type: 'gallery',
+      content: 'Highlighting the core marketplace before the other products ready.',
+      noDivider: true,
+      layout: 'right-image',
+      images: [
         {
           url: '/images/energysage-redesign/above-fold-2.png',
-          alt: 'Image testing',
-          caption: 'Images Tested'
+          alt: 'Above-the-fold exploration (challenge 2)',
+          caption: 'Challenge',
         },
+      ],
+    },
+    {
+      type: 'gallery',
+      content: 'Simplifying the call-to-action (CTA) on the website to better direct users to the main market.',
+      noDivider: true,
+      layout: 'right-image',
+      images: [
         {
           url: '/images/energysage-redesign/above-fold-3.png',
-          alt: 'Test results',
-          caption: 'Test Results'
+          alt: 'Above-the-fold exploration (challenge 3)',
+          caption: 'Challenge',
         },
+      ],
+    },
+    {
+      type: 'gallery',
+      headingLevel: 'subsection',
+      title: 'Design Exploration',
+      content: '',
+      layout: 'two-column',
+      images: [
         {
           url: '/images/energysage-redesign/above-fold-4.png',
-          alt: 'Hero design option 1',
-          caption: 'Hero Design Option 1'
+          alt: 'Hero design exploration option A',
+          caption: 'Option A',
         },
         {
           url: '/images/energysage-redesign/above-fold-5.png',
-          alt: 'Hero design option 2',
-          caption: 'Hero Design Option 2'
+          alt: 'Hero design exploration option B',
+          caption: 'Option B',
         },
+      ],
+    },
+    {
+      type: 'gallery',
+      headingLevel: 'subsection',
+      alignContent: 'center',
+      title: '5-Second Test',
+      content:
+        '5 seconds represents the amount of time a visitor will make a judgment and decide to engage with or abandon a site upon landing there.<br /><br />We tested: What do you remember? What can you do on this site? Who’s this site for? What was the name of the company?',
+      layout: 'left-image',
+      images: [
         {
           url: '/images/energysage-redesign/above-fold-6.png',
-          alt: 'Hero design option 3',
-          caption: 'Hero Design Option 3'
+          alt: '5-second test icon',
+          variant: 'icon',
         },
+      ],
+    },
+    {
+      type: 'gallery',
+      title: '',
+      content: '',
+      layout: '1-col',
+      images: [
         {
           url: '/images/energysage-redesign/above-fold-7.png',
-          alt: 'Final result',
-          caption: 'Final Result'
+          alt: 'Above-the-fold test matrix',
+          caption: 'Exploration matrix',
+        },
+      ],
+    },
+    {
+      type: 'instruction',
+      headingLevel: 'subsection',
+      title: 'Messages Tested',
+      layout: '3-col',
+      content: '',
+      items: [
+        {
+          title: '44% trusted',
+          content: 'Save thousands by switching to clean energy for your home.',
+          caption: '5 minutes can get you the best prices from top installers.',
         },
         {
-          url: '/images/energysage-redesign/above-fold-8.png',
-          alt: 'Overall score',
-          caption: 'Overall Score'
-        }
-      ]
-    }
+          title: '60% trusted',
+          content: 'EnergySage shoppers save ~20% versus going it alone.',
+          caption: 'Easily shop for solar and more with vetted, local installers.',
+        },
+        {
+          title: '68% trusted',
+          content: 'Compare and save on clean home energy solutions.',
+          caption: 'Research and shop through our network of pre-screened, local installers.',
+        },
+      ],
+    },
+    {
+      type: 'gallery',
+      headingLevel: 'subsection',
+      title: 'Images Tested',
+      content: '',
+      layout: '3-col',
+      images: [
+        {
+          url: '/images/energysage-redesign/above-fold-1.png',
+          alt: 'Image test variant 1',
+          caption: '40% trusted',
+        },
+        {
+          url: '/images/energysage-redesign/above-fold-2.png',
+          alt: 'Image test variant 2',
+          caption: '60% trusted',
+        },
+        {
+          url: '/images/energysage-redesign/above-fold-3.png',
+          alt: 'Image test variant 3',
+          caption: '67% trusted',
+        },
+      ],
+    },
+    {
+      type: 'gallery',
+      headingLevel: 'subsection',
+      title: 'Result',
+      content: '',
+      layout: '1-col',
+      className: 'w-full max-w-[760px] mx-auto',
+      images: [
+        {
+          url: '/images/energysage-redesign/above-fold-1.png',
+          alt: 'Result variant A',
+          caption: 'Overall score (50%)',
+        },
+      ],
+    },
+    {
+      type: 'gallery',
+      noDivider: true,
+      title: '',
+      // smaller gap between result rows (closer to Figma) without starting a new "section"
+      content: '<div class="h-8"></div>',
+      layout: 'two-column',
+      images: [
+        {
+          url: '/images/energysage-redesign/above-fold-2.png',
+          alt: 'Result variant B',
+          caption: 'Overall score (47%)',
+        },
+        {
+          url: '/images/energysage-redesign/above-fold-3.png',
+          alt: 'Result variant C',
+          caption: 'Overall score (43%)',
+        },
+      ],
+    },
   ],
 
   technologies: ['Figma', 'UX Research', 'Information Architecture', 'Design Systems'],

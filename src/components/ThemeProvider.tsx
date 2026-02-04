@@ -43,6 +43,44 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (meta) {
       meta.setAttribute('content', theme);
     }
+
+    // Keep the browser tab icon in sync with the app theme
+    const base = import.meta.env.BASE_URL || '/';
+    const faviconHref = `${base}images/logo-${theme}.png`;
+
+    const upsertLink = (selector: string, attrs: Record<string, string>) => {
+      let link = document.querySelector<HTMLLinkElement>(selector);
+      if (!link) {
+        link = document.createElement('link');
+        document.head.appendChild(link);
+      }
+      Object.entries(attrs).forEach(([key, value]) => {
+        link!.setAttribute(key, value);
+      });
+    };
+
+    // Use a dedicated dynamic icon link so it always wins precedence
+    upsertLink('link[rel="icon"][data-theme-favicon="true"]', {
+      rel: 'icon',
+      type: 'image/png',
+      href: faviconHref,
+      'data-theme-favicon': 'true',
+    });
+
+    // Helpful for some browsers that still look for "shortcut icon"
+    upsertLink('link[rel="shortcut icon"][data-theme-favicon="true"]', {
+      rel: 'shortcut icon',
+      type: 'image/png',
+      href: faviconHref,
+      'data-theme-favicon': 'true',
+    });
+
+    // Keep Apple touch icon consistent too
+    upsertLink('link[rel="apple-touch-icon"][data-theme-favicon="true"]', {
+      rel: 'apple-touch-icon',
+      href: faviconHref,
+      'data-theme-favicon': 'true',
+    });
   }, [theme]);
 
   const toggleTheme = () => {

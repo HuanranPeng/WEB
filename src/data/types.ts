@@ -6,6 +6,16 @@ export interface BaseSection {
   layout?: '1-col' | '2-col' | '3-col' | '4-col' | 'left-image' | 'right-image' | 'two-column';
   // Optional: suppress default top/bottom divider for closely related blocks
   noDivider?: boolean;
+  /**
+   * Controls heading hierarchy inside a case study page.
+   * - section: major section header
+   * - subsection: minor header under a major section
+   */
+  headingLevel?: 'section' | 'subsection';
+  /**
+   * Optional alignment hint for layouts that have multiple columns.
+   */
+  alignContent?: 'start' | 'center';
 }
 
 // Shared types
@@ -15,6 +25,10 @@ export interface Image {
   caption?: string;
   videoUrl?: string;
   aspectRatio?: string;
+  /**
+   * Optional display hint for certain layouts (e.g. small icon next to text).
+   */
+  variant?: 'default' | 'icon';
 }
 
 export interface Link {
@@ -118,6 +132,12 @@ export interface InstructionSection extends BaseSection {
   image?: Image;
   link?: Link;
   variant?: 'warning' | 'info' | 'default';
+  /**
+   * Layout for the items/cards list.
+   * - grid: responsive grid (default)
+   * - nowrap: horizontal row that never wraps (scrolls when needed)
+   */
+  itemsLayout?: 'grid' | 'nowrap';
 }
 
 export interface DesignTokenSection extends BaseSection {
