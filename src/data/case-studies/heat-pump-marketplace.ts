@@ -24,157 +24,128 @@ export const heatPumpMarketplace: Project = {
 
   sections: [
     {
-      type: 'content',
-      smallTitle: 'Overview',
-      title: 'Overview',
-      content: 'We have launched the <a href="https://heatpumps.energysage.com/" target="_blank" rel="noopener noreferrer">heat pump marketplace</a> in October. As a stepping stone to this, we achieved the result of <span class="text-emphasis">recruiting 30 consumers to the pilot</span> and running a heat pump marketplace pilot in July. After the pilot, we <span class="text-emphasis">iterated the design based on feedback</span> we got from the consumers and met the goal of launching it in October.',
-    },
-    {
       type: 'gallery',
-      smallTitle: 'Overview',
-      title: 'Project Overview',
-      content: 'Visual overview of the Heat Pump Marketplace project.',
-      layout: '1-col',
+      title: 'Overview',
+      layout: 'left-image',
       images: [
         {
           url: '/images/heat-pump-marketplace/overview.png',
-          alt: 'Heat Pump Marketplace overview',
-          caption: 'Project Overview'
-        }
-      ]
-    },
-    {
-      type: 'content',
-      smallTitle: 'Goals',
-      title: 'Goals',
-      content: 'Our project had three main objectives:',
-      subsections: [
-        {
-          title: '01 - Understand and engage consumers',
-          content: 'Use existing customer relationships and <span class="text-emphasis">market research surveys</span> to learn about heat pump consumers\' problems, motivations and journey and enroll them in a pilot.'
+          alt: 'Heat pump marketplace overview illustration',
         },
-        {
-          title: '02 - Develop and refine our consumer value proposition',
-          content: 'Develop and refine our consumer value proposition and get heat pumps installed in homes.'
-        },
-        {
-          title: '03 - Educate pilot consumers',
-          content: 'Educate pilot consumers and identify content gaps.'
-        }
-      ]
+      ],
+      content:
+        'We have launched the <a href="https://heatpumps.energysage.com/" target="_blank" rel="noopener noreferrer">heat pump marketplace</a> in October.<br /><br />As a stepping stone to this, we achieved the result of recruiting 30 consumers to the pilot and running a heat pump marketplace pilot in July. After the pilot, we iterated the design based on feedback we got from the consumers and met the goal of launching it in October.',
     },
     {
       type: 'gallery',
-      smallTitle: 'Research',
-      title: 'Research',
-      content: 'Understanding heat pump consumers through research and workflow modeling.',
-      layout: 'two-column',
+      title: 'goals',
+      layout: 'right-image',
       images: [
         {
           url: '/images/heat-pump-marketplace/research-hero.jpg',
-          alt: 'Research process',
-          caption: 'Research Process'
+          alt: 'Person working on laptop illustration',
         },
-        {
-          url: '/images/heat-pump-marketplace/workflow-model.png',
-          alt: 'Workflow model',
-          caption: 'Workflow Model'
-        }
-      ]
+      ],
+      content:
+        '<p><strong>01</strong> Understand and engage consumers: Use existing customer relationships and market research surveys to learn about heat pump consumers’ problems, motivations and journey and enroll them in a pilot.</p><p><strong>02</strong> Develop and refine our consumer value proposition and get heat pumps installed in homes.</p><p><strong>03</strong> Educate pilot consumers.</p>',
     },
     {
       type: 'gallery',
-      smallTitle: 'Usability Issues',
+      title: 'Research',
+      content: '<strong>Workflow Model</strong>',
+      layout: '1-col',
+      images: [
+        {
+          url: '/images/heat-pump-marketplace/workflow-model.png',
+          alt: 'Workflow model diagram',
+        },
+      ],
+    },
+    {
+      type: 'gallery',
       title: 'Usability Issues',
-      content: 'Identifying and addressing usability issues discovered during the pilot phase.',
       layout: '1-col',
       images: [
         {
           url: '/images/heat-pump-marketplace/usability-issues.jpg',
-          alt: 'Usability issues',
-          caption: 'Usability Issues Identified'
-        }
-      ]
-    },
-    {
-      type: 'content',
-      smallTitle: 'Process',
-      title: 'Process',
-      content: 'Our design process involved multiple iterations from pilot to high-fidelity stages.',
-      subsections: [
-        {
-          title: 'Onboarding Flow',
-          content: 'We evolved the onboarding flow from a simple pilot version to a more comprehensive high-fidelity solution with location and home information collection.'
+          alt: 'Usability issues audit',
         },
-        {
-          title: 'Dashboard Design',
-          content: 'The dashboard went through multiple iterations, starting with a pilot stage design, evolving through mid-fidelity prototypes, to the final high-fidelity solution.'
-        }
-      ]
+      ],
     },
     {
       type: 'gallery',
-      smallTitle: 'Process',
-      title: 'Onboarding Flow Evolution',
-      content: 'Evolution of the onboarding flow from pilot to high-fidelity stages.',
-      layout: 'two-column',
+      title: 'Process',
+      headingLevel: 'subsection',
+      content: 'Onboarding flow<br />Pilot stage:',
+      layout: '1-col',
       images: [
         {
-          url: '/images/heat-pump-marketplace/onboarding-pilot.png',
-          alt: 'Pilot stage onboarding',
-          caption: 'Pilot Stage'
+          url: '/images/heat-pump-marketplace/pilot-onboarding.png',
+          alt: 'Pilot onboarding flow screens',
         },
+      ],
+    },
+    {
+      type: 'gallery',
+      noDivider: true,
+      title: '',
+      content: 'Hi-fi stage:',
+      layout: '1-col',
+      images: [
         {
           url: '/images/heat-pump-marketplace/onboarding-location.png',
-          alt: 'Hi-fi stage location',
-          caption: 'Hi-fi Stage - Location'
+          alt: 'High-fidelity onboarding - location step',
         },
         {
           url: '/images/heat-pump-marketplace/onboarding-home.png',
-          alt: 'Hi-fi stage home',
-          caption: 'Hi-fi Stage - Home'
-        }
-      ]
+          alt: 'High-fidelity onboarding - home step',
+        },
+      ],
     },
     {
       type: 'gallery',
-      smallTitle: 'Process',
-      title: 'Dashboard Design Evolution',
-      content: 'Dashboard design iterations from pilot to mid-fidelity stages.',
-      layout: 'two-column',
+      headingLevel: 'subsection',
+      title: 'Dashboard design',
+      content: 'Pilot stage:',
+      layout: '1-col',
       images: [
         {
           url: '/images/heat-pump-marketplace/dashboard-pilot.png',
-          alt: 'Pilot stage dashboard',
-          caption: 'Pilot Stage'
+          alt: 'Pilot dashboard design',
         },
-        {
-          url: '/images/heat-pump-marketplace/dashboard-midfi.png',
-          alt: 'Mid-fi stage dashboard',
-          caption: 'Mid-fi Stage'
-        }
-      ]
+      ],
     },
     {
       type: 'gallery',
-      smallTitle: 'Final Solution',
+      noDivider: true,
+      title: '',
+      content: 'Mid-fi stage:',
+      layout: '1-col',
+      images: [
+        {
+          url: '/images/heat-pump-marketplace/dashboard-midfi.png',
+          alt: 'Mid-fidelity dashboard design iteration',
+        },
+      ],
+    },
+    {
+      type: 'gallery',
       title: 'Final Solution',
-      content: 'The high-fidelity final solution for the Heat Pump Marketplace.',
+      content: 'Hi-fi stage:',
       layout: '1-col',
       images: [
         {
           url: '/images/heat-pump-marketplace/final-solution.png',
-          alt: 'Final solution',
-          caption: 'Hi-fi Stage'
-        }
-      ]
+          alt: 'Final high-fidelity marketplace solution',
+        },
+      ],
     },
     {
       type: 'content',
-      smallTitle: 'Future Work',
       title: 'Future Work',
-      content: 'We will continue monitor the new marketplace and build the Quote Comparison View for the users to help them make smart decisions. ROI Calculator and Instant Estimate are also our main focuses in the next round of iterations.',
-    }
+      content:
+        'We will continue monitor the new marketplace and build the Quote Comparison View for the users to help them make smart decisions. ROI Calculator and Instant Estimate are also our main focuses in the next round of iterations.',
+    },
   ],
 
   technologies: ['Wireframe', 'Interviews', 'Usability Testing', 'Prototyping'],
