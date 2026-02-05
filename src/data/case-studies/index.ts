@@ -7,9 +7,9 @@ import { spaceProject } from './space-project';
 
 export const projects = [
   energysageRedesign,
+  heatPumpMarketplace,
   energysageDesignSystem,
   aiChatbotDesign,
-  heatPumpMarketplace,
   locatifyArNavigation,
   spaceProject
 ];
