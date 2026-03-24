@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import { Tags } from "./Tags";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { HeroSection } from "./case-study/HeroSection";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
@@ -14,7 +16,7 @@ export function CaseStudies() {
   useEffect(() => {
     if (caseStudyRefs.current.length === 0) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
 
     caseStudyRefs.current.forEach((ref) => {
       if (!ref) return;
@@ -39,7 +41,99 @@ export function CaseStudies() {
       );
     });
 
+    const container = document.getElementById("case-studies");
+    const targets = caseStudyRefs.current.filter(Boolean) as HTMLDivElement[];
+
+    if (!container || targets.length < 2) {
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      };
+    }
+
+    let snapping = false;
+    let releaseTimeout: number | undefined;
+    let lastSnapAt = 0;
+    let accumulated = 0;
+
+    const getCurrentIndex = () => {
+      const anchorY = 200; // match the visual "active" line
+      let bestIndex = 0;
+      let bestDist = Number.POSITIVE_INFINITY;
+      targets.forEach((el, idx) => {
+        const dist = Math.abs(el.getBoundingClientRect().top - anchorY);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIndex = idx;
+        }
+      });
+      return bestIndex;
+    };
+
+    const scrollToIndex = (index: number) => {
+      const target = targets[index];
+      const smoother = ScrollSmoother.get();
+      snapping = true;
+
+      if (releaseTimeout) {
+        window.clearTimeout(releaseTimeout);
+      }
+
+      if (smoother) {
+        smoother.scrollTo(target, true, "top top");
+        releaseTimeout = window.setTimeout(() => {
+          snapping = false;
+          ScrollTrigger.refresh();
+        }, 900);
+        return;
+      }
+
+      gsap.to(window, {
+        duration: 0.8,
+        ease: "power2.inOut",
+        scrollTo: { y: target, offsetY: 150 },
+        onComplete: () => {
+          snapping = false;
+          ScrollTrigger.refresh();
+        },
+      });
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      if (e.ctrlKey) return; // allow browser zoom
+      if (snapping) return;
+
+      const deltaY = e.deltaY;
+      if (Math.abs(deltaY) < 4) return;
+
+      const rect = container.getBoundingClientRect();
+      const anchorY = 200;
+      const isWithinCaseStudies = rect.top < anchorY && rect.bottom > anchorY;
+      if (!isWithinCaseStudies) return;
+
+      const now = Date.now();
+      if (now - lastSnapAt < 500) return;
+
+      accumulated += deltaY;
+      const threshold = 80; // reduce accidental trackpad triggers
+      if (Math.abs(accumulated) < threshold) return;
+
+      const dir = accumulated > 0 ? 1 : -1;
+      const current = getCurrentIndex();
+      const next = Math.max(0, Math.min(targets.length - 1, current + dir));
+      if (next === current) return;
+
+      accumulated = 0;
+      lastSnapAt = now;
+      scrollToIndex(next);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: true });
+
     return () => {
+      window.removeEventListener("wheel", onWheel as EventListener);
+      if (releaseTimeout) {
+        window.clearTimeout(releaseTimeout);
+      }
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -91,7 +185,13 @@ export function CaseStudies() {
         Case Studies
       </h2>
       {projects.map((project, index) => (
-        <div key={project.id} id={project.id} ref={el => caseStudyRefs.current[index] = el}>
+        <div
+          key={project.id}
+          id={project.id}
+          data-case-study-item="true"
+          className="scroll-mt-40"
+          ref={el => caseStudyRefs.current[index] = el}
+        >
           <div className="w-full pb-2">
             <Link to={project.link} className="group">
               <HeroSection 

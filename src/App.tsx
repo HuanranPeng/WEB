@@ -10,6 +10,7 @@ import { DesignSystemDemo } from './pages/DesignSystemDemo';
 import NotFound from './pages/NotFound';
 import { HelmetProvider } from 'react-helmet-async';
 import { useCanonicalRedirect } from '@/hooks/useCanonicalRedirect';
+import { Toaster } from '@/components/ui/toaster';
 
 export default function App() {
   useCanonicalRedirect();
@@ -33,6 +34,7 @@ export default function App() {
           </div>
         </SmoothScroll>
         <ScrollToTop />
+        <Toaster />
       </ThemeProvider>
     </HelmetProvider>
   );

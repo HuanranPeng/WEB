@@ -8,6 +8,11 @@ import { ArrowRight } from "lucide-react"
 import { AnimatedHeroText } from '@/components/AnimatedHeroText';
 import { InPageNavigation } from '@/components/InPageNavigation';
 import MetaTags from '@/components/MetaTags';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
+
+gsap.registerPlugin(ScrollToPlugin, ScrollSmoother);
 
 export function HomePage() {
   return (
@@ -25,18 +30,32 @@ export function HomePage() {
             title="Product Designer blending design systems and AI interaction design to deliver measurable product value."
             highlightPhrases={["design systems", "AI interaction design", "product value"]}
           />
-          <a 
-            href="mailto:huanranpeng@gmail.com"
+          <Button
+            size="lg"
+            icon={ArrowRight}
+            iconPlacement="right"
             className="w-fit"
+            onClick={() => {
+              const target =
+                document.querySelector<HTMLElement>('[data-case-study-item="true"]') ??
+                document.getElementById('case-studies');
+              if (!target) return;
+
+              const smoother = ScrollSmoother.get();
+              if (smoother) {
+                smoother.scrollTo(target, true, 'top top');
+                return;
+              }
+
+              gsap.to(window, {
+                duration: 1,
+                scrollTo: { y: target, offsetY: 150 },
+                ease: 'power2.inOut',
+              });
+            }}
           >
-            <Button 
-              size="lg"
-              icon={ArrowRight}
-              iconPlacement="right"
-            >
-              Let's Talk
-            </Button>
-          </a>
+            Continue to Case
+          </Button>
         </section>
       </Container>
 
