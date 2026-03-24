@@ -27,6 +27,7 @@
     { "src": "/2026/images/(.*)", "dest": "/images/$1" },
     { "src": "/2026/meta/(.*)", "dest": "/meta/$1" },
     { "src": "/2026/favicon/(.*)", "dest": "/favicon/$1" },
+    { "src": "/2026/resume/(.*)", "dest": "/resume/$1" },
     { "src": "/2026/favicon.svg", "dest": "/favicon.svg" },
 
     { "src": "/2026(?:/.*)?", "dest": "/index.html" },

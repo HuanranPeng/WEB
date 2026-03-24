@@ -4,5 +4,8 @@
 # Redirect root to /2026
 / /2026 302
 
+# Serve resume PDF under /2026 base
+/2026/resume/* /resume/:splat 200
+
 # SPA fallback only for /2026/*
 /2026/* /index.html 200
