@@ -2,6 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "routes": [
+    { "src": "/?$", "status": 302, "headers": { "Location": "https://huanran-portfolio.webflow.io/2026" } },
+    { "src": "/2023(?:/.*)?", "status": 302, "headers": { "Location": "https://huanran-portfolio.webflow.io/2026" } },
+
     { "handle": "filesystem" },
 
     {
@@ -19,9 +22,6 @@
       },
       "continue": true
     },
-
-    { "src": "/2023/?$", "status": 302, "headers": { "Location": "https://huanran-portfolio.webflow.io/2026" } },
-    { "src": "/2023/(.*)", "status": 302, "headers": { "Location": "https://huanran-portfolio.webflow.io/2026/$1" } },
 
     { "src": "/2026/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/2026/images/(.*)", "dest": "/images/$1" },

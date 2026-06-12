@@ -1,8 +1,10 @@
 # Handle legacy case-studies routes
 /case-studies/* /2026/case-study/:splat 301
 
-# Redirect root to /2026
-/ /2026 302
+# Redirect root and legacy /2023 to Webflow portfolio
+/ https://huanran-portfolio.webflow.io/2026 302
+/2023 https://huanran-portfolio.webflow.io/2026 302
+/2023/* https://huanran-portfolio.webflow.io/2026 302
 
 # Serve resume PDF under /2026 base
 /2026/resume/* /resume/:splat 200

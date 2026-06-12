@@ -42,8 +42,19 @@
       // Immediate redirect check before React loads
       (function() {
         const path = window.location.pathname;
+        const host = window.location.hostname;
+        const isProductionDomain =
+          host === 'huanranpeng.com' || host === 'www.huanranpeng.com';
+        const webflowUrl = 'https://huanran-portfolio.webflow.io/2026';
+        const suffix = window.location.search + window.location.hash;
+
+        if (isProductionDomain && (path === '/' || path === '' || path.startsWith('/2023'))) {
+          window.location.replace(webflowUrl + suffix);
+          return;
+        }
+
         if (path === '/' || path === '') {
-          window.location.replace('/2026' + window.location.search + window.location.hash);
+          window.location.replace('/2026' + suffix);
         }
       })();
     </script>

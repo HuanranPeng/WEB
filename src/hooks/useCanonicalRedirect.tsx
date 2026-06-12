@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 
 const CANONICAL_HOST = 'www.huanranpeng.com';
 const BASE_PATH = '/2026';
+const WEBFLOW_PORTFOLIO_URL = 'https://huanran-portfolio.webflow.io/2026';
+
+const isHuanranDomain = (host: string) =>
+  host === 'huanranpeng.com' || host === 'www.huanranpeng.com';
 
 export const useCanonicalRedirect = () => {
   useEffect(() => {
@@ -16,6 +20,16 @@ export const useCanonicalRedirect = () => {
     const isVercelDomain =
       currentHost.endsWith('.vercel.app') || currentHost.endsWith('.vercel.app.');
     const isLocalhost = currentHost.includes('localhost') || currentHost.includes('127.0.0.1');
+
+    if (isHuanranDomain(currentHost)) {
+      const isRoot = currentPath === '/' || currentPath === '';
+      const is2023Path = currentPath === '/2023' || currentPath.startsWith('/2023/');
+
+      if (isRoot || is2023Path) {
+        window.location.replace(`${WEBFLOW_PORTFOLIO_URL}${currentSearch}${currentHash}`);
+        return;
+      }
+    }
     
     // For Vercel domains and localhost, still handle root path redirect to /2026
     if (isLocalhost || isVercelDomain) {
