@@ -10,4 +10,4 @@
 /2026/resume/* /resume/:splat 200
 
 # SPA fallback only for /2026/*
-/2026/* /index.html 200
+/2026/* /spa-index.html 200
