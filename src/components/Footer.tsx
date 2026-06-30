@@ -59,11 +59,10 @@ export function Footer() {
         {/* Copyright */}
         <div className="flex flex-col space-y-2">
           <p className="max-w-[85%] caption text-foreground">
-            ©2026 Huanran Peng. Built for learning and tinkering—fork it, remix it, build cool stuff.
+            ©2026 Huanran Peng. Product design for complex workflows, data-heavy decisions, and clearer systems.
           </p>
         </div>
       </Container>
     </footer>
   );
 }
-
