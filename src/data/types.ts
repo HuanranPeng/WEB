@@ -4,6 +4,11 @@ export type HtmlString = string;
 export interface BaseSection {
   type: 'gallery' | 'resources' | 'flex-column' | 'grid-layout' | 'content' | 'process' | 'narrative' | 'instruction' | 'design-tokens' | 'component-library' | 'videos';
   layout?: '1-col' | '2-col' | '3-col' | '4-col' | 'left-image' | 'right-image' | 'two-column';
+  /**
+   * Short label used in the in-page navigation. Keep page headings more
+   * descriptive; keep nav labels scannable.
+   */
+  navTitle?: string;
   // Optional: suppress default top/bottom divider for closely related blocks
   noDivider?: boolean;
   /**
@@ -25,6 +30,7 @@ export interface Image {
   caption?: string;
   videoUrl?: string;
   aspectRatio?: string;
+  displaySize?: 'default' | 'wide' | 'contained' | 'phone' | 'card';
   /**
    * Optional display hint for certain layouts (e.g. small icon next to text).
    */
@@ -128,6 +134,7 @@ export interface InstructionSection extends BaseSection {
   type: 'instruction';
   title: string;
   content: string;
+  smallTitle?: string;
   items?: Subsection[];
   image?: Image;
   link?: Link;
@@ -210,6 +217,7 @@ export interface Project {
   videoUrl?: string;
   heroSubTitle: string;
   role: string;
+  timeline?: string;
   team: string;
   sections: Section[];
   technologies: string[];
@@ -294,4 +302,4 @@ export interface Meta {
   twitterCard?: string;
   twitterSite?: string;
   twitterCreator?: string;
-} 
+}

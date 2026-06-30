@@ -4,11 +4,7 @@ import { useEffect, useRef } from "react";
 import { Tags } from "./Tags";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { HeroSection } from "./case-study/HeroSection";
-import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { getImagePath } from "@/lib/utils";
 
 export function CaseStudies() {
   const caseStudyRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -16,7 +12,7 @@ export function CaseStudies() {
   useEffect(() => {
     if (caseStudyRefs.current.length === 0) return;
 
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
+    gsap.registerPlugin(ScrollTrigger);
 
     caseStudyRefs.current.forEach((ref) => {
       if (!ref) return;
@@ -41,99 +37,7 @@ export function CaseStudies() {
       );
     });
 
-    const container = document.getElementById("case-studies");
-    const targets = caseStudyRefs.current.filter(Boolean) as HTMLDivElement[];
-
-    if (!container || targets.length < 2) {
-      return () => {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      };
-    }
-
-    let snapping = false;
-    let releaseTimeout: number | undefined;
-    let lastSnapAt = 0;
-    let accumulated = 0;
-
-    const getCurrentIndex = () => {
-      const anchorY = 200; // match the visual "active" line
-      let bestIndex = 0;
-      let bestDist = Number.POSITIVE_INFINITY;
-      targets.forEach((el, idx) => {
-        const dist = Math.abs(el.getBoundingClientRect().top - anchorY);
-        if (dist < bestDist) {
-          bestDist = dist;
-          bestIndex = idx;
-        }
-      });
-      return bestIndex;
-    };
-
-    const scrollToIndex = (index: number) => {
-      const target = targets[index];
-      const smoother = ScrollSmoother.get();
-      snapping = true;
-
-      if (releaseTimeout) {
-        window.clearTimeout(releaseTimeout);
-      }
-
-      if (smoother) {
-        smoother.scrollTo(target, true, "top top");
-        releaseTimeout = window.setTimeout(() => {
-          snapping = false;
-          ScrollTrigger.refresh();
-        }, 900);
-        return;
-      }
-
-      gsap.to(window, {
-        duration: 0.8,
-        ease: "power2.inOut",
-        scrollTo: { y: target, offsetY: 150 },
-        onComplete: () => {
-          snapping = false;
-          ScrollTrigger.refresh();
-        },
-      });
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (e.ctrlKey) return; // allow browser zoom
-      if (snapping) return;
-
-      const deltaY = e.deltaY;
-      if (Math.abs(deltaY) < 4) return;
-
-      const rect = container.getBoundingClientRect();
-      const anchorY = 200;
-      const isWithinCaseStudies = rect.top < anchorY && rect.bottom > anchorY;
-      if (!isWithinCaseStudies) return;
-
-      const now = Date.now();
-      if (now - lastSnapAt < 500) return;
-
-      accumulated += deltaY;
-      const threshold = 80; // reduce accidental trackpad triggers
-      if (Math.abs(accumulated) < threshold) return;
-
-      const dir = accumulated > 0 ? 1 : -1;
-      const current = getCurrentIndex();
-      const next = Math.max(0, Math.min(targets.length - 1, current + dir));
-      if (next === current) return;
-
-      accumulated = 0;
-      lastSnapAt = now;
-      scrollToIndex(next);
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: true });
-
     return () => {
-      window.removeEventListener("wheel", onWheel as EventListener);
-      if (releaseTimeout) {
-        window.clearTimeout(releaseTimeout);
-      }
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
@@ -141,6 +45,16 @@ export function CaseStudies() {
   // Determine hero layout and images based on project
   const getHeroConfig = (projectId: string) => {
     switch (projectId) {
+      case 'medhub-work-hours':
+        return {
+          layout: 'single' as const,
+          singleImage: '/images/medhub-work-hours/figma-program-drilldown.png'
+        };
+      case 'next-gen-vati':
+        return {
+          layout: 'single' as const,
+          singleImage: '/images/next-gen-vati/figma-student-path.png'
+        };
       case 'energysage-design-system':
         return {
           layout: 'single' as const,
@@ -180,52 +94,52 @@ export function CaseStudies() {
   };
 
   return (
-    <div className="flex flex-grow flex-col gap-12 md:gap-16">
-      <h2 className="text-display-md md:text-display-lg lg:text-display-2xl mb-0 mt-4">
-        Case Studies
-      </h2>
+    <div className="flex flex-grow flex-col">
+      <div className="mb-8 flex flex-col gap-3 md:mb-12 md:max-w-3xl">
+        <p className="case-study-eyebrow mb-0 text-muted-foreground">Selected work</p>
+        <h2 className="mb-0 text-display-md md:text-display-lg lg:text-display-2xl">
+          Selected Design Work
+        </h2>
+        <p className="mb-0 max-w-2xl text-body-md text-muted-foreground md:text-body-lg">
+          Workflow, data, and systems projects across healthcare, education, and energy products.
+        </p>
+      </div>
       {projects.map((project, index) => (
         <div
           key={project.id}
           id={project.id}
           data-case-study-item="true"
-          className="scroll-mt-40"
+          className="scroll-mt-32 border-t border-border py-12 first:border-t-0 first:pt-0 md:py-16 lg:py-20"
           ref={el => caseStudyRefs.current[index] = el}
         >
-          <div className="w-full pb-2">
+          <div className="w-full">
             <Link to={project.link} className="group">
-              <HeroSection 
-                id={project.id}
-                {...getHeroConfig(project.id)}
-                className="h-[280px] sm:h-[330px] md:h-[500px] lg:h-[600px]"
-              />
+              <div className="relative flex h-[320px] w-full items-center justify-center overflow-hidden rounded-[1.75rem] border border-border/70 bg-[#050505] p-5 shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition-all duration-300 group-hover:border-foreground/25 group-hover:shadow-[0_32px_110px_rgba(0,0,0,0.28)] sm:h-[400px] md:h-[520px] md:p-7 lg:h-[640px] lg:p-9">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.12),transparent_42%)]" />
+                <img
+                  src={getImagePath(getHeroConfig(project.id).singleImage)}
+                  alt={`${project.title} preview`}
+                  className="relative z-10 h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+                />
+              </div>
             </Link>
           </div>
 
-          <div className="flex flex-col gap-4 md:gap-6 lg:flex-row lg:items-start lg:justify-between">
-            <div className="flex flex-col gap-1 md:gap-2 max-w-2xl">
-              <div className="flex items-center justify-between mt-4">
-                <h3 className="mb-0 text-display-sm md:text-display-md">
-                  {project.title}
-                </h3>
-                <Link to={project.link}>
-                  <Button 
-                    variant="outline"
-                    size="md"
-                    icon={ArrowRight}
-                    iconPlacement="right"
-                  />
-                </Link>
-              </div>
-              <div className="space-y-6 max-w-xl">
-                <p className="md:text-body-lg text-foreground/80">
-                  {project.description}
-                </p>
-              </div>
+          <div className="mt-6 grid gap-4 md:mt-7 md:grid-cols-[minmax(0,0.48fr)_minmax(0,0.52fr)] md:gap-8 lg:gap-12">
+            <div className="flex flex-col gap-2">
+              <p className="case-study-eyebrow mb-0 text-muted-foreground">
+                {String(index + 1).padStart(2, '0')} / {project.category}
+              </p>
+              <h3 className="mb-0 text-display-sm md:text-display-md">
+                {project.title}
+              </h3>
             </div>
-          </div>
-          <div className="flex justify-center md:justify-start mt-2">
-            <Tags tags={project.technologies} />
+            <div className="flex flex-col gap-5 md:items-start">
+              <p className="mb-0 max-w-2xl text-body-md text-foreground/80 md:text-body-lg">
+                {project.description}
+              </p>
+              <Tags tags={project.technologies} />
+            </div>
           </div>
         </div>
       ))}

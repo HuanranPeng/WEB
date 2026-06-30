@@ -9,17 +9,19 @@ interface AnimatedHeroTextProps {
 
 export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: AnimatedHeroTextProps) {
   const greetingRef = useRef<HTMLSpanElement>(null);
-  const titleWordsRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const titleRef = useRef<HTMLDivElement>(null);
   const emojiRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    const titleWords = titleRef.current?.querySelectorAll('[data-title-word]') ?? [];
+
     // Set initial states - greeting shows immediately
     gsap.set(greetingRef.current, {
       opacity: 1,
       y: 0
     });
     
-    gsap.set(titleWordsRef.current, {
+    gsap.set(titleWords, {
       opacity: 0
     });
 
@@ -27,7 +29,7 @@ export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: Ani
     const tl = gsap.timeline({ delay: 0.1 });
 
     // Add animations - only animate title words
-    tl.to(titleWordsRef.current, {
+    tl.to(titleWords, {
       opacity: 1,
       duration: 0.8,
       ease: 'ease'
@@ -60,7 +62,7 @@ export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: Ani
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [title]);
 
   // Split the greeting into emoji and text
   const [emoji, ...greetingText] = greeting.split(' ');
@@ -115,6 +117,7 @@ export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: Ani
           {greetingText.join(' ')}
         </span>
         <div 
+          ref={titleRef}
           className="font-normal text-display-md sm:text-display-xl md:text-display-3xl lg:text-display-4xl text-foreground pt-3 md:pt-4"
           style={{
             wordBreak: 'keep-all',
@@ -127,7 +130,7 @@ export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: Ani
           {titleWords.map((word, i) => (
             <span
               key={i}
-              ref={el => titleWordsRef.current[i] = el}
+              data-title-word
               className={`inline-block ${isWordHighlighted(i) ? 'text-accent font-semibold' : ''}`}
               style={{ marginRight: '0.25em', opacity: 0, willChange: 'opacity' }}
             >

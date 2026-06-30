@@ -3,16 +3,15 @@ import { CaseStudies } from '../components/CaseStudies';
 import { Footer } from '../components/Footer';
 import { Container } from '@/components/ui/container';
 import { CTA } from '@/components/CTA';
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
 import { AnimatedHeroText } from '@/components/AnimatedHeroText';
-import { InPageNavigation } from '@/components/InPageNavigation';
 import MetaTags from '@/components/MetaTags';
-import gsap from 'gsap';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
-gsap.registerPlugin(ScrollToPlugin, ScrollSmoother);
+const focusAreas = [
+  'Workflow design',
+  'Design systems',
+  'Data-heavy products',
+  'B2B SaaS',
+];
 
 export function HomePage() {
   return (
@@ -23,60 +22,32 @@ export function HomePage() {
       <ThreeHero />
       
       {/* Hero section - full width */}
-      <Container>
-        <section id="about" className='flex flex-col justify-center h-screen gap-8 md:gap-12'>
+      <Container className="max-w-screen-2xl">
+        <section id="about" className="flex min-h-[78vh] flex-col justify-center pb-12 pt-28 md:min-h-[82vh] md:pb-16 md:pt-32">
           <AnimatedHeroText
             greeting="👋 Hello, I'm Huanran Peng."
-            title="Product Designer blending design systems and AI interaction design to deliver measurable product value."
-            highlightPhrases={["design systems", "AI interaction design", "product value"]}
+            title="Product designer focused on complex workflow products, helping teams turn scattered data, decisions, and constraints into clear, usable systems."
+            highlightPhrases={["complex workflow products", "scattered data", "clear, usable systems"]}
           />
-          <Button
-            size="lg"
-            icon={ArrowRight}
-            iconPlacement="right"
-            className="w-fit"
-            onClick={() => {
-              const target =
-                document.querySelector<HTMLElement>('[data-case-study-item="true"]') ??
-                document.getElementById('case-studies');
-              if (!target) return;
-
-              const smoother = ScrollSmoother.get();
-              if (smoother) {
-                smoother.scrollTo(target, true, 'top top');
-                return;
-              }
-
-              gsap.to(window, {
-                duration: 1,
-                scrollTo: { y: target, offsetY: 150 },
-                ease: 'power2.inOut',
-              });
-            }}
-          >
-            Continue to Case
-          </Button>
+          <div className="mt-8 flex max-w-3xl flex-wrap gap-2 md:mt-10 md:gap-3">
+            {focusAreas.map((area) => (
+              <span
+                key={area}
+                className="rounded-full border border-border/70 bg-background/60 px-4 py-2 text-caption font-medium text-muted-foreground backdrop-blur"
+              >
+                {area}
+              </span>
+            ))}
+          </div>
         </section>
       </Container>
 
-      {/* Content sections with navigation sidebar */}
-      <Container>
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8" id="content-with-nav">
-          {/* Main content */}
-          <div className="lg:col-span-9">
-            <div className="flex flex-col gap-8 md:gap-16 lg:gap-24">
-              <section id="case-studies">
-                <CaseStudies />
-              </section>
-            </div>
-          </div>
-          
-          {/* Navigation sidebar - hidden on mobile, visible on lg and up */}
-          <div className="lg:col-span-3">
-            <InPageNavigation />
-          </div>
-        </div>
+      <Container className="max-w-screen-2xl">
+        <section id="case-studies" className="pb-20 md:pb-28">
+          <CaseStudies />
+        </section>
       </Container>
+
       <section id="contact">
         <div className="border-t border-border">
           <CTA />

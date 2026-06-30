@@ -33,9 +33,9 @@ export const useCanonicalRedirect = () => {
     
     // For Vercel domains and localhost, still handle root path redirect to /2026
     if (isLocalhost || isVercelDomain) {
-      // If on root path, redirect to /2026
+      // If on root path, redirect to the Vite base path with trailing slash.
       if (currentPath === '/' || currentPath === '') {
-        const redirectUrl = `${window.location.protocol}//${currentHost}${BASE_PATH}${currentSearch}${currentHash}`;
+        const redirectUrl = `${window.location.protocol}//${currentHost}${BASE_PATH}/${currentSearch}${currentHash}`;
         window.location.replace(redirectUrl);
       }
       return;
@@ -53,7 +53,7 @@ export const useCanonicalRedirect = () => {
      * This app is deployed under /2026. We should NOT hijack other site paths
      * like /2023, /about, etc. Only normalize/redirect paths that are part of
      * this app:
-     * - "/" -> "/2026"
+     * - "/" -> "/2026/"
      * - "/2026/*" stays within "/2026"
      * - legacy case-study routes -> "/2026/case-study/*"
      */

@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 rounded-[100px] font-domine transition-[transform,colors,background-color,border-color] ease-custom-spring hover:scale-[1.125] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 group w-fit',
+  'inline-flex items-center justify-center gap-2 rounded-[100px] font-body transition-[transform,colors,background-color,border-color] ease-custom-spring hover:scale-[1.125] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 group w-fit',
   {
     variants: {
       variant: {

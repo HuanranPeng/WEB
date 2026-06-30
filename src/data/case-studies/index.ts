@@ -4,11 +4,15 @@ import { aiChatbotDesign } from './ai-chatbot-design';
 import { heatPumpMarketplace } from './heat-pump-marketplace';
 import { locatifyArNavigation } from './locatify-ar-navigation';
 import { spaceProject } from './space-project';
+import { medhubWorkHours } from './medhub-work-hours';
+import { nextGenVati } from './next-gen-vati';
 
 export const projects = [
-  energysageRedesign,
-  heatPumpMarketplace,
+  nextGenVati,
+  medhubWorkHours,
   energysageDesignSystem,
+  heatPumpMarketplace,
+  energysageRedesign,
   aiChatbotDesign,
   locatifyArNavigation,
   spaceProject

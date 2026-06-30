@@ -27,7 +27,7 @@ export function CaseStudyPage() {
   }
 
   return (
-    <div id="top">
+    <div id="top" className="case-study-page">
       <MetaTags 
         title={project.meta?.title || `${project.title} | Huanran Peng Design`}
         description={project.meta?.description || project.description}
@@ -48,25 +48,33 @@ export function CaseStudyPage() {
             <ArrowLeft className="h-4 w-4" />
             Back to Home
           </Link>
-          <h1 className="my-4 md:my-6">
+          <h1 className="my-4 md:my-6 max-w-5xl">
             {project.title}
           </h1>
-          <div className="max-w-full md:max-w-[80%]">
-            <h2 className="text-display-sm md:text-display-lg mb-6 md:mb-8 text-foreground !font-normal">
+          <div className="max-w-full md:max-w-[72%]">
+            <h2 className="mb-6 md:mb-8 text-foreground !font-normal">
               {project.heroSubTitle}
             </h2>
           </div>
           
-          {/* Role and Team under description */}
+          {/* Project metadata */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-12 mb-10 md:mb-16">
             <div className="flex flex-col gap-2">
-              <h3 className="text-display-xs text-foreground">Role</h3>
+              <h3 className="case-study-eyebrow text-muted-foreground">Role</h3>
               <p className="text-body-md text-muted-foreground">{project.role}</p>
             </div>
             <div className="flex flex-col gap-2">
-              <h3 className="text-display-xs text-foreground">Timeline</h3>
-              <p className="text-body-md text-muted-foreground">{project.team}</p>
+              <h3 className="case-study-eyebrow text-muted-foreground">Timeline</h3>
+              <p className="text-body-md text-muted-foreground">
+                {project.timeline || project.year}
+              </p>
             </div>
+            {project.team && project.team !== 'Team Work' && (
+              <div className="flex flex-col gap-2">
+                <h3 className="case-study-eyebrow text-muted-foreground">Team</h3>
+                <p className="text-body-md text-muted-foreground">{project.team}</p>
+              </div>
+            )}
           </div>
           
           {/* Hero Section */}
@@ -90,12 +98,12 @@ export function CaseStudyPage() {
         
         <div className="lg:grid lg:grid-cols-12 lg:gap-8" id="content-with-nav">
           {/* Left sidebar - Navigation (sticky) */}
-          <div className="lg:col-span-3">
+          <div className="relative z-30 lg:col-span-1">
             <InPageNavigation caseStudyProject={project} />
           </div>
           
           {/* Main content */}
-          <div className="lg:col-span-9">
+          <div className="lg:col-span-11">
             <div className="flex flex-col">
                   {project.sections.map((section: Section, index: number) => {
                 const isLastSection = index === project.sections.length - 1;
@@ -113,21 +121,21 @@ export function CaseStudyPage() {
                         {section.headingLevel === 'subsection' ? (
                           <h4 className="text-foreground mb-6 md:mb-8">
                             {'smallTitle' in section && section.smallTitle && (
-                              <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                              <span className="case-study-eyebrow mb-4 block text-muted-foreground">{section.smallTitle}</span>
                             )}
                             {section.title}
                           </h4>
                         ) : (
                           <h3 className="text-foreground mb-6 md:mb-8">
                           {'smallTitle' in section && section.smallTitle && (
-                            <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                            <span className="case-study-eyebrow mb-4 block text-muted-foreground">{section.smallTitle}</span>
                           )}
                           {section.title}
                           </h3>
                         )}
                         {section.content && (
                           <div 
-                            className="text-body-lg text-foreground mb-6 md:mb-8"
+                            className="mb-6 max-w-3xl text-body-lg text-foreground md:mb-8"
                             dangerouslySetInnerHTML={{ __html: section.content }}
                           />
                         )}
@@ -185,7 +193,7 @@ export function CaseStudyPage() {
                           {(section.title || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
                               {section.smallTitle && (
-                                <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                                <span className="case-study-eyebrow mb-4 block text-muted-foreground">{section.smallTitle}</span>
                               )}
                               {section.title && (
                                 section.headingLevel === 'subsection' ? (
@@ -199,7 +207,11 @@ export function CaseStudyPage() {
                           {firstImage && (
                             <div className={cn(
                               "grid grid-cols-1",
-                              isIconImage ? "md:grid-cols-[auto_1fr] md:gap-6" : "md:grid-cols-2 gap-8",
+                              isIconImage
+                                ? "md:grid-cols-[auto_1fr] md:gap-6"
+                                : isLeftImage
+                                  ? "gap-8 md:grid-cols-[minmax(0,0.58fr)_minmax(320px,0.42fr)]"
+                                  : "gap-8 md:grid-cols-[minmax(320px,0.42fr)_minmax(0,0.58fr)]",
                               section.alignContent === 'center' ? "items-center" : "items-start",
                               !isLeftImage && "md:grid-flow-dense"
                             )}>
@@ -222,7 +234,7 @@ export function CaseStudyPage() {
                               )}>
                                 {hasContent && (
                                   <div 
-                                    className="text-body-lg text-foreground"
+                                    className="max-w-2xl text-body-lg text-foreground"
                                     dangerouslySetInnerHTML={{ __html: section.content || '' }}
                                   />
                                 )}
@@ -252,7 +264,7 @@ export function CaseStudyPage() {
                           {(section.title || section.content || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
                               {section.smallTitle && (
-                                <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                                <span className="case-study-eyebrow mb-4 block text-muted-foreground">{section.smallTitle}</span>
                               )}
                               {section.title && (
                                 section.headingLevel === 'subsection' ? (
@@ -263,13 +275,13 @@ export function CaseStudyPage() {
                               )}
                               {section.content && (
                                 <div 
-                                  className="text-body-lg text-foreground"
+                                  className="max-w-3xl text-body-lg text-foreground"
                                   dangerouslySetInnerHTML={{ __html: section.content }}
                                 />
                               )}
                             </div>
                           )}
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
                             <div className="flex flex-col gap-4">
                               {leftImages.map((image, idx) => (
                                 <div key={idx}>
@@ -315,7 +327,7 @@ export function CaseStudyPage() {
                           {(section.title || section.content || section.smallTitle) && (
                             <div className="flex flex-col mb-6 md:mb-8">
                               {section.smallTitle && (
-                                <span className="block text-display-xs mb-4">{section.smallTitle}</span>
+                                <span className="case-study-eyebrow mb-4 block text-muted-foreground">{section.smallTitle}</span>
                               )}
                               {section.title && (
                                 section.headingLevel === 'subsection' ? (
@@ -326,7 +338,7 @@ export function CaseStudyPage() {
                               )}
                               {section.content && (
                                 <div 
-                                  className="text-body-lg text-foreground"
+                                  className="max-w-3xl text-body-lg text-foreground"
                                   dangerouslySetInnerHTML={{ __html: section.content }}
                                 />
                               )}

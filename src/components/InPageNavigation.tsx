@@ -25,6 +25,7 @@ interface InPageNavigationProps {
 
 // Safely extract a title from a Section union (VideoSection has no title)
 const getSectionTitle = (section: Section): string | undefined => {
+  if (section.navTitle?.trim()) return section.navTitle;
   if (!('title' in section)) return undefined;
   const maybeTitle = (section as { title?: unknown }).title;
   return typeof maybeTitle === 'string' ? maybeTitle : undefined;
@@ -67,6 +68,7 @@ export function InPageNavigation({ className, caseStudyProject }: InPageNavigati
   const navRef = useRef<HTMLDivElement>(null);
   const pinTriggerRef = useRef<ScrollTrigger | null>(null);
   const sectionTriggersRef = useRef<ScrollTrigger[]>([]);
+  const [isExpanded, setIsExpanded] = useState(false);
   
   // Memoize navigation sections to prevent unnecessary recalculations
   const navigationSections = useMemo(() => {
@@ -112,13 +114,17 @@ export function InPageNavigation({ className, caseStudyProject }: InPageNavigati
         return false;
       }
       
-      // Find the main content column (lg:col-span-9)
+      // Find the main content column. Case studies use a compact nav column,
+      // while the homepage keeps the wider original layout.
       // It could be before or after the sidebar
       let mainContent: HTMLElement | null = null;
       const children = Array.from(gridContainer.children);
       
       for (const child of children) {
-        if (child !== sidebarContainer && child.classList.contains('lg:col-span-9')) {
+        if (
+          child !== sidebarContainer &&
+          (child.classList.contains('lg:col-span-9') || child.classList.contains('lg:col-span-11'))
+        ) {
           mainContent = child as HTMLElement;
           break;
         }
@@ -234,18 +240,39 @@ export function InPageNavigation({ className, caseStudyProject }: InPageNavigati
   return (
     <div 
       ref={navRef} 
-      className={cn("hidden lg:block", className)}
+      className={cn(
+        "group/nav relative z-30 hidden w-12 lg:block",
+        className
+      )}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+      onFocus={() => setIsExpanded(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setIsExpanded(false);
+        }
+      }}
       style={{
         maxHeight: 'calc(100vh - 8rem)',
-        overflowY: 'auto',
-        overflowX: 'hidden'
+        overflow: 'visible'
       }}
     >
-      <nav className="bg-background/80 backdrop-blur-sm rounded-lg pl-4 pr-0 py-4 mt-4">
+      <nav
+        className={cn(
+          "mt-4 max-h-[calc(100vh-8rem)] overflow-x-hidden overflow-y-auto border border-border/60 bg-background/85 shadow-sm backdrop-blur-md transition-all duration-300",
+          isExpanded ? "w-[280px] rounded-2xl px-3 py-4" : "w-12 rounded-full px-0 py-3"
+        )}
+        aria-label="Page sections"
+      >
         <div className="space-y-3">
           {navigationSections.map((section) => (
             <div key={section.title}>
-              <h4 className="text-body-caption font-medium text-foreground mb-3">
+              <h4
+                className={cn(
+                  "mb-2 truncate px-3 text-[10px] font-medium uppercase leading-none tracking-[0.14em] text-muted-foreground transition-all duration-200",
+                  isExpanded ? "opacity-80" : "h-0 overflow-hidden opacity-0"
+                )}
+              >
                 {section.title}
               </h4>
               <ul className="space-y-1">
@@ -255,17 +282,35 @@ export function InPageNavigation({ className, caseStudyProject }: InPageNavigati
                     <li key={item.id}>
                       <button
                         onClick={() => handleNavClick(item.href, item.id)}
+                        title={!isExpanded ? item.label : undefined}
                         className={cn(
-                          "block w-full text-left px-3 py-2 !text-body-xs transition-all duration-200 rounded-md",
+                          "flex w-full items-center rounded-full transition-all duration-200",
                           "hover:bg-muted hover:text-foreground",
                           "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+                          isExpanded ? "gap-3 px-3 py-2 text-left" : "h-8 justify-center px-0",
                           isActive 
                             ? "bg-muted text-foreground font-medium" 
                             : "text-muted-foreground"
                         )}
                         aria-current={isActive ? 'page' : undefined}
+                        aria-label={item.label}
                       >
-                        {item.label}
+                        <span
+                          className={cn(
+                            "shrink-0 rounded-full transition-all duration-200",
+                            isActive ? "h-2.5 w-2.5 bg-foreground" : "h-1.5 w-1.5 bg-muted-foreground/45",
+                            !isActive && "group-hover/nav:bg-muted-foreground/70"
+                          )}
+                          aria-hidden="true"
+                        />
+                        <span
+                          className={cn(
+                            "min-w-0 truncate !text-body-xs transition-all duration-200",
+                            isExpanded ? "w-full translate-x-0 opacity-100" : "w-0 -translate-x-1 overflow-hidden opacity-0"
+                          )}
+                        >
+                          {item.label}
+                        </span>
                       </button>
                     </li>
                   );

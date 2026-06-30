@@ -6,6 +6,7 @@ import { GridLayoutSection as GridLayoutSectionType, InstructionSection as Instr
 
 export interface GridLayoutSectionProps extends Omit<GridLayoutSectionType | InstructionSectionType, 'type'> {
   type?: 'grid-layout' | 'instruction';
+  smallTitle?: string;
   items?: Subsection[];
   subsections?: Subsection[];
   className?: string;
@@ -15,6 +16,7 @@ export interface GridLayoutSectionProps extends Omit<GridLayoutSectionType | Ins
 export function GridLayoutSection({ 
   title, 
   content, 
+  smallTitle,
   image, 
   link,
   layout,
@@ -58,6 +60,9 @@ export function GridLayoutSection({
         <div className="flex flex-col gap-4 md:gap-6">
           {title && (
             <TitleTag className="text-foreground mb-4 md:mb-6">
+              {smallTitle && (
+                <span className="case-study-eyebrow mb-4 block text-muted-foreground">{smallTitle}</span>
+              )}
               {title}
             </TitleTag>
           )}
@@ -65,7 +70,7 @@ export function GridLayoutSection({
             <Banner variant={variant}>{content}</Banner>
           ) : (
             <div 
-              className="text-body-lg text-foreground [&>a]:text-foreground [&>a]:underline [&>a]:decoration-[0.5px] [&>a]:underline-offset-4 [&>a]:transition-colors hover:[&>a]:text-accent"
+              className="max-w-3xl text-body-lg text-foreground [&>a]:text-foreground [&>a]:underline [&>a]:decoration-[0.5px] [&>a]:underline-offset-4 [&>a]:transition-colors hover:[&>a]:text-accent"
               dangerouslySetInnerHTML={{ __html: content }}
             />
           )}
@@ -128,7 +133,7 @@ export function GridLayoutSection({
               )}
             >
               {item.title && (
-                <h4 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground">
+                <h4 className="text-foreground">
                   {item.title}
                 </h4>
               )}

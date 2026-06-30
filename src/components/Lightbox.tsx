@@ -11,6 +11,7 @@ interface Image {
   caption?: string;
   videoUrl?: string;
   aspectRatio?: string;
+  displaySize?: 'default' | 'wide' | 'contained' | 'phone' | 'card';
   variant?: 'default' | 'icon';
 }
 
@@ -106,22 +107,34 @@ export function Lightbox({ src, alt, className, images, containerHidden, childre
   // If only one image and className includes w-full, render as single image
   if (normalizedImages.length === 1 && className?.includes("w-full")) {
     const isIcon = normalizedImages[0].variant === 'icon';
+    const displaySize = normalizedImages[0].displaySize || 'default';
     return (
       <>
-        <img 
-          src={normalizedImages[0].url} 
-          alt={normalizedImages[0].alt} 
+        <div
           className={cn(
-            isIcon
-              ? "cursor-pointer h-[120px] md:h-[152px] w-auto max-w-full rounded-lg mr-auto hover:opacity-80 transition-opacity duration-200"
-              : "cursor-pointer w-full h-auto hover:scale-105 transition-transform duration-300 rounded-lg",
-            !containerHidden && !isIcon && "shadow-lg"
+            "case-study-image-frame",
+            displaySize === 'wide' && "case-study-image-wide",
+            displaySize === 'contained' && "case-study-image-contained",
+            displaySize === 'phone' && "case-study-image-phone",
+            displaySize === 'card' && "case-study-image-card",
+            isIcon && "case-study-image-icon"
           )}
-          onClick={() => {
-            setSelectedImage(0);
-            setIsOpen(true);
-          }}
-        />
+        >
+          <img 
+            src={normalizedImages[0].url} 
+            alt={normalizedImages[0].alt} 
+            className={cn(
+              isIcon
+                ? "cursor-pointer h-[120px] md:h-[152px] w-auto max-w-full rounded-lg mr-auto hover:opacity-80 transition-opacity duration-200"
+                : "cursor-pointer h-auto max-h-full w-full object-contain transition-transform duration-300 hover:scale-[1.015]",
+              !containerHidden && !isIcon && "shadow-sm"
+            )}
+            onClick={() => {
+              setSelectedImage(0);
+              setIsOpen(true);
+            }}
+          />
+        </div>
         {normalizedImages[0].caption && (
           <p className="caption mt-2 text-center">{normalizedImages[0].caption}</p>
         )}
@@ -227,8 +240,8 @@ export function Lightbox({ src, alt, className, images, containerHidden, childre
               src={image.url} 
               alt={image.alt} 
               className={cn(
-                "cursor-pointer w-full h-auto hover:scale-105 transition-transform duration-300 rounded-lg",
-                !containerHidden && "shadow-lg"
+                "cursor-pointer h-auto max-h-full w-full object-contain transition-transform duration-300 hover:scale-[1.015]",
+                !containerHidden && "shadow-sm"
               )}
               onClick={() => {
                 setSelectedImage(index);
