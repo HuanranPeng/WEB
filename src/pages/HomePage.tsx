@@ -8,9 +8,10 @@ import MetaTags from '@/components/MetaTags';
 
 const focusAreas = [
   'Workflow design',
+  'Mobile UX',
+  'AI interaction',
   'Design systems',
   'Data-heavy products',
-  'B2B SaaS',
 ];
 
 export function HomePage() {
@@ -26,8 +27,8 @@ export function HomePage() {
         <section id="about" className="flex min-h-[78vh] flex-col justify-center pb-12 pt-28 md:min-h-[82vh] md:pb-16 md:pt-32">
           <AnimatedHeroText
             greeting="👋 Hello, I'm Huanran Peng."
-            title="Product designer focused on complex workflow products, helping teams turn scattered data, decisions, and constraints into clear, usable systems."
-            highlightPhrases={["complex workflow products", "scattered data", "clear, usable systems"]}
+            title="Product designer shaping complex workflows across web, mobile, and AI into clear, usable systems."
+            highlightPhrases={["complex workflows", "web, mobile, and AI", "clear, usable systems"]}
           />
           <div className="mt-8 flex max-w-3xl flex-wrap gap-2 md:mt-10 md:gap-3">
             {focusAreas.map((area) => (
