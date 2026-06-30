@@ -2,7 +2,6 @@ import { LottieLogo } from "@/components/LottieLogo"
 import { Container } from "@/components/ui/container"
 import { Link } from "react-router-dom"
 import { cn } from "@/lib/utils"
-import { Lightbox } from "@/components/Lightbox"
 import { projects } from "@/data/case-studies"
 
 const menuSections = [
@@ -60,23 +59,11 @@ export function Footer() {
         {/* Copyright */}
         <div className="flex flex-col space-y-2">
           <p className="max-w-[85%] caption text-foreground">
-            ©2026 Huanran Peng. Built for learning and tinkering—fork it, remix it, build cool stuff.&nbsp;
-            <Lightbox
-              images={[{
-                url: "/fuzzy-404.mp4",
-                alt: "Static video",
-                videoUrl: "/fuzzy-404.mp4",
-                aspectRatio: "16/9"
-              }]}
-              containerHidden
-            >
-              <span className="caption text-muted-foreground cursor-pointer hover:text-accent transition-colors inline-flex">Designed despite of tyrannical 🐈</span>
-            </Lightbox>
+            ©2026 Huanran Peng. Built for learning and tinkering—fork it, remix it, build cool stuff.
           </p>
         </div>
       </Container>
     </footer>
   );
 }
-
 
