@@ -132,7 +132,7 @@ export function ProjectCover({ project, className }: ProjectCoverProps) {
             <p className="mb-3 text-[10px] font-semibold uppercase leading-none tracking-[0.18em] text-white/45 md:text-xs">
               {project.category}
             </p>
-            <h4 className="mb-0 max-w-[12ch] text-[2rem] font-semibold leading-[0.94] tracking-[-0.06em] sm:text-[2.8rem] md:max-w-[12ch] md:text-[4.6rem] lg:text-[6rem]">
+            <h4 className="mb-0 max-w-[16ch] text-[1.625rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-[2.25rem] md:max-w-[18ch] md:text-[3.25rem] lg:text-[4.1rem]">
               {project.title}
             </h4>
           </div>

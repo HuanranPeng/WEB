@@ -2,7 +2,7 @@ import { Project } from '../types';
 
 export const locatifyArNavigation: Project = {
   id: 'locatify-ar-navigation',
-  title: 'Locatify',
+  title: 'AR Campus Navigation',
   category: 'AR/VR Design',
   year: 'Oct. – Dec. 2019',
   link: '/case-study/locatify-ar-navigation',
@@ -17,7 +17,7 @@ export const locatifyArNavigation: Project = {
   team: 'Team Work',
 
   meta: {
-    title: 'Locatify AR Navigation | Huanran Peng Design',
+    title: 'AR Campus Navigation | Huanran Peng Design',
     description:
       'Designing Locatify, an augmented reality navigation experience that helps students quickly locate rooms, events, and classrooms on campus.',
     ogImage: '/images/locatify-ar-navigation/hero-image.png',

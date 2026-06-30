@@ -2,7 +2,7 @@ import { Project } from '../types';
 
 export const energysageRedesign: Project = {
   id: 'energysage-redesign',
-  title: 'EnergySage Redesign',
+  title: 'EnergySage Site Redesign',
   category: 'Product Design',
   year: '2022-Present',
   link: '/case-study/energysage-redesign',
@@ -16,7 +16,7 @@ export const energysageRedesign: Project = {
   team: 'Oct. 2022 - Present',
   
   meta: {
-    title: 'EnergySage Redesign | Huanran Peng Design',
+    title: 'EnergySage Site Redesign | Huanran Peng Design',
     description: 'Modernizing EnergySage core educational experience to position it as the premier destination for home electrification.',
     ogImage: '/images/energysage-redesign/hero-image.png',
     ogUrl: 'https://www.huanranpeng.com/2026/case-study/energysage-redesign',

@@ -2,7 +2,7 @@ import { Project } from '../types';
 
 export const spaceProject: Project = {
   id: 'space-project',
-  title: 'Space',
+  title: 'Mental Health Support Platform',
   category: 'Product Design',
   year: 'Sep. 2020 - Present',
   link: '/case-study/space-project',
@@ -18,7 +18,7 @@ export const spaceProject: Project = {
   team: 'Team Work',
 
   meta: {
-    title: 'Space | Huanran Peng Design',
+    title: 'Mental Health Support Platform | Huanran Peng Design',
     description:
       'Designing Space, a social support platform that removes barriers to mental health services and leverages data, peers, and community.',
     ogImage: '/images/space-project/hero-image.png',
@@ -285,4 +285,3 @@ export const spaceProject: Project = {
     role: 'Design & Research',
   },
 };
-

@@ -2,7 +2,7 @@ import { Project } from '../types';
 
 export const medhubWorkHours: Project = {
   id: 'medhub-work-hours',
-  title: 'MedHub Work Hours',
+  title: 'Work-Hour Compliance Reporting',
   category: 'Enterprise Product Design',
   year: 'Jan 2024-Present',
   link: '/case-study/medhub-work-hours',
@@ -16,7 +16,7 @@ export const medhubWorkHours: Project = {
   timeline: 'Jan 2024-Present',
   team: 'UX, Product, Engineering, Customer Success',
   meta: {
-    title: 'MedHub Work Hours | Huanran Peng Design',
+    title: 'Work-Hour Compliance Reporting | Huanran Peng Design',
     description:
       'A healthcare compliance workflow redesign that consolidates reporting, highlights risk, and supports earlier intervention.',
     ogImage: '/images/medhub-work-hours/figma-program-drilldown.png',

@@ -2,7 +2,7 @@ import { Project } from '../types';
 
 export const nextGenVati: Project = {
   id: 'next-gen-vati',
-  title: 'Next Gen VATI',
+  title: 'NCLEX Prep Learning Path',
   category: 'Product Strategy',
   year: 'May 2024-Dec 2025',
   link: '/case-study/next-gen-vati',
@@ -16,7 +16,7 @@ export const nextGenVati: Project = {
   timeline: 'May 2024-Dec 2025',
   team: 'UX, Product, Engineering, Clinical',
   meta: {
-    title: 'Next Gen VATI | Huanran Peng Design',
+    title: 'NCLEX Prep Learning Path | Huanran Peng Design',
     description:
       'A platform redesign for ATI Nursing Education that turns a fragmented NCLEX preparation experience into a guided student path and educator support workflow.',
     ogImage: '/images/next-gen-vati/figma-student-path.png',

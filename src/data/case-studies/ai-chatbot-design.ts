@@ -6,7 +6,7 @@ const figmaEmbedUrl = `https://www.figma.com/embed?embed_host=share&url=${encode
 
 export const aiChatbotDesign: Project = {
   id: 'ai-chatbot-design',
-  title: 'Chatbot Design',
+  title: 'Postpartum AI Support',
   category: 'AI Interaction Design',
   year: '2020-Present',
   link: '/case-study/ai-chatbot-design',
@@ -20,7 +20,7 @@ export const aiChatbotDesign: Project = {
   team: 'Interdisciplinary team including mental health professionals, PSI volunteers',
   
   meta: {
-    title: 'AI Chatbot Design for Mental Health | Huanran Peng Design',
+    title: 'Postpartum AI Support | Huanran Peng Design',
     description: 'Designing conversational AI interfaces for mental health support with focus on trust, safety, and meaningful user interactions.',
     ogImage: '/images/ai-chatbot-design/hero-image.png',
     ogUrl: 'https://www.huanranpeng.com/2026/case-study/ai-chatbot-design',
