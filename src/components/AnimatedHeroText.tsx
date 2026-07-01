@@ -10,7 +10,6 @@ interface AnimatedHeroTextProps {
 export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: AnimatedHeroTextProps) {
   const greetingRef = useRef<HTMLSpanElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const emojiRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const titleWords = titleRef.current?.querySelectorAll('[data-title-word]') ?? [];
@@ -35,38 +34,11 @@ export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: Ani
       ease: 'ease'
     });
 
-    // Add hover animation for the emoji
-    if (emojiRef.current) {
-      const waveAnimation = gsap.to(emojiRef.current, {
-        rotate: 20,
-        duration: 0.2,
-        repeat: 5,
-        yoyo: true,
-        ease: "power2.inOut",
-        transformOrigin: "70% 70%",
-        paused: true
-      });
-
-      const greetingElement = greetingRef.current;
-      
-      const onHover = () => waveAnimation.restart();
-      greetingElement?.addEventListener('mouseenter', onHover);
-
-      return () => {
-        tl.kill();
-        waveAnimation.kill();
-        greetingElement?.removeEventListener('mouseenter', onHover);
-      };
-    }
-
     return () => {
       tl.kill();
     };
   }, [title]);
 
-  // Split the greeting into emoji and text
-  const [emoji, ...greetingText] = greeting.split(' ');
-  
   // Split title into words while preserving spaces
   const titleWords = title.split(' ');
 
@@ -107,14 +79,7 @@ export function AnimatedHeroText({ greeting, title, highlightPhrases = [] }: Ani
           className="font-normal block text-display-sm md:text-display-lg text-muted-foreground whitespace-nowrap"
           style={{ willChange: 'transform, opacity' }}
         >
-          <span 
-            ref={emojiRef} 
-            className="inline-block"
-          >
-            {emoji}
-          </span>
-          {' '}
-          {greetingText.join(' ')}
+          {greeting}
         </span>
         <div 
           ref={titleRef}

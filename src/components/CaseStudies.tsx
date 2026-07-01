@@ -63,7 +63,7 @@ export function CaseStudies() {
         >
           <div className="w-full">
             <Link to={project.link} className="group">
-              <div className="h-[320px] w-full sm:h-[400px] md:h-[520px] lg:h-[640px]">
+              <div className="h-[420px] w-full sm:h-[460px] md:h-[520px] lg:h-[640px]">
                 <ProjectCover project={project} />
               </div>
             </Link>

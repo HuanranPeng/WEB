@@ -111,7 +111,7 @@ export function ProjectCover({ project, className }: ProjectCoverProps) {
   return (
     <div
       className={cn(
-        "relative h-full w-full overflow-hidden rounded-[1.75rem] border border-border/70 bg-[#050505] shadow-[0_28px_90px_rgba(0,0,0,0.22)] transition-all duration-300 group-hover:border-foreground/25 group-hover:shadow-[0_32px_110px_rgba(0,0,0,0.28)]",
+        "relative h-full w-full overflow-hidden rounded-[1.75rem] border border-border/70 bg-[#050505] shadow-[0_18px_54px_rgba(0,0,0,0.16)] transition-all duration-300 group-hover:border-foreground/25 group-hover:shadow-[0_22px_70px_rgba(0,0,0,0.2)]",
         className
       )}
       style={{
@@ -120,36 +120,30 @@ export function ProjectCover({ project, className }: ProjectCoverProps) {
           "linear-gradient(135deg, #101010 0%, #050505 54%, #121212 100%)",
       }}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-[0.13] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:42px_42px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(255,255,255,0.12),transparent_28%),radial-gradient(circle_at_85%_85%,rgba(255,255,255,0.08),transparent_34%)]" />
       <div
         className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full blur-3xl md:h-96 md:w-96"
         style={{ backgroundColor: config.accentSoft }}
       />
 
-      <div className="relative z-10 grid h-full grid-rows-[auto_1fr] gap-8 p-6 text-white sm:p-8 md:p-10 lg:p-12">
+      <div className="relative z-10 grid h-full grid-rows-[auto_1fr] gap-5 p-6 text-white sm:gap-7 sm:p-8 md:gap-8 md:p-10 lg:p-12">
         <div className="flex items-start justify-between gap-5">
           <div className="min-w-0">
-            <p className="mb-3 text-[10px] font-semibold uppercase leading-none tracking-[0.18em] text-white/45 md:text-xs">
-              {project.category}
-            </p>
             <h4 className="mb-0 max-w-[16ch] text-[1.625rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-[2.25rem] md:max-w-[18ch] md:text-[3.25rem] lg:text-[4.1rem]">
               {project.title}
             </h4>
-          </div>
-          <div
-            className="hidden rounded-full border px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] sm:block"
-            style={{ borderColor: `${config.accent}55`, color: config.accent }}
-          >
-            {config.keyword}
+            <p className="mb-0 mt-3 text-sm leading-snug text-white/48 md:text-base">
+              {project.category} / {config.keyword}
+            </p>
           </div>
         </div>
 
-        <div className="grid min-h-0 items-end gap-8 md:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] md:items-center">
+        <div className="grid min-h-0 items-end gap-5 sm:gap-7 md:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] md:items-center md:gap-8">
           <div className="max-w-sm self-end">
-            <p className="mb-3 text-body-lg font-medium leading-tight text-white md:text-display-sm">
+            <p className="mb-0 text-base font-medium leading-tight text-white sm:text-body-lg md:mb-3 md:text-display-sm">
               {config.headline}
             </p>
-            <p className="mb-0 text-caption uppercase tracking-[0.16em] text-white/45">
+            <p className="mb-0 hidden text-sm leading-relaxed text-white/45 md:block md:text-base">
               {config.signal}
             </p>
           </div>
@@ -168,14 +162,14 @@ function DesignArtifact({ config, project }: { config: CoverConfig; project: Pro
   const objectFit = config.artifactFit ?? "cover";
 
   return (
-    <div className="relative mx-auto h-36 max-w-xl md:h-80">
-      <div className="absolute inset-0 rounded-[1.6rem] border border-white/12 bg-white/[0.055] p-2 shadow-2xl backdrop-blur md:rounded-[2rem] md:p-3">
+    <div className="relative mx-auto h-32 max-w-xl sm:h-40 md:h-80">
+      <div className="absolute inset-0 rounded-[1.6rem] border border-white/12 bg-white/[0.055] p-2 shadow-[0_18px_48px_rgba(0,0,0,0.18)] backdrop-blur md:rounded-[2rem] md:p-3">
         <div className="relative h-full overflow-hidden rounded-[1.1rem] bg-black/40 md:rounded-[1.5rem]">
           <img
             src={getImagePath(artifactImage)}
             alt={`${project.title} interface preview`}
             className={cn(
-              "h-full w-full opacity-85 saturate-[0.9] transition-transform duration-700 group-hover:scale-[1.02]",
+              "h-full w-full opacity-85 saturate-[0.9]",
               objectFit === "contain" ? "object-contain p-4 md:p-6" : "object-cover"
             )}
             style={{ objectPosition: config.artifactPosition ?? "center" }}

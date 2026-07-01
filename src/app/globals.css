@@ -215,11 +215,10 @@ html::-webkit-scrollbar {
   }
 
   .case-study-eyebrow {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-weight: 500;
   }
 
   .case-study-image-frame {

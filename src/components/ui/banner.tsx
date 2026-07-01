@@ -15,10 +15,10 @@ export function Banner({
   return (
     <div
       className={cn(
-        "relative pl-7 pr-4 py-5 rounded-r-lg bg-card border-l-4 mt-1 mb-6",
+        "relative rounded-lg border px-5 py-5 mt-1 mb-6",
         icon && "pl-12",
-        variant === 'warning' && "border-l-yellow-500/50 bg-yellow-500/[0.08]",
-        variant === 'info' && "border-l-muted-foreground bg-muted",
+        variant === 'warning' && "border-yellow-500/30 bg-yellow-500/[0.08]",
+        variant === 'info' && "border-border bg-muted",
         className
       )}
       {...props}
