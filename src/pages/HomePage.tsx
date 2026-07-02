@@ -2,7 +2,6 @@ import { ThreeHero } from '../components/ThreeHero';
 import { CaseStudies } from '../components/CaseStudies';
 import { Footer } from '../components/Footer';
 import { Container } from '@/components/ui/container';
-import { CTA } from '@/components/CTA';
 import { AnimatedHeroText } from '@/components/AnimatedHeroText';
 import MetaTags from '@/components/MetaTags';
 
@@ -49,12 +48,6 @@ export function HomePage() {
         </section>
       </Container>
 
-      <section id="contact">
-        <div className="border-t border-border">
-          <CTA />
-        </div>
-      </section>
-          
       <Footer />
     </div>
   );

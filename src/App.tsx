@@ -5,6 +5,7 @@ import { Navigation } from '@/components/Navigation';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { FixedContactLinks } from '@/components/FixedContactLinks';
 import { ThreeJsPlayground } from './pages/ThreeJsPlayground';
 import { DesignSystemDemo } from './pages/DesignSystemDemo';
 import NotFound from './pages/NotFound';
@@ -33,6 +34,7 @@ export default function App() {
             </main>
           </div>
         </SmoothScroll>
+        <FixedContactLinks />
         <ScrollToTop />
         <Toaster />
       </ThemeProvider>
