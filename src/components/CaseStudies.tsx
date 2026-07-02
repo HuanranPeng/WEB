@@ -44,13 +44,13 @@ export function CaseStudies() {
 
   return (
     <div className="flex flex-grow flex-col">
-      <div className="mb-8 flex flex-col gap-3 md:mb-12 md:max-w-3xl">
-        <p className="case-study-eyebrow mb-0 text-muted-foreground">Case studies</p>
-        <h2 className="mb-0 text-display-md md:text-display-lg lg:text-display-2xl">
-          Work that turns complexity into usable systems
+      <div className="mb-8 flex w-full flex-col gap-3 md:mb-12">
+        <p className="case-study-eyebrow mb-0 text-muted-foreground">Selected work</p>
+        <h2 className="mb-0 text-pretty text-display-md md:text-display-lg lg:text-display-2xl">
+          Product design for complex decisions
         </h2>
-        <p className="mb-0 max-w-2xl text-body-md text-muted-foreground md:text-body-lg">
-          A focused set of product design projects across healthcare, education, and energy.
+        <p className="mb-0 text-pretty text-body-md text-muted-foreground md:text-body-lg">
+          Case studies across learning, healthcare operations, clean energy, AI support, and design systems.
         </p>
       </div>
       {projects.map((project, index) => (
